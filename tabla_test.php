@@ -46,7 +46,7 @@ include "conexionGhoner.php";
                                                 <td>
 
 
-                                                    <button id="eliminar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" onclick="confirmar('<?php echo $Usuario ?>')">
+                                                    <button id="eliminar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" onclick="confirmar('<?php echo $opciones['Usuario']; ?>')">
 
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 

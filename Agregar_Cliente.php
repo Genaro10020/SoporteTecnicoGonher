@@ -98,13 +98,13 @@ table {
 
                             var telefono =$("#telefono").val();
 
-                            var responsable =$("#responsable").val();
+                            var puesto =$("#puesto").val();
 
                             var usuario =$("#usuario").val();
 
                             
 
-                            if (organizacion=="" || ciudad=="" || sucursal=="" || nombre =="" || correo =="" || clave == "" || telefono =="" || responsable =="" || usuario=="" ) {
+                            if (organizacion=="" || ciudad=="" || sucursal=="" || nombre =="" || correo =="" || clave == "" || telefono =="" || puesto =="" || usuario=="" ) {
 
                                 alert("favor de completar todos los campos");
 
@@ -122,7 +122,7 @@ table {
 
                                             data : { "Boton" : boton, "Organizacion": organizacion,"Ciudad":ciudad,"Sucursal":sucursal,"Nombre":nombre,"Correo":correo,
 
-                                                     "Clave":clave,"Telefono":telefono,"Responsable":responsable,"Usuario":usuario},
+                                                     "Clave":clave,"Telefono":telefono,"Responsable":puesto,"Usuario":usuario},
 
                                             // especifica si será una petición POST o GET
 
@@ -158,7 +158,7 @@ table {
 
                                                     $("#telefono").val("");
 
-                                                    $("#responsable").val("");
+                                                    $("#puesto").val("");
 
                                                     $("#usuario").val("");
 
@@ -430,6 +430,20 @@ table {
 
                             <div class="input-group-prepend" style="min-width: 120px;">
 
+                                <div class="input-group-text">Puesto:</div>
+
+                            </div>
+
+                             <input id="puesto" class="form-control" type="text" name="Responsable" required>
+
+                        </div>
+
+
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend" style="min-width: 120px;">
+
                                 <div class="input-group-text">Correo:</div>
 
                             </div>
@@ -465,21 +479,6 @@ table {
                             <input id="telefono" class="form-control" type="text" name="Telefono" required>
 
                         </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Responsable:</div>
-
-                            </div>
-
-                            <input id="responsable" class="form-control" type="text" name="Responsable" required>
-
-                        </div>
-
 
 
                          <div class="input-group mb-2">

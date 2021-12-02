@@ -18,7 +18,9 @@ include "conexionGhoner.php";
 
                                 <th scope="col">Usuario</th>
 
-                                <th scope="col">Responsable</th>
+                                <th scope="col">Correo</th>
+
+                                <th scope="col">Clave</th>
 
                                 <th scope="col">Eliminar</th>
 
@@ -38,15 +40,17 @@ include "conexionGhoner.php";
 
                                                 foreach($ejecutarF4 as $opciones)
 
-                                                    {   $Usuario=$opciones['Usuario']; ?>
+                                                    {   $Usuario=$opciones['Usuario'];
+                                                        $Correo=$opciones['Correo'];
+                                                        $Clave=$opciones['Clave']; ?>
 
                                             <tr id="lineatabla">
 
-                                                <td><?php echo $cantidad; ?></td>
+                                                <td><?php   echo $cantidad; ?></td>
+                                                <td><?php   echo $Usuario;?></td>
+                                                <td><?php   echo $Correo;?></td>
+                                                <td><?php   echo $Clave;?></td>
 
-                                                <td><div class="Planta2"><?php   echo $Usuario?></div></td>
-
-                                                <td><?php echo $opciones['Responsable'];; ?></td>
 
                                                 <td>
 

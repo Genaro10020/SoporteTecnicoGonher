@@ -63,15 +63,7 @@ table {
 </style>
 
 <script type="text/javascript">
-
-    
-
-
-
     $(document).ready(function(){
-
-
-
             $("#telefono").on('input', function (evt) {
 
                 // Allow only numbers.
@@ -296,6 +288,23 @@ table {
 
                 }
 
+        function detalles(usuario){
+                $.ajax({ 
+                        url : 'detalles.php',
+                        data : {"usuario":usuario},
+                        type : 'post',
+                        success : function(resultado) {
+                          $("#texto_detalles").html(resultado);      
+                        },
+                        error : function(xhr, status) {
+                            alert('Disculpe, existió un problema'+xhr, status);
+                        },
+                        // código a ejecutar sin importar si la petición falló o no
+                        complete : function(xhr, status) {
+                            //alert('Petición realizada');
+                        }
+                    }); 
+            }
 
 
     function llamandotabla(){
@@ -458,7 +467,21 @@ table {
 
                             <div class="input-group-prepend" style="min-width: 120px;">
 
-                                <div class="input-group-text">Clave:</div>
+                                <div class="input-group-text">Usuario:</div>
+
+                            </div>
+
+                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
+
+                        </div>
+
+
+
+                        <div class="input-group mb-2">
+
+                            <div class="input-group-prepend" style="min-width: 120px;">
+
+                                <div class="input-group-text">Contraseña:</div>
 
                             </div>
 
@@ -481,17 +504,7 @@ table {
                         </div>
 
 
-                         <div class="input-group mb-2">
 
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Usuario:</div>
-
-                            </div>
-
-                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
-
-                        </div>
 
 
 
@@ -539,20 +552,35 @@ table {
 
 </div>
 
+                    <!-- The Modal -->
+                    <div class="modal" id="myModalDetalles">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
 
+                                    <h4 class="modal-title">Detalles....</h4>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                                </div>
+                                <!-- Modal body -->
+                                <div id="texto_detalles" class="modal-body">
+                                    Vacio..
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- The Modal -->
-
                     <div class="modal" id="myModal">
-
                         <div class="modal-dialog modal-dialog-centered">
-
                             <div class="modal-content">
-
-
-
                                 <!-- Modal Header -->
-
                                 <div class="modal-header">
 
                                     <h4 class="modal-title">Desea eliminar al usuario</h4>
@@ -560,34 +588,19 @@ table {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
                                 </div>
-
-
-
                                 <!-- Modal body -->
-
                                 <div id="texto_modal" class="modal-body text-center">
-
                                     Modal body..
-
                                 </div>
-
-
-
                                 <!-- Modal footer -->
-
                                 <div class="modal-footer">
-
                                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="eliminar()">Aceptar</button>
-
                                 </div>
-
-
-
                             </div>
-
                         </div>
-
                     </div>
+
+                    
 
 
 

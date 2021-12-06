@@ -16,6 +16,7 @@ include "conexionGhoner.php";
 
                                             <th scope="col">Usuario</th>
                                             <th scope="col">Fecha Inicial</th>
+                                            <th scope="col">Fecha Final</th>
 
                                             <th scope="col">Eliminar</th>
 
@@ -41,6 +42,7 @@ include "conexionGhoner.php";
 
                                                 <td><div class="Planta2"><?php   echo $opciones['Usuario']; ?></div></td>
                                                 <td><div class="Planta2"><?php   echo $opciones['FechaActual'];?></div></td>
+                                                <td><div class="Planta2"><?php   echo $opciones['FechaFinalizado'];?></div></td>
 
 
                                                 <td>

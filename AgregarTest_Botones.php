@@ -13,6 +13,7 @@ $Boton=$_POST['Boton'];
 $Usuario=$_POST['Usuario'];
 
 $fechaInicio=$_POST['fechaInicio'];
+$fechaFinal=$_POST['fechaFinal'];
 
 
 
@@ -27,7 +28,7 @@ if($Boton=="Agregar Test")
 
 
 
-    $consulta = "INSERT INTO `Test` (`id`, `Usuario`, `FechaActual`, `FechaFinalizado`) VALUES (NULL, '$Usuario','$currentDateTime','$fechaInicio');";
+    $consulta = "INSERT INTO `Test` (`id`, `Usuario`, `FechaActual`, `FechaFinalizado`) VALUES (NULL, '$Usuario','$fechaInicio','$fechaFinal');";
 
        if(mysqli_query($conexion, $consulta)==true){
             echo "correcto";

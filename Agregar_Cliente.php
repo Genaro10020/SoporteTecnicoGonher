@@ -372,137 +372,79 @@ table {
 
 
             <div class="row justify-content-center mt-5">
-
                 <div class="col-12 col-sm-10 col-md-6 col-lg-5">
 
- 
-
-                    
-
                          <div class="input-group mb-2">
-
                                 <div class="input-group-prepend" style="min-width: 120px;">
-
                                     <div class="input-group-text">Organización</div>
-
                                 </div>
-
                                     <input id="organizacion" class="form-control " type="text" name="Organizacion" required >
-
                           </div>
 
 
-
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Ciudad:</div>
-
-                            </div>
-
-                            <input id="ciudad" class="form-control" type="text" name="Ciudad" required>
-
-                        </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Sucursal:</div>
-
                             </div>
-
                             <input id="sucursal"  class="form-control" type="text" name="Sucursal" required>
-
                         </div>
 
 
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Ciudad:</div>
+                            </div>
+                            <input id="ciudad" class="form-control" type="text" name="Ciudad" required>
+                        </div>
+
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Nombre:</div>
-
                             </div>
-
                             <input id="nombre"  class="form-control" type="text" name="Nombre" required>
-
                         </div>
 
 
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Puesto:</div>
-
                             </div>
-
                              <input id="puesto" class="form-control" type="text" name="Responsable" required>
-
                         </div>
 
 
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Correo:</div>
-
                             </div>
-
                             <input id="correo"  class="form-control" type="text" name="Correo" required>
-
                         </div>
 
 
-
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Usuario:</div>
-
-                            </div>
-
-                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
-
-                        </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Contraseña:</div>
-
-                            </div>
-
-                            <input id="clave" class="form-control" type="text"  name="Clave" required>
-
-                        </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Teléfono:</div>
-
                             </div>
-
                             <input id="telefono" class="form-control" type="text" name="Telefono" required>
-
                         </div>
 
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Usuario:</div>
+                            </div>
+                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
+                        </div>
+
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Contraseña:</div>
+                            </div>
+                            <input id="clave" class="form-control" type="text"  name="Clave" required>
+                        </div>
 
 
 

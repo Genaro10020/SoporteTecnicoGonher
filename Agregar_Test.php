@@ -194,7 +194,7 @@ table {
             </div>   
     </div>
     <div class="row justify-content-center" style="min-height: 60vh;">
-                    <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center position-relative shadow bg-body rounded  mt-5" style="height: 100%; border-radius: 10px 10px 10px 10px;">
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center position-relative shadow bg-body rounded" style="height: 100%; border-radius: 10px 10px 10px 10px;">
                         <legend><b>Agregar Test</b></legend>
                         <div class="row justify-content-center mt-4">
                             <div class=" col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 col-xxl-8 ">

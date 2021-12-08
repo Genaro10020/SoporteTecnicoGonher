@@ -183,7 +183,7 @@ table {
 
 
 </style>
-    <div class="container-fluid" style=" min-height: 5vh; ">
+    <div class="container-fluid" style=" min-height: 20vh; ">
             <div class="row align-content-center align-items-center justify-content-center text-center">
                         <div class="col-4 col-sm-3 col-md-3 col-lg-1">
                             <img src="Imagenes/logoenerya.png" style="width:80px;" >

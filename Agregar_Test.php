@@ -193,8 +193,8 @@ table {
                         </div>
             </div>   
     </div>
-    <div class="row justify-content-center" style="min-height: 80vh;">
-                    <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center position-relative shadow bg-body rounded" style="height: 100%; border-radius: 10px 10px 10px 10px; margin-top:150px;">
+    <div class="row justify-content-center" style="min-height: 60vh;">
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center position-relative shadow bg-body rounded  mt-5" style="height: 100%; border-radius: 10px 10px 10px 10px;">
                         <legend><b>Agregar Test</b></legend>
                         <div class="row justify-content-center mt-4">
                             <div class=" col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 col-xxl-8 ">
@@ -243,20 +243,21 @@ table {
                                 Los datos se insertaron correctamente.
                             </div>
                         </div> 
-                </div>        
-                <div class="col-12 h-auto" >
-                </div>             
-                <div id="divmensaje_eliminar" class="row justify-content-center" style="margin-top:-450px; display:none;">
+                </div>                  
+                <div id="divmensaje_eliminar" class="row justify-content-center" style=" display:none;">
                         <div id="mensaje_elimar" class="col-6 align-self-center alert alert-warning">
                                 Los datos se eliminaron correctamente.
                         </div> 
                 </div>              
-                <div class="row justify-content-center" style="margin-top:-250px">
+                <div class="row justify-content-center mt-5" >
                     <div id="div_tabla" class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 " style="font-size:14px;">
                         <?php include "tabla_test.php"; ?>
                     </div>    
                 </div>  
     </div>
+
+
+
 
 
     <div  class="mt-5 "  style=" background: linear-gradient(90deg, rgba(255,255,255) 0%, rgba(37,33,140) 0%, rgba(3,91,25,1) 100%); min-height: 20vh; ">

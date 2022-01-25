@@ -63,15 +63,7 @@ table {
 </style>
 
 <script type="text/javascript">
-
-    
-
-
-
     $(document).ready(function(){
-
-
-
             $("#telefono").on('input', function (evt) {
 
                 // Allow only numbers.
@@ -98,13 +90,13 @@ table {
 
                             var telefono =$("#telefono").val();
 
-                            var responsable =$("#responsable").val();
+                            var puesto =$("#puesto").val();
 
                             var usuario =$("#usuario").val();
 
                             
 
-                            if (organizacion=="" || ciudad=="" || sucursal=="" || nombre =="" || correo =="" || clave == "" || telefono =="" || responsable =="" || usuario=="" ) {
+                            if (organizacion=="" || ciudad=="" || sucursal=="" || nombre =="" || correo =="" || clave == "" || telefono =="" || puesto =="" || usuario=="" ) {
 
                                 alert("favor de completar todos los campos");
 
@@ -122,7 +114,7 @@ table {
 
                                             data : { "Boton" : boton, "Organizacion": organizacion,"Ciudad":ciudad,"Sucursal":sucursal,"Nombre":nombre,"Correo":correo,
 
-                                                     "Clave":clave,"Telefono":telefono,"Responsable":responsable,"Usuario":usuario},
+                                                     "Clave":clave,"Telefono":telefono,"Responsable":puesto,"Usuario":usuario},
 
                                             // especifica si será una petición POST o GET
 
@@ -158,7 +150,7 @@ table {
 
                                                     $("#telefono").val("");
 
-                                                    $("#responsable").val("");
+                                                    $("#puesto").val("");
 
                                                     $("#usuario").val("");
 
@@ -296,6 +288,23 @@ table {
 
                 }
 
+        function detalles(usuario){
+                $.ajax({ 
+                        url : 'detalles.php',
+                        data : {"usuario":usuario},
+                        type : 'post',
+                        success : function(resultado) {
+                          $("#texto_detalles").html(resultado);      
+                        },
+                        error : function(xhr, status) {
+                            alert('Disculpe, existió un problema'+xhr, status);
+                        },
+                        // código a ejecutar sin importar si la petición falló o no
+                        complete : function(xhr, status) {
+                            //alert('Petición realizada');
+                        }
+                    }); 
+            }
 
 
     function llamandotabla(){
@@ -363,136 +372,81 @@ table {
 
 
             <div class="row justify-content-center mt-5">
-
                 <div class="col-12 col-sm-10 col-md-6 col-lg-5">
 
- 
-
-                    
-
                          <div class="input-group mb-2">
-
                                 <div class="input-group-prepend" style="min-width: 120px;">
-
                                     <div class="input-group-text">Organización</div>
-
                                 </div>
-
                                     <input id="organizacion" class="form-control " type="text" name="Organizacion" required >
-
                           </div>
 
 
-
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Ciudad:</div>
-
-                            </div>
-
-                            <input id="ciudad" class="form-control" type="text" name="Ciudad" required>
-
-                        </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Sucursal:</div>
-
                             </div>
-
                             <input id="sucursal"  class="form-control" type="text" name="Sucursal" required>
-
                         </div>
 
 
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Ciudad:</div>
+                            </div>
+                            <input id="ciudad" class="form-control" type="text" name="Ciudad" required>
+                        </div>
+
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Nombre:</div>
-
                             </div>
-
                             <input id="nombre"  class="form-control" type="text" name="Nombre" required>
-
                         </div>
 
 
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Puesto:</div>
+                            </div>
+                             <input id="puesto" class="form-control" type="text" name="Responsable" required>
+                        </div>
 
+
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
                                 <div class="input-group-text">Correo:</div>
-
                             </div>
-
                             <input id="correo"  class="form-control" type="text" name="Correo" required>
-
                         </div>
 
 
-
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Clave:</div>
-
-                            </div>
-
-                            <input id="clave" class="form-control" type="text"  name="Clave" required>
-
-                        </div>
-
-
-
-                        <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
                                 <div class="input-group-text">Teléfono:</div>
-
                             </div>
-
                             <input id="telefono" class="form-control" type="text" name="Telefono" required>
-
                         </div>
 
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Usuario:</div>
+                            </div>
+                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
+                        </div>
 
 
                         <div class="input-group mb-2">
-
                             <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Responsable:</div>
-
+                                <div class="input-group-text">Contraseña:</div>
                             </div>
-
-                            <input id="responsable" class="form-control" type="text" name="Responsable" required>
-
+                            <input id="clave" class="form-control" type="text"  name="Clave" required>
                         </div>
 
 
-
-                         <div class="input-group mb-2">
-
-                            <div class="input-group-prepend" style="min-width: 120px;">
-
-                                <div class="input-group-text">Usuario:</div>
-
-                            </div>
-
-                            <input id="usuario"  class="form-control" type="text"  name="Usuario" required>
-
-                        </div>
 
 
 
@@ -540,20 +494,35 @@ table {
 
 </div>
 
+                    <!-- The Modal -->
+                    <div class="modal" id="myModalDetalles">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
 
+                                    <h4 class="modal-title">Detalles....</h4>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                                </div>
+                                <!-- Modal body -->
+                                <div id="texto_detalles" class="modal-body">
+                                    Vacio..
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- The Modal -->
-
                     <div class="modal" id="myModal">
-
                         <div class="modal-dialog modal-dialog-centered">
-
                             <div class="modal-content">
-
-
-
                                 <!-- Modal Header -->
-
                                 <div class="modal-header">
 
                                     <h4 class="modal-title">Desea eliminar al usuario</h4>
@@ -561,34 +530,19 @@ table {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
                                 </div>
-
-
-
                                 <!-- Modal body -->
-
                                 <div id="texto_modal" class="modal-body text-center">
-
                                     Modal body..
-
                                 </div>
-
-
-
                                 <!-- Modal footer -->
-
                                 <div class="modal-footer">
-
                                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="eliminar()">Aceptar</button>
-
                                 </div>
-
-
-
                             </div>
-
                         </div>
-
                     </div>
+
+                    
 
 
 

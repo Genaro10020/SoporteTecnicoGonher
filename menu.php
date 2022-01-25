@@ -47,7 +47,7 @@ include "conexionGhoner.php";
                     </div>
 
                         
-                            <div id="ac"  class="animate__animated animate__fadeInLeft fw-lighter col-8 col-sm-6 col-md-5 col-lg-5 align-self-center rounded shadow "  style="cursor: pointer; height: 150px; color:#efeeee; margin-top: 150px; " onclick='location.href="Agregar_Cliente.php"'>
+                            <div id="ac"  class="animate__animated animate__fadeInLeft fw-lighter col-8 col-sm-6 col-md-5 col-lg-5 align-self-center rounded shadow "  style="cursor: pointer; height: 150px; color:#efeeee; margin-top: 50px; " onclick='location.href="Agregar_Cliente.php"'>
                                  <div style="margin-top:30px; font-size: 25px ;" ><img src="Imagenes/clientes.png" style="width:80px;" > Agregar Cliente </div>
                             </div>
                             <div class="row">
@@ -56,6 +56,14 @@ include "conexionGhoner.php";
                               <div id="at" class="animate__animated animate__fadeInLeft fw-lighter col-8 col-sm-6 col-md-5 col-lg-5 align-self-center rounded shadow"  style="cursor: pointer; height: 150px; color:#efeeee; margin-top: 100px; " onclick="location.href='Agregar_Test.php'">
                                    <div style="margin-top:30px; font-size: 25px ;" ><img src="Imagenes/prueba.png" style="width:80px;" > Agregar Test </div>
                             </div>
+                            <div class="row">
+                               
+                            </div>
+                              <div id="at" class="animate__animated animate__fadeInLeft fw-lighter col-8 col-sm-6 col-md-5 col-lg-5 align-self-center rounded shadow"  style="cursor: pointer; height: 150px; color:#efeeee; margin-top: 100px; " onclick="location.href='Resultados_Test.php'">
+                                   <div style="margin-top:30px; font-size: 25px ;" ><img src="Imagenes/resultados.png" style="width:80px;" > Reporte Resultados</div>
+                            </div>
+
+
 
 
         </div>   

@@ -16,6 +16,7 @@ include "conexionGhoner.php";
 
                                             <th scope="col">Usuario</th>
                                             <th scope="col">Fecha Inicial</th>
+                                            <th scope="col">Fecha Final</th>
 
                                             <th scope="col">Eliminar</th>
 
@@ -41,12 +42,13 @@ include "conexionGhoner.php";
 
                                                 <td><div class="Planta2"><?php   echo $opciones['Usuario']; ?></div></td>
                                                 <td><div class="Planta2"><?php   echo $opciones['FechaActual'];?></div></td>
+                                                <td><div class="Planta2"><?php   echo $opciones['FechaFinalizado'];?></div></td>
 
 
                                                 <td>
 
 
-                                                    <button id="eliminar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" onclick="confirmar('<?php echo $Usuario ?>')">
+                                                    <button id="eliminar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal" onclick="confirmar('<?php echo $opciones['Usuario']; ?>')">
 
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 

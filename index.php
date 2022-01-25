@@ -153,7 +153,7 @@ session_destroy();
 
     <div id="resultado">
 
-        O
+        
 
     </div>
 

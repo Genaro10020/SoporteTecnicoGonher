@@ -42,6 +42,7 @@ input[type]:focus{
 
     }
 
+
 #lineatabla:hover{
 
     background:#9EC4EB;
@@ -94,6 +95,7 @@ table {
 
                             var usuario =$("#usuario").val();
 
+                            var tipodeusuario = $("#tipodeusuario option:selected").val();
                             
 
                             if (organizacion=="" || ciudad=="" || sucursal=="" || nombre =="" || correo =="" || clave == "" || telefono =="" || puesto =="" || usuario=="" ) {
@@ -114,7 +116,7 @@ table {
 
                                             data : { "Boton" : boton, "Organizacion": organizacion,"Ciudad":ciudad,"Sucursal":sucursal,"Nombre":nombre,"Correo":correo,
 
-                                                     "Clave":clave,"Telefono":telefono,"Responsable":puesto,"Usuario":usuario},
+                                                     "Clave":clave,"Telefono":telefono,"Responsable":puesto,"Usuario":usuario,"TipoUsuario":tipodeusuario},
 
                                             // especifica si será una petición POST o GET
 
@@ -444,6 +446,17 @@ table {
                                 <div class="input-group-text">Contraseña:</div>
                             </div>
                             <input id="clave" class="form-control" type="text"  name="Clave" required>
+                        </div>
+
+
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend" style="min-width: 120px;">
+                                <div class="input-group-text">Tipo de Usuario:</div>
+                            </div>
+                            <select id="tipodeusuario" class="form-control">
+                                <option>Usuario</option>
+                                <option>Administrador</option>
+                            </select>
                         </div>
 
 

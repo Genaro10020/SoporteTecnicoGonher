@@ -61,7 +61,7 @@ include "conexionGhoner.php";
                                                 </td>
                                                 <td>
                                                     <?php
-                                                        if ($opciones['tipo']=="admin"){
+                                                        if ($opciones['tipo']=="Administrador"){
 
                                                         }else{ 
                                                     ?>

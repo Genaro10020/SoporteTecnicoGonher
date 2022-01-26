@@ -24,7 +24,7 @@ $Responsable=$_POST['Responsable'];
 
 $Usuario=$_POST['Usuario'];
 
-
+$TipoDeUsuario=$_POST['TipoUsuario'];
 
  
 
@@ -32,7 +32,7 @@ if($Boton=="Agregar Cliente")
 
 {
 
-    $consulta = "INSERT INTO `UsuariosServicio` (`id`, `Responsable`, `Usuario`, `Clave`, `Organizacion`, `Ciudad`, `Sucursal`, `Correo`, `Telefono`) VALUES (NULL, '$Responsable', '$Usuario', '$Clave', '$Organizacion', '$Ciudad', '$Sucursal', '$Correo', '$Telefono');";
+    $consulta = "INSERT INTO `UsuariosServicio` (`id`, `Responsable`, `Usuario`, `Clave`, `Organizacion`, `Ciudad`, `Sucursal`, `Correo`, `Telefono`,`tipo`) VALUES (NULL, '$Responsable', '$Usuario', '$Clave', '$Organizacion', '$Ciudad', '$Sucursal', '$Correo', '$Telefono','$TipoDeUsuario');";
 
     if(mysqli_query($conexion, $consulta)==true){
         echo "correcto";

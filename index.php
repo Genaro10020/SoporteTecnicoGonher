@@ -216,18 +216,16 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                     pass: this.password
                                 })
                                 .then(function (response) {
-                                    alert(response.data)
+                                    //alert(response.data)
                                         if(response.data=="Administrador"){
                                             window.location.href = 'menu.php';
+                                        }else{
+                                            if(response.data=="Usuario"){
+                                                 window.location.href = 'menu_cliente.php';
+                                             }else{
+                                                alert("CREDENCIALES INCORRECTAS")
+                                             }
                                         }
-                                        if(response.data=="Usuario"){
-                                            window.location.href = 'menu_cliente.php';
-                                        }
-                                        if(response!="Administrador" && response!="Usuario"){
-                                            alert("CREDENCIALES INCORRECTAS")
-                                        }
-
-                                     
                                 })
                                 .catch(function (error) {
                                     console.log(error);

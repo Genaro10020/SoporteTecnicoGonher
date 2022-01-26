@@ -2,7 +2,7 @@
 
 session_start();
 
-if($_SESSION['tipo']=="admin"){
+if($_SESSION['tipo']=="Administrador"){
 
 include "conexionGhoner.php";
 

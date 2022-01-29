@@ -29,103 +29,120 @@
 </style>
 <body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%); background-repeat: no-repeat; background-size: 100%" >
    
-    <div class="container-flud"  style="background-image: url(Imagenes/fondosuperior.png); background-repeat: no-repeat; background-size: 100%" >
+    <div class="container-fluid"  style="background-image: url(Imagenes/fondosuperior.png); background-repeat: no-repeat; background-size: 100%;"  >
+				<div class="row" style="height: 10vh;">
+					<div class="col-4 col-sm-3 col-md-3 col-lg-1">
+						<img src="Imagenes/logoenerya.png" style="width:80px;" >
+					</div>
+				</div>
+				<div class="row d-flex align-items-center" style="height: 80vh;">
 
-    <div class="row">
-        <div class="row">
-            <div class="col-4 col-sm-3 col-md-3 col-lg-1">
-                 <img src="Imagenes/logoenerya.png" style="width:80px;" >
-            </div>
-        </div>
-		<div class="col-md-4 mt-5 bg-danger">
-			<div class="row justify-content-end">
-                <div class="col-4 bg-warning justify-content-end d-flex align-items-center">
-                    <h4 id="" class="opciones text-light">TEST INICIAL</h4>
-                </div>
-                <div class="col-3 d-flex justify-content-start">
-                    <div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
-                        <img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-                    </div>
+					<div class="col-4 col-md-4"><!--Opciones y Circulos-->
+						<div class="row justify-content-end my-5">
+							<div class="col-4 justify-content-end d-flex align-items-center">
+								<h3 id="" class="opciones text-light">Test Inicial</h3>
+							</div>
+							<div class="col-3 d-flex justify-content-start">
+								<div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+								</div>
+							</div>
+						</div>
+						<div class="row justify-content-end my-5 me-5">
+							<div class="col-4 justify-content-end d-flex align-items-center">
+								<h3 id="" class="opciones text-light">Capacitación</h3>
+							</div>
+							<div class="col-3 d-flex justify-content-start">
+								<div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
+								</div>
+							</div>
+						</div>
+						<div class="row justify-content-end my-5 me-5">
+							<div class="col-4 justify-content-end d-flex align-items-center">
+								<h3 id="" class="opciones text-light">Ver videos</h3>
+							</div>
+							<div class="col-3 d-flex justify-content-start">
+								<div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<img src="Imagenes/video.png" alt="" class="img-fluid w-50 my-4 mx-4">
+								</div>
+							</div>
+						</div>
+						<div class="row justify-content-end my-5">
+							<div class="col-4 justify-content-end d-flex align-items-center">
+								<h3 id="" class="opciones text-light">Test Final</h3>
+							</div>
+							<div class="col-3 d-flex justify-content-start">
+								<div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-1 col-md-1"><!--Conectores-->
+						<div class="row">
+							<div class="col-12 ">
+								
+								<div class="row d-flex justify-content-start mx-0 " style="max-height: 150px;">
+									<div class="col-12">
+											<img src="Imagenes/conector.png" alt="" class="img-fluid w-50"
+											style="transform: rotate(80deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px; position: relative;
+											margin-top:-40px; margin-bottom:10px;">
+									</div>
+								</div>
+								<div class="row d-flex justify-content-start" style="max-height: 150px;">
+									<div class="col-12 ">
+											<img src="Imagenes/conector.png" alt="" class="img-fluid w-50" 
+											style="transform: rotate(70deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px; position: relative;
+											margin-top:-50px; margin-left:-40px; margin-bottom:50px;">
+									</div>
+								</div>
+								<div class="row d-flex justify-content-start" style="max-height: 150px;">
+									<div class="col-12">
+											<img src="Imagenes/conector.png" alt="" class="img-fluid w-50" 
+											style="transform: rotate(55deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px; position: relative;
+											margin-top:-60px; margin-left:-40px; margin-bottom:40px;">
+									</div>
+								</div>
+								<div class="row d-flex justify-content-start mx-0" style="max-height: 150px;">
+									<div class="col-12">
+											<img src="Imagenes/conector.png" alt="" class="img-fluid w-50" 
+											style="transform: rotate(45deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px; position: relative;
+											margin-top:-70px; margin-bottom:20px; margin-left:-20px;">
+									</div>
+								</div>
+								
+							
+							</div>
+						</div>
+					</div>
+
+
+						<div class="col-3 col-md-4"><!--perrilla-->
+							<div class="row" >
+								<div class="col-12 d-flex justify-content-start">
+									<img src="Imagenes/contorno.png" style="width:600px; position:relative; margin-left:-100px">
+								</div>
+							</div>
+						</div>
+
+
+				
+					<div class="col-3 col-md-3 bg-primary">
+						<div class="row">
+							<div class="col-12">
+								row
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="row justify-content-end">
-                <div class="col-4 bg-warning justify-content-end d-flex align-items-center">
-                    <h4 id="" class="opciones text-light">TEST INICIAL</h4>
-                </div>
-                <div class="col-3 d-flex justify-content-start">
-                    <div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
-                        <img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-                    </div>
+				<div class="row bg-success" style="height: 10vh; ">
+					<div class="col-12">
+					Soporte Técnico (Curso de capacitación)
+						
+					</div>
 				</div>
-			</div>
-			<div class="row justify-content-end">
-                <div class="col-4 bg-warning justify-content-end d-flex align-items-center">
-                    <h4 id="" class="opciones text-light">TEST INICIAL</h4>
-                </div>
-                <div class="col-3 d-flex justify-content-start">
-                    <div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
-                        <img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-                    </div>
-				</div>
-			</div>
-			<div class="row justify-content-end">
-                <div class="col-4 bg-warning justify-content-end d-flex align-items-center">
-                    <h4 id="" class="opciones text-light">TEST INICIAL</h4>
-                </div>
-                <div class="col-3 d-flex justify-content-start">
-                    <div class="border border-info border-3 " style=" min-width:100px; min-height:100px; height:100px; width:100px; border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
-                        <img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-                    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h2>
-						título
-					</h2>
-					<p>
-						Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-					</p>
-					<p>
-						<a class="btn" href="#">Ver detalles "</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-8">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-8">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-8">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-8">
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="row">
-				<div class="col-md-12">
-				</div>
-			</div>
-		</div>
-	</div>
-  
     </div>
 
 </body>

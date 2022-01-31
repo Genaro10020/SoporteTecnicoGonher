@@ -27,9 +27,13 @@
         font-family: 'Righteous', cursive;
     }
 </style>
-<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%); background-repeat: no-repeat; background-size: 100%" >
-   
-    <div class="container-fluid"  style="background-image: url(Imagenes/fondosuperior.png); background-repeat: no-repeat; background-size: 100%;"  >
+<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%); background-repeat: no-repeat; background-size: 100%"  >
+ <div class="container-fluid" style="background-image: url(Imagenes/fondosuperior.png); background-repeat:no-repeat; background-position:center ;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;" >
+ 
 				<div class="row" style="height: 10vh;">
 					<div class="col-4 col-sm-3 col-md-3 col-lg-1">
 						<img src="Imagenes/logoenerya.png" style="width:80px;" >
@@ -80,7 +84,7 @@
 						</div>
 					</div>
 
-					<div class="col-1 col-md-1"><!--Conectores-->
+					<div class="col-3 col-md-3 "><!--Conectores-->
 						<div class="row">
 							<div class="col-12 ">
 								
@@ -119,31 +123,35 @@
 					</div>
 
 
-						<div class="col-3 col-md-4"><!--perrilla-->
+						<div class="col-2 col-md-2"><!--perrilla-->
 							<div class="row" >
 								<div class="col-12 d-flex justify-content-start">
-									<img src="Imagenes/contorno.png" style="width:600px; position:relative; margin-left:-100px">
+								<img class="position-absolute top-50 start-50 translate-middle " src="Imagenes/contorno.png" style=" max-width:25%; min-width:25%;">
+									<!--<img src="Imagenes/contorno.png" style="width:600px; position:relative; margin-left:-100px">-->
 								</div>
 							</div>
 						</div>
 
 
 				
-					<div class="col-3 col-md-3 bg-primary">
+					<div class="col-3 col-md-3">
 						<div class="row">
-							<div class="col-12">
-								row
+							<div class="col align-self-end bg-primary">
+									<img src="Imagenes/certificado_contorno.png" style="position:absolute; width:20%;"/>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row bg-success" style="height: 10vh; ">
-					<div class="col-12">
+
+				<div class="row bg-success " style="height: 10vh; ">
+					<div class="col-6">
 					Soporte Técnico (Curso de capacitación)
-						
+					</div>
+					<div class="col-6">
+					Soporte Técnico (Curso de capacitación)
 					</div>
 				</div>
-    </div>
+		</div>  
 
 </body>
 </html>

@@ -32,16 +32,18 @@
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1em}
 	.contorno_perilla{height:300px;}
-	.controno_certificado{height:200px;}
+	.perilla_gira{position:absolute; height:200px; margin-top:41px; margin-left:13px}
+	.contorno_certificado{height:200px;}
+	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 70px; }
 	 /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 *//* Firefox 16+, IE 10+, Opera */
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
-				max-width: 80px; max-height: 90px; min-width: 80px; min-height:90px;}
+				max-width: 100px; max-height: 100px; min-width: 100px; min-height:100px;}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); 
-		max-width:  80px; max-height:  90px; min-width: 80px; min-height: 90px; }
+		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px; }
 	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);
-		max-width:  80px; max-height:  90px; min-width: 80px; min-height: 90px;}
+		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px;}
 	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);
-				max-width: 80px; max-height:  90px; min-width: 80px; min-height: 90px;}
+		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px;}
 	
 
 
@@ -50,25 +52,31 @@
 @media (min-width: 576px) { 
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1.5em}
-	.contorno_perilla{height:300px;}
-	.controno_certificado{height:200px;}
+	.contorno_perilla{height:400px;}
+	.perilla_gira{height:250px; margin-top:62px;margin-left: 19px;}
+	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 80px; }
+	.contorno_certificado{height:200px;}
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
-				max-width: 100px; max-height: 100px; min-width: 100px; min-height:100px;}
+				max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); 
-		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px; }
+		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px; }
 	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);
-		max-width:  100px; max-height: 100px; min-width: 100px; min-height: 100px;}
+		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
 	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);
-				max-width: 100px; max-height:  100px; min-width: 100px; min-height: 100px;}
+		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
 	
 	
 }
 
-/* Medium devices (tablets, 768px and up)*/
+/* Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
+
 	.opciones{font-size:1.7em}
+	.divconector{height:120px}
 	.contorno_perilla{height:300px;}
-	.controno_certificado{height:200px;}
+	.perilla_gira{height:200px; margin-top:40px; margin-left: 19px;}
+	.contorno_certificado{height:200px;}
+	.icono_certificado{position:absolute; height:100px; margin-right:30px; margin-top: 80px; }
 	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
 	.circuito_uno{transform: rotate(90deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
 	.circuito_dos{transform: rotate(70deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
@@ -76,22 +84,29 @@
 	.circuito_cuatro{transform: rotate(35deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
 }
 
-/* Large devices (desktops, 992px and up)*/
+/* Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
+	.divconector{height:100%}
 	.contorno_perilla{height:400px;}
-	.controno_certificado{height:200px;}
+	.contorno_certificado{height:200px;}
+	.perilla_gira{height:250px; margin-top:60px; margin-left: 19px;}
  }
 
 /* X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
 	.contorno_perilla{height:450px;}
-	.controno_certificado{height:250px;}
+	.perilla_gira{height:280px; margin-top:72px; margin-left: 30px;}
+	.contorno_certificado{height:250px;}
+	.icono_certificado{position:absolute; height:130px; margin-right:40px; margin-top: 100px; }
  }
 
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
 	.contorno_perilla{height:500px;}
-	.controno_certificado{height:280px;}
+	.perilla_gira{height:280px; margin-top:95px; margin-left: 30px;}
+	.contorno_certificado{height:280px;}
+	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 120px; }
+	
  }
 
 </style>
@@ -103,16 +118,16 @@
 -o-background-size: cover;
 background-size: cover;" >
  
-			<div class="row" style="height: 5vh;">
+			<div class="row" style="height: 4vh;">
 				<div class="col-4 col-sm-3 col-md-3 col-lg-1">
 					<img src="Imagenes/logoenerya.png" style="width:80px;" >
 				</div>
 			</div>
- <div class="d-none d-md-none d-sm-block bg-warning fw-bolder text-center ">ESTAS EN SM</div>
+ <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
- <div class="d-none d-xxl-block bg-warning bg-primary fw-bolder text-center ">ESTAS EN XXL</div>
+ <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 			<div class="row" style="height: 85vh;">
 				
 					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-3 col-xxl-4 my-auto"><!--Opciones y Circulos-->
@@ -164,28 +179,29 @@ background-size: cover;" >
 						</div>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1   d-flex align-items-sm-center align-items-md-start "><!--Conectores-->
-							<div class="row   align-items-center mx-auto mx-md-0 mt-md-3">
-									<div class="col-3  col-sm-3 col-md-12 text-xl-end text-xxl-end  mt-5  ms-md-4">
+					<div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1   d-flex align-items-sm-center align-items-md-center "><!--Conectores-->
+							<div class="row align-items-center mx-auto mx-md-0 my-md-5">
+									<div class="divconector col-3  col-sm-3 col-md-12 text-xl-end text-xxl-end p-0 mt-5 mt-md-0  ms-md-4" >
 											<img src="Imagenes/conector.png" alt="" class="circuito_uno">
 									</div>
-									<div class="col-3 col-sm-3 col-md-12  text-xxl-center text-xl-start ">
+									<div class="divconector col-3 col-sm-3 col-md-12  text-xxl-center text-xl-start  p-0" >
 											<img src="Imagenes/conector.png" alt="" class="circuito_dos">
 									</div>
-									<div class="col-3 col-sm-3 col-md-12 text-xxl-center text-xl-start">
+									<div class="divconector col-3 col-sm-3 col-md-12 text-xxl-center text-xl-start  p-0" >
 											<img src="Imagenes/conector.png" alt=""  class="circuito_tres">
 									</div>
-									<div class="col-3 col-sm-3 col-md-12 text-xl-end text-xxl-end ">
-											<img src="Imagenes/conector.png" alt="" class="circuito_cuatro mt-5 mt-md-0 ms-md-4">
+									<div class="divconector col-3 col-sm-3 col-md-12 text-xl-end text-xxl-end b-4 p-0  mt-5 mt-md-0  ms-md-4" >
+											<img src="Imagenes/conector.png" alt="" class="circuito_cuatro">
 									</div>
 							</div>
 					</div>
 	
 
-						<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center "><!--perrilla-->
-							<div class="row  ms-xxl-5">
-								<div class="col-12">
+						<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
+							<div class="row  ms-xxl-1">
+								<div class="col-12 d-flex justify-content-center">
 									<img class="contorno_perilla" src="Imagenes/contorno.png" height="300px">
+									<img class="perilla_gira" src="Imagenes/perilla_gira.png" >
 								</div>
 							</div>
 						</div>
@@ -194,14 +210,20 @@ background-size: cover;" >
 		
 					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3   d-flex align-items-end"><!--Certificado-->
 							<div class="col-12 justify-content-end d-flex">
-									<img class="controno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
+							
+							<img class="icono_certificado"  src="Imagenes/icono_certificado.png"/>
+							<img class="contorno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
+							
 							</div>
 					</div>
 				</div>
 
-				<div class="row d-flex align-items-end" style="height: 10vh; ">
-					<div class="col-12 text-light d-flex mt-3">
+				<div class="row justify-content-between" style="height: 10vh; ">	
+					<div class="col-9 text-light d-flex mt-3">
 					Soporte Técnico (Curso de capacitación)
+					</div>
+					<div class="col-3 text-light d-flex mt-3">
+					
 					</div>
 				</div>
 	</div>  

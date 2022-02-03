@@ -23,12 +23,16 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <style>
+	.titulos {
+                font-family: 'Orbitron', sans-serif;
+            } 
 	/* Small devices (landscape phones, 576px and up)*/
 	.opciones{
         font-family: 'Righteous', cursive;
     }
 
 @media (min-width: 0px) { 
+	.titulos{margin-top:120px; margin-left: 15px; font-size:30px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1em}
 	.contorno_perilla{height:300px;}
@@ -50,6 +54,7 @@
 }
 /*SM*/	
 @media (min-width: 576px) { 
+	.titulos{margin-top:160px;margin-left: 15px; font-size:50px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1.5em}
 	.contorno_perilla{height:400px;}
@@ -82,6 +87,7 @@
 	.circuito_dos{transform: rotate(70deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
 	.circuito_tres{transform: rotate(55deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
 	.circuito_cuatro{transform: rotate(35deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
+	.titulos{margin-top:130px;margin-left: 400px; font-size:50px;}
 }
 
 /* Large LG devices (desktops, 992px and up)*/
@@ -90,14 +96,17 @@
 	.contorno_perilla{height:400px;}
 	.contorno_certificado{height:200px;}
 	.perilla_gira{height:250px; margin-top:60px; margin-left: 19px;}
+	.titulos{margin-top:190px;margin-left: 450px; font-size:40px;}
  }
 
 /* X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
+	
 	.contorno_perilla{height:450px;}
 	.perilla_gira{height:280px; margin-top:72px; margin-left: 30px;}
 	.contorno_certificado{height:250px;}
 	.icono_certificado{position:absolute; height:130px; margin-right:40px; margin-top: 100px; }
+	.titulos{margin-top:190px; margin-left: 650px; font-size:80px;}
  }
 
 /* XX-Large devices (larger desktops, 1400px and up)*/
@@ -106,9 +115,26 @@
 	.perilla_gira{height:280px; margin-top:95px; margin-left: 30px;}
 	.contorno_certificado{height:280px;}
 	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 120px; }
+	.titulos{margin-top:220px;margin-left: 700px; font-size:80px;}
+	
 	
  }
 
+
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+.contorno_perila{
+    -webkit-animation: 20s rotate linear infinite;
+    animation: 20s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+#imgr2 {
+     -webkit-animation-direction: reverse;
+     animation-direction: reverse;
+}
 </style>
 <body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
  background-repeat: no-repeat; background-size: 100%"  >
@@ -197,14 +223,20 @@ background-size: cover;" >
 					</div>
 	
 
-						<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
+						<div class="col-12 mt-3 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
 							<div class="row  ms-xxl-1">
 								<div class="col-12 d-flex justify-content-center">
 									<img class="contorno_perilla" src="Imagenes/contorno.png" height="300px">
 									<img class="perilla_gira" src="Imagenes/perilla_gira.png" >
+									<h1 class="titulos animate__animated animate__pulse text-light position-absolute">MENÚ</h1>
 								</div>
 							</div>
+							
+									
+							
+								
 						</div>
+						
 
 
 		

@@ -30,15 +30,15 @@
 	.opciones{
         font-family: 'Righteous', cursive;
     }
-
+/*Pequenia*/
 @media (min-width: 0px) { 
-	.titulos{margin-top:120px; margin-left: 15px; font-size:30px;}
+	.titulos{margin-top:130px; margin-left: 0px; font-size:30px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1em}
 	.contorno_perilla{height:300px;}
-	.perilla_gira{position:absolute; height:200px; margin-top:41px; margin-left:13px}
-	.contorno_certificado{height:200px;}
-	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 70px; }
+	.perilla_gira{position:absolute; height:200px; margin-top:50px; margin-left:0px}
+	.contorno_certificado{height:150px; margin-top: 20px;}
+	.icono_certificado{position:absolute; height:80px; margin-right:25px; margin-top: 70px; }
 	 /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 *//* Firefox 16+, IE 10+, Opera */
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
 				max-width: 100px; max-height: 100px; min-width: 100px; min-height:100px;}
@@ -54,11 +54,11 @@
 }
 /*SM*/	
 @media (min-width: 576px) { 
-	.titulos{margin-top:160px;margin-left: 15px; font-size:50px;}
+	.titulos{margin-top:170px;margin-left: 0px; font-size:40px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1.5em}
 	.contorno_perilla{height:400px;}
-	.perilla_gira{height:250px; margin-top:62px;margin-left: 19px;}
+	.perilla_gira{height:250px; margin-top:75px;margin-left: 0px;}
 	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 80px; }
 	.contorno_certificado{height:200px;}
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
@@ -79,7 +79,7 @@
 	.opciones{font-size:1.7em}
 	.divconector{height:120px}
 	.contorno_perilla{height:300px;}
-	.perilla_gira{height:200px; margin-top:40px; margin-left: 19px;}
+	.perilla_gira{height:200px; margin-top:50px; margin-left: 0px;}
 	.contorno_certificado{height:200px;}
 	.icono_certificado{position:absolute; height:100px; margin-right:30px; margin-top: 80px; }
 	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
@@ -95,7 +95,7 @@
 	.divconector{height:100%}
 	.contorno_perilla{height:400px;}
 	.contorno_certificado{height:200px;}
-	.perilla_gira{height:250px; margin-top:60px; margin-left: 19px;}
+	.perilla_gira{height:250px; margin-top:75px; margin-left: 0px;}
 	.titulos{margin-top:190px;margin-left: 450px; font-size:40px;}
  }
 
@@ -103,7 +103,7 @@
 @media (min-width: 1200px) { 
 	
 	.contorno_perilla{height:450px;}
-	.perilla_gira{height:280px; margin-top:72px; margin-left: 30px;}
+	.perilla_gira{height:280px; margin-top:85px; margin-left: 0px;}
 	.contorno_certificado{height:250px;}
 	.icono_certificado{position:absolute; height:130px; margin-right:40px; margin-top: 100px; }
 	.titulos{margin-top:190px; margin-left: 650px; font-size:80px;}
@@ -111,31 +111,46 @@
 
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
-	.contorno_perilla{height:500px;}
-	.perilla_gira{height:280px; margin-top:95px; margin-left: 30px;}
+	.contorno_perilla{height:600px;}
+	.perilla_gira{height:280px; margin-top:155px; margin-left: 0px;}
 	.contorno_certificado{height:280px;}
 	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 120px; }
-	.titulos{margin-top:220px;margin-left: 700px; font-size:80px;}
+	.titulos{margin-top:600px; margin-left: 0px; font-size:60px;}
 	
 	
  }
 
+ .circuito_uno, .circuito_dos ,.circuito_tres, .circuito_cuatro{
+	 display: none;
+ }
+.circulos{
+border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+}
+ .circulos:hover{
+	background: rgb(22,17,111);
+background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%, rgba(9,9,121,1) 92%, rgba(0,104,255,1) 100%); 
+ }
 
-@keyframes rotate {from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}}
-@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}}
-.contorno_perila{
-    -webkit-animation: 20s rotate linear infinite;
-    animation: 20s rotate linear infinite;
+@keyframes rotate {
+	from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}}
+@-webkit-keyframes rotate {
+  from {-webkit-transform: rotate(360deg);}
+  to {-webkit-transform: rotate(0deg);}}
+.contorno_perilla{
+    -webkit-animation: 40s rotate linear infinite;
+    animation: 40s rotate linear infinite;
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 }
-#imgr2 {
-     -webkit-animation-direction: reverse;
-     animation-direction: reverse;
-}
+
+
 </style>
+
+
 <body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
  background-repeat: no-repeat; background-size: 100%"  >
  <div class="container-fluid" style="background-image: url(Imagenes/fondosuperior.png); background-repeat:no-repeat; background-position:center ;
@@ -144,7 +159,7 @@
 -o-background-size: cover;
 background-size: cover;" >
  
-			<div class="row" style="height: 4vh;">
+			<div class="row" style="height: 5vh;">
 				<div class="col-4 col-sm-3 col-md-3 col-lg-1">
 					<img src="Imagenes/logoenerya.png" style="width:80px;" >
 				</div>
@@ -164,7 +179,7 @@ background-size: cover;" >
 									<h3 id="" class="opciones text-light">Test Inicial</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6	 col-xxl-3 d-flex  justify-content-md-center" >
-									<div class="circulos border border-info border-3 mx-auto" style=" border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<div class="circulos border border-info border-3 mx-auto"  >
 										<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
 									</div>
 								</div>
@@ -175,7 +190,7 @@ background-size: cover;" >
 									<h3 id="" class="opciones text-light">Capacitación</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto" style="border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<div class="circulos border border-info border-3 mx-auto" >
 										<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
 									</div>
 								</div>
@@ -186,7 +201,7 @@ background-size: cover;" >
 									<h3 id="" class="opciones text-light">Ver videos</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto" style=" border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<div class="circulos border border-info border-3 mx-auto"  >
 										<img src="Imagenes/video.png" alt="" class="img-fluid w-50 my-4 mx-4">
 									</div>
 								</div>
@@ -197,7 +212,7 @@ background-size: cover;" >
 									<h3 id="" class="opciones text-light">Test Final</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto" style=" border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);" >
+									<div class="circulos border border-info border-3 mx-auto"  >
 										<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
 									</div>
 								</div>
@@ -226,15 +241,15 @@ background-size: cover;" >
 						<div class="col-12 mt-3 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
 							<div class="row  ms-xxl-1">
 								<div class="col-12 d-flex justify-content-center">
-									<img class="contorno_perilla" src="Imagenes/contorno.png" height="300px">
+									<img class="contorno_perilla" src="Imagenes/circulo.png" height="300px">
 									<img class="perilla_gira" src="Imagenes/perilla_gira.png" >
-									<h1 class="titulos animate__animated animate__pulse text-light position-absolute">MENÚ</h1>
-								</div>
-							</div>
-							
 									
-							
+									<h1 class="titulos animate__animated animate__pulse  text-light position-absolute">MENÚ</h1>
+						
+									
+								</div>
 								
+							</div>
 						</div>
 						
 
@@ -261,4 +276,19 @@ background-size: cover;" >
 	</div>  
 
 </body>
+<script>
+	let perilla = document.querySelectorAll('.perilla_gira')
+	console.log(perilla);
+    document.onmousemove = function(event){
+        perilla.forEach((item, index) => {
+            var x = item.offsetLeft + item.clientWidth / 2; // La coordenada x de la perilla
+            var y = item.offsetTop + item.clientHeight / 2; // La coordenada y de la perilla
+            var rad = Math.atan2(event.pageX - x, event.pageY - y); // La distancia de coordenadas entre el mouse y el ojo, y luego use la función atan2 para calcular el arco entre el punto y el punto (0, 0)
+            var rot = (rad * (180 / Math.PI) * -1) + 222; // Convertir a ángulo
+            item.style.transform = 'rotate(' + rot + 'deg)'
+        })
+    }
+
+</script>
+
 </html>

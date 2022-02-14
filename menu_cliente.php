@@ -1,3 +1,8 @@
+<?php
+session_start();
+if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,64 +40,59 @@
 	.titulos{margin-top:130px; margin-left: 0px; font-size:30px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1em}
+	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 120px; max-height: 120px;}
+	.divconector{max-width:80px}
 	.contorno_perilla{height:300px;}
 	.perilla_gira{position:absolute; height:200px; margin-top:50px; margin-left:0px}
-	.contorno_certificado{height:150px; margin-top: 20px;}
-	.icono_certificado{position:absolute; height:80px; margin-right:25px; margin-top: 70px; }
+	.contorno_certificado{height:200px; margin-top: 0px;}
+	.icono_certificado{position:absolute; height:80px; margin-right:50px; margin-top: 100px; }
 	 /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 *//* Firefox 16+, IE 10+, Opera */
-	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
-				max-width: 100px; max-height: 100px; min-width: 100px; min-height:100px;}
-	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); 
-		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px; }
-	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);
-		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px;}
-	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);
-		max-width:  100px; max-height:  100px; min-width: 100px; min-height: 100px;}
+	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
+	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
+	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);}
+	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);}
 	
 
 
 }
 /*SM*/	
 @media (min-width: 576px) { 
+	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 130px; max-height: 130px;}
+	.divconector{max-width:150px}
 	.titulos{margin-top:170px;margin-left: 0px; font-size:40px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1.5em}
-	.contorno_perilla{height:400px;}
-	.perilla_gira{height:250px; margin-top:75px;margin-left: 0px;}
-	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 80px; }
-	.contorno_certificado{height:200px;}
-	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);
-				max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
-	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); 
-		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px; }
-	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);
-		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
-	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);
-		max-width: 130px; max-height: 130px; min-width: 130px; min-height:130px;}
-	
-	
+	.contorno_perilla{height:400px; margin-top:-50px;}
+	.perilla_gira{height:250px; margin-top:0px;margin-left: 0px; margin-top:26px;}
+	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 20px; }
+	.contorno_certificado{height:180px;margin-top:-50px;}
+	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
+	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); }
+	.circuito_tres{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(160deg) scaleX(1);}
+	.circuito_cuatro{-webkit-transform : rotate(160deg) scaleX(1); -ms-transform:rotate(160deg) scaleX(1); transform : rotate(160deg) scaleX(1);}
 }
 
 /* Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
-
 	.opciones{font-size:1.7em}
 	.divconector{height:120px}
-	.contorno_perilla{height:300px;}
+	.contorno_perilla{height:300px; margin-top:0px}
 	.perilla_gira{height:200px; margin-top:50px; margin-left: 0px;}
 	.contorno_certificado{height:200px;}
-	.icono_certificado{position:absolute; height:100px; margin-right:30px; margin-top: 80px; }
+	.icono_certificado{position:absolute; height:100px; margin-right:30px; margin-top: 40px; }
 	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
-	.circuito_uno{transform: rotate(90deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
-	.circuito_dos{transform: rotate(70deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
-	.circuito_tres{transform: rotate(55deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
-	.circuito_cuatro{transform: rotate(35deg); max-width: 150px; max-height: 150px; min-width:150px; min-height:150px;}
+	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 180px; max-height: 180px; min-height:180px; min-width:180px; }
+	.circuito_uno{transform: rotate(90deg); }
+	.circuito_dos{transform: rotate(70deg); }
+	.circuito_tres{transform: rotate(55deg); }
+	.circuito_cuatro{transform: rotate(35deg); }
 	.titulos{margin-top:130px;margin-left: 400px; font-size:50px;}
 }
 
 /* Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
-	.divconector{height:100%}
+	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{margin-left:0px }
+	.divconector{min-height:120px}
 	.contorno_perilla{height:400px;}
 	.contorno_certificado{height:200px;}
 	.perilla_gira{height:250px; margin-top:75px; margin-left: 0px;}
@@ -101,28 +101,28 @@
 
 /* X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
-	
+	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 200px; max-height: 200px; min-height:200px; min-width:200px; margin-left:-40px }
+	.divconector{max-height:150px}
 	.contorno_perilla{height:450px;}
 	.perilla_gira{height:280px; margin-top:85px; margin-left: 0px;}
-	.contorno_certificado{height:250px;}
-	.icono_certificado{position:absolute; height:130px; margin-right:40px; margin-top: 100px; }
+	.contorno_certificado{height:250px;margin-right:-40px;}
+	.icono_certificado{position:absolute; height:130px; margin-right:10px; margin-top: 50px; }
 	.titulos{margin-top:190px; margin-left: 650px; font-size:80px;}
  }
 
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
+	.divtextoycirculos{font-size:1.2em;}
 	.contorno_perilla{height:600px;}
 	.perilla_gira{height:280px; margin-top:155px; margin-left: 0px;}
-	.contorno_certificado{height:280px;}
-	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 120px; }
+	.contorno_certificado{height:280px; margin-right:0px;}
+	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 50px; }
 	.titulos{margin-top:600px; margin-left: 0px; font-size:60px;}
-	
-	
  }
 
- .circuito_uno, .circuito_dos ,.circuito_tres, .circuito_cuatro{
+ /*.circuito_uno, .circuito_dos ,.circuito_tres, .circuito_cuatro{
 	 display: none;
- }
+ }*/
 .circulos{
 border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
 border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
@@ -147,6 +147,13 @@ background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%,
     transform-origin: 50% 50%;
 }
 
+.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro {
+	visibility: hidden;
+}
+.aparecer {
+	visibility: visible;	
+}
+
 
 </style>
 
@@ -160,8 +167,8 @@ background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%,
 background-size: cover;" >
  
 			<div class="row" style="height: 5vh;">
-				<div class="col-4 col-sm-3 col-md-3 col-lg-1">
-					<img src="Imagenes/logoenerya.png" style="width:80px;" >
+				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
+					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
 			</div>
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
@@ -169,76 +176,82 @@ background-size: cover;" >
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
-			<div class="row" style="height: 85vh;">
+			<div id="app" class="row" style="height: 85vh;">
 				
-					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-3 col-xxl-4 my-auto"><!--Opciones y Circulos-->
-						<div class="row ">
+					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-4 col-xxl-4 my-auto"><!--Opciones y Circulos-->
+						<div  class="row  divtextoycirculos">
 						
-							<div class="col-3 col-md-12 col-lg-10 col-xl-10   col-xxl-10 p-0 offset-md-0 offset-lg-2 offset-xl-4 offset-xxl-3 my-lg-5  my-md-4 justify-content-end d-lg-flex align-items-center">
+							<div class="col-3 col-md-12 col-lg-10 col-xl-10   col-xxl-11 p-0 offset-md-0 offset-lg-2 offset-xl-3 offset-xxl-1 my-lg-5  my-md-4 justify-content-end d-lg-flex align-items-center">
 								<div class=" col-12 col-md-12 col-md-12 mt-3 mt-md-0  text-center justify-content-end d-lg-flex ">
-									<h3 id="" class="opciones text-light">Test Inicial</h3>
+									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Test Inicial</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6	 col-xxl-3 d-flex  justify-content-md-center" >
-									<div class="circulos border border-info border-3 mx-auto"  >
-										<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-									</div>
+									<a href="test_inicial.php">
+										<div  @mouseout="(conectado1 = false)"  @mouseover="(conectado1 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
+											<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										</div>
+									</a>
 								</div>
 							</div>
 
-							<div class="col-3  col-md-12 col-lg-10  col-xl-10 col-xxl-10 p-0  offset-md-0 offset-lg-0 offset-xl-2  offset-xxl-1 my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
+							<div class="col-3  col-md-12 col-lg-10  col-xl-10 col-xxl-9 p-0  offset-md-0 offset-lg-0 offset-xl-1  offset-xxl-1 my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
 								<div class="col-12 col-md-12  text-center justify-content-end d-lg-flex ">
-									<h3 id="" class="opciones text-light">Capacitación</h3>
+									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Capacitación</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto" >
-										<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
-									</div>
+									<a href="capacitacion.php">
+										<div  @mouseout="(conectado2 = false)"  @mouseover="(conectado2 = true)" class="circulos border animate__animated animate__zoomIn border-info border-3 mx-auto" >
+											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										</div>
+								    </a>
 								</div>
 							</div>
 
-							<div class="col-3 offset-md-0  col-md-12 col-lg-10 col-xl-10 col-xxl-10 p-0 offset-lg-0  offset-xl-2 offset-xxl-1 my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
+							<div class="col-3 offset-md-0  col-md-12 col-lg-10 col-xl-10 col-xxl-9 p-0 offset-lg-0  offset-xl-1 offset-xxl-1 my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
 								<div class="col-12 col-md-12  text-center justify-content-end d-lg-flex">
-									<h3 id="" class="opciones text-light">Ver videos</h3>
+									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Ver videos</h3>
 								</div>
-								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto"  >
+								<div  class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
+									<div  @mouseout="(conectado3 = false)"  @mouseover="(conectado3 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
 										<img src="Imagenes/video.png" alt="" class="img-fluid w-50 my-4 mx-4">
+									
 									</div>
 								</div>
 							</div>
 
-							<div class="col-3 offset-md-0  col-md-12 col-lg-10  col-xl-10 col-xxl-10 p-0 offset-lg-2 offset-xl-4 offset-xxl-3  my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
-								<div class="col-12 col-md-12 mt-3 mt-md-0 text-center justify-content-end d-lg-flex">
-									<h3 id="" class="opciones text-light">Test Final</h3>
+							<div class="col-3 offset-md-0  col-md-12 col-lg-10  col-xl-10 col-xxl-11 p-0 offset-lg-2 offset-xl-3 offset-xxl-1  my-lg-5 my-md-4 justify-content-end d-lg-flex align-items-center">
+								<div class=" col-12 col-md-12 mt-3 mt-md-0 text-center justify-content-end d-lg-flex">
+									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Test Final</h3>
 								</div>
-								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div class="circulos border border-info border-3 mx-auto"  >
-										<img src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+								<div  class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
+									<div  @mouseout="(conectado4 = false)"  @mouseover="(conectado4 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
+										<img  src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1   d-flex align-items-sm-center align-items-md-center "><!--Conectores-->
-							<div class="row align-items-center mx-auto mx-md-0 my-md-5">
-									<div class="divconector col-3  col-sm-3 col-md-12 text-xl-end text-xxl-end p-0 mt-5 mt-md-0  ms-md-4" >
-											<img src="Imagenes/conector.png" alt="" class="circuito_uno">
+					
+					<div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 col-xxl-1 d-flex align-items-sm-center align-items-md-center"><!--Conectores-->
+							<div class="row d-flex align-items-center align-items-lg-center mx-auto mx-md-0 mb-xl-5">
+									<div class="divconector  col-3  col-sm-3  text-start col-md-12 text-xl-end text-xxl-end p-0 mt-5 mt-md-0 mt-lg-3  ms-md-4" >
+											<img src="Imagenes/conector.png" alt="" class="circuito_uno" :class="{ aparecer: conectado1 }">
 									</div>
-									<div class="divconector col-3 col-sm-3 col-md-12  text-xxl-center text-xl-start  p-0" >
-											<img src="Imagenes/conector.png" alt="" class="circuito_dos">
+									<div class="divconector  col-3 col-sm-3 col-md-12 text-start  text-xxl-center text-xl-start  p-0">
+											<img src="Imagenes/conector.png" alt="" class="circuito_dos" :class="{aparecer: conectado2 }" >
 									</div>
-									<div class="divconector col-3 col-sm-3 col-md-12 text-xxl-center text-xl-start  p-0" >
-											<img src="Imagenes/conector.png" alt=""  class="circuito_tres">
+									<div class="divconector  col-3 col-sm-3 col-md-12 text-xxl-center text-xl-start  p-0 " >
+											<img src="Imagenes/conector.png" alt=""  class="circuito_tres" :class="{aparecer: conectado3}" >
 									</div>
-									<div class="divconector col-3 col-sm-3 col-md-12 text-xl-end text-xxl-end b-4 p-0  mt-5 mt-md-0  ms-md-4" >
-											<img src="Imagenes/conector.png" alt="" class="circuito_cuatro">
+									<div class="divconector col-3 col-sm-3 col-md-12 text-md-end mb-md-5  text-lg-end text-xl-end text-xxl-end b-4 p-0  mt-5  mb-lg-5 me-lg-n5 ms-xl-5 ms-xxl-5" >
+											<img src="Imagenes/conector.png" alt="" class="circuito_cuatro" :class="{aparecer: conectado4}">
 									</div>
 							</div>
 					</div>
 	
 
-						<div class="col-12 mt-3 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xl-4 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
+						<div class="col-12 mt-3 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xl-1 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
 							<div class="row  ms-xxl-1">
 								<div class="col-12 d-flex justify-content-center">
 									<img class="contorno_perilla" src="Imagenes/circulo.png" height="300px">
@@ -248,14 +261,11 @@ background-size: cover;" >
 						
 									
 								</div>
-								
 							</div>
 						</div>
 						
-
-
 		
-					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3   d-flex align-items-end"><!--Certificado-->
+					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3 d-flex align-items-end"><!--Certificado-->
 							<div class="col-12 justify-content-end d-flex">
 							
 							<img class="icono_certificado"  src="Imagenes/icono_certificado.png"/>
@@ -267,7 +277,7 @@ background-size: cover;" >
 
 				<div class="row justify-content-between" style="height: 10vh; ">	
 					<div class="col-9 text-light d-flex mt-3">
-					Soporte Técnico (Curso de capacitación)
+					<p class="font-monospace text-info">Curso de capacitación</p>
 					</div>
 					<div class="col-3 text-light d-flex mt-3">
 					
@@ -277,6 +287,24 @@ background-size: cover;" >
 
 </body>
 <script>
+
+const app = {
+	data(){
+		return{
+			conectado1: false,
+			conectado2: false,
+			conectado3: false,
+			conectado4: false
+		}
+	},
+	mounted(){
+	
+	}
+}
+
+var mountedApp = Vue.createApp(app).mount('#app');
+
+
 	let perilla = document.querySelectorAll('.perilla_gira')
 	console.log(perilla);
     document.onmousemove = function(event){
@@ -292,3 +320,8 @@ background-size: cover;" >
 </script>
 
 </html>
+<?php
+}else{
+	header("Location: index.php");
+};
+?>

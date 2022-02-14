@@ -9,7 +9,7 @@ $consulta = "SELECT * FROM UsuariosServicio WHERE Usuario = '$usuario' AND Clave
 $resultado=$conexion->query($consulta);
 while($admin=$resultado->fetch_array()){
         $_SESSION['usuario']=$admin['Usuario'];   
-        echo $_SESSION['tipo']=$admin['tipo']; 
+       echo $_SESSION['tipo']=$admin['tipo']; 
 }
 
 ?>

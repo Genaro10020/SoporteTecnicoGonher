@@ -9,7 +9,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capacitación</title>
+    <title>Videos</title>
     <!--CSS 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -101,11 +101,11 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
-                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">CAPACITACIÓN</h1>
+                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">VIDEOS</h1>
                 </div>
 			</div>
 
- 
+
 			<div  class="contenido row d-flex mt-5">
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
@@ -118,7 +118,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative">
-                        <p class="texto_indicaciones  position-absolute top-50 start-50 translate-middle lh-sm "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
+                        <p class="texto_indicaciones  position-absolute top-50 start-50 translate-middle lh-sm "> INDICACIONES <br><br> Reproduce los videos la cantidad de veces necesarias, para mayor entendimiento. </p>
                     <img class="contorno_comentario" src="Imagenes/borde_comentario.png" alt="">
                 </div>
             </div>  

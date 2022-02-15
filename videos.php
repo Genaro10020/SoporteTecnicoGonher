@@ -38,9 +38,9 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     .formulario{height:600px}
     .marcovideo{height:230px; z-index:0;}
     .icono_play{height:120px; position:absolute; margin-top:50px; z-index:1;}
-    .contorno_comentario{height:160px;}
+    .contorno_comentario{height:170px;}
     .video_texto{color:white;  margin-top:160px; position:absolute;  z-index:3;}
-    .texto_indicaciones{color:#76e6b9; font-weight: bold; }
+    .texto_indicaciones{color:#76e6b9; font-weight: bold; z-index: 1;}
     
 }
 /*SM*/	
@@ -96,7 +96,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 
-			<div class="row" style="height: 10vh;">
+			<div class="row" style="min-height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
@@ -106,7 +106,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 			</div>
 
 
-			<div  class="contenido row d-flex mt-5">
+			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctronico</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
@@ -117,15 +117,15 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative">
-                        <p class="texto_indicaciones  position-absolute top-50 start-50 translate-middle lh-sm "> INDICACIONES <br><br> Reproduce los videos la cantidad de veces necesarias, para mayor entendimiento. </p>
-                    <img class="contorno_comentario" src="Imagenes/borde_comentario.png" alt="">
+                <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative" style="min-height: 200px;">
+                        <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x  lh-sm mt-4 mt-sm-5"> INDICACIONES <br><br> Reproduce los videos la cantidad de veces necesarias, para mayor entendimiento. </p>
+                    <img class="contorno_comentario position-absolute top-2 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
                 </div>
             </div>  
 
-            <div class="row justify-content-between " style="height: 10vh; ">	
-                <div class="col-9 text-light d-flex ">
-                 <p class="font-monospace text-warning">Curso de capacitación</p>
+            <div class="row justify-content-between " style="min-height: 10vh; ">	
+                <div class="col-12 text-light d-flex ">
+                 <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                 </div>
             </div>
 	      

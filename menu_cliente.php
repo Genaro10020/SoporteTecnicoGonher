@@ -176,7 +176,7 @@ background-size: cover;" >
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
-			<div id="app" class="row" style="height: 85vh;">
+			<div id="app" class="row" style="min-height: 85vh;">
 				
 					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-4 col-xxl-4 my-auto"><!--Opciones y Circulos-->
 						<div  class="row  divtextoycirculos">
@@ -276,13 +276,11 @@ background-size: cover;" >
 					</div>
 				</div>
 
-				<div class="row justify-content-between" style="height: 10vh; ">	
-					<div class="col-9 text-light d-flex mt-3">
-					<p class="font-monospace text-info">Curso de capacitación</p>
+				<div class="row text-light d-flex align-items-end" style="height: 10vh; ">	
+					<div class="col-12  ">
+						<p class="font-monospace text-info">Soporte Técnico (Curso de capacitación)</p>
 					</div>
-					<div class="col-3 text-light d-flex mt-3">
-					
-					</div>
+
 				</div>
 	</div>  
 

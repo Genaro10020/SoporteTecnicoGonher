@@ -225,10 +225,11 @@ background-size: cover;" >
 									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Test Final</h3>
 								</div>
 								<div  class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<div  @mouseout="(conectado4 = false)"  @mouseover="(conectado4 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
-										<img  src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
-										
-									</div>
+									<a href="test_final.php">
+										<div  @mouseout="(conectado4 = false)"  @mouseover="(conectado4 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
+											<img  src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										</div>
+									</a>
 								</div>
 							</div>
 						</div>

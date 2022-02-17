@@ -112,7 +112,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
-                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">INTRODUCCIÓN</h1>
+                     <h1 class="titulos animate__animated animate__flash  text-light">INTRODUCCIÓN</h1>
                 </div>
 			</div>
 
@@ -120,11 +120,11 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 			<div  class="row mt-xl-2 "><!--contenido-->
                            
 
-                                    <div class="texto_indicaciones text-center">
+                                    <div class="texto_indicaciones text-center animate__animated animate__zoomIn">
                                          Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad.
                                     </div>
                                     <div class=" d-flex justify-content-center mt-5">
-                                        <div id="boton" onclick="reproducir();" class="text-center miboton "> Estoy Listo..</div>
+                                        <div id="boton" onclick="reproducir();" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>
                                     </div>
                                     <div class="d-flex justify-content-center ">
                                         <video id="verificar"  class="etiquetavideo" opreload="auto">

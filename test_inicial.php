@@ -40,7 +40,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     animation-duration: 2s;
                 }
                 .respuestas{
-                    color: #a9a8a8 ; 
+                    color: #c68d38 ; 
                     margin-left:4px; 
                     animation: fadeInDown;
                     animation-duration: 2s;
@@ -55,7 +55,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     border-radius: 0px 10px 0px 0px;
                     font-size:0.6em;
                     z-index:1;
-                    color:#3f83a8;
+                    color:#d1d7e6;
                     background: rgb(2,0,36);
                     background: linear-gradient(31deg, rgba(255,255,255,0) 5%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 95%, rgba(2,0,36,1) 97%); 
                     height:25px;
@@ -64,7 +64,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                   
                 }   
                 .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
-                    font-family: 'Chakra Petch', sans-serif;
+                    font-family: 'Rowdies', cursive;
                    
                     border-radius: 0px 0px 10px 10px;
                     z-index:1;
@@ -152,8 +152,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 </style>
 
 
-<body style="background: rgb(32,141,255); background: radial-gradient(circle, rgba(32,141,182,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,100,1) 90%, rgba(0,19,68,100) 100%);
- background-repeat: no-repeat; background-size: 100%;">
+<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
+ background-repeat: no-repeat; background-size: 100%">
 
  <div class="container-fluid">
 

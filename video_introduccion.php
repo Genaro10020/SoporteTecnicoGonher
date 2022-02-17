@@ -35,7 +35,10 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
             }       
 
 .miboton {
+    
     height:50px;
+    text-align: center;
+    width:200px;
     font-family: 'Rowdies', cursive;
     background: rgb(0,97,135);
     background: linear-gradient(0deg, rgba(0,97,135,1) 0%, rgba(4,65,106,1) 32%, rgba(0,26,71,1) 89%); 
@@ -57,7 +60,9 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
 /*Pequenia*/
 @media (min-width: 0px) { 
-    .texto_indicaciones{color:#76e6b9;font-size: 1em;}
+    .texto_indicaciones{color:#76e6b9;font-size: 1em; font-weight: bold; font-family: 'Rowdies', cursive; text-shadow:-2px 2px 2px black;}
+    .etiquetavideo{width:100%}
+    .container-fluid{height:100vh;}
 }
 /*SM*/	
 @media (min-width: 576px) { 
@@ -72,17 +77,19 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
 /*LG Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
-   
+    .etiquetavideo{width:90%}
+    .texto_indicaciones{font-size: 1.5em;}
  }
 
 /*XL X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
-  
+    .etiquetavideo{width:80%}
+    .container-fluid{ height:100%;}
  }
 
 /*XXL XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
-  
+    
  }
 
 
@@ -90,9 +97,9 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 </style>
 
 
-<body style="background: rgb(32,141,255); background: radial-gradient(circle, rgba(32,141,182,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,100,1) 90%, rgba(0,19,68,100) 100%);
- background-repeat: no-repeat; background-size: 100%;">
- <div class="container-fluid" >
+<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
+ background-repeat: no-repeat; background-size: 100%"  >
+<div class="container-fluid" oncontextmenu="return false" onkeydown="return false">
 
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
@@ -100,78 +107,60 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 
-			<div class="row" style="mim-height: 10vh;">
+			<div class="row" style="min-height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
                      <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">INTRODUCCIÓN</h1>
                 </div>
-                <div class="d-flex justify-content-center col-12" style="">
-                     <h6> 
-                        
-                    </h6>
-                </div>
 			</div>
 
  
-			<div  class="contenido row m-lg-5" style="min-height: 80vh;">
-                                <div class="texto_indicaciones text-center"> Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad. </div>
-                                <div class="col-12 d-flex justify-content-center xx-lg-mb-5">
-                                        <div class="miboton">Estoy Listo..</div>
-                                </div>
-                                <div class="col-12 d-flex justify-content-center">
-                                        <video id="videouno" width="90%" height="100%" preload="auto">
-                                            <source id="partes" src="videos/introduccion/Intro1.mp4" type="video/mp4">
+			<div  class="row mt-xl-2 "><!--contenido-->
+                           
+
+                                    <div class="texto_indicaciones text-center">
+                                         Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad.
+                                    </div>
+                                    <div class=" d-flex justify-content-center mt-5">
+                                        <div id="boton" onclick="reproducir();" class="text-center miboton "> Estoy Listo..</div>
+                                    </div>
+                                    <div class="d-flex justify-content-center ">
+                                        <video id="verificar"  class="etiquetavideo" opreload="auto">
+                                                <source id="video" src="videos/Introduccion.mp4" type="video/mp4">
                                         </video> 
-                                </div>
+                                    </div>
             </div>  
 
-
-            <div class="row justify-content-between " style="min-height: 10vh;">	
+                             
+            <div class="row justify-content-end mt-5 " style="min-height: 10vh;">	
                             <div class="col-12 text-light d-flex ">
                             <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                             </div>
             </div>
 	      
-
+ </div>
 </body>
 
  
 <script>
 
-    var videos = document.getElementById("videouno");
-    var partes = document.getElementById("partes");
-    var valor=0;
-    function verifica_fin1(){
-        console.log('verificando_uno'+valor);
-        if (videos.ended){// cuando finaliza....
-            valor=1;
-            console.log('Video2'+"valor es:"+valor);
-            partes.src ='videos/introduccion/Intro2.mp4'; 
-            videos.load();
-            clearInterval(t);
-        }
-    }
 
-    function verifica_fin2(){
-        console.log('verificando_dos'+valor);
-        if (videos.ended){// cuando finaliza....
-            console.log('Video3');
-            partes.src ='videos/introduccion/Intro3.mp4'; 
-            videos.load();
-            videos.play();
-            clearInterval(t2);
-        }
-    }
 
-   
-     var t = setInterval('verifica_fin1()',1000);
-     var t2 = setInterval('verifica_fin2()',1000);
-    
-       
-    
-  
+function reproducir(){
+    var boton = document.getElementById("boton").style.visibility="hidden";
+    var video = document.getElementById("verificar"); 
+    video.load();
+    video.play();
+    var t = setInterval('verifica_fin()',1000);
+}
+
+function verifica_fin(){
+            console.log('verificando..');
+           if (video.ended){clearInterval(t)}
+       }
+
 
 
 const app = {
@@ -181,7 +170,15 @@ const app = {
 		}
 	},
 	mounted(){
-	}
+        
+	},
+    methods:{
+        reproducir(){
+            
+        },
+        
+
+    }
 }
 
 var mountedApp = Vue.createApp(app).mount('#app');

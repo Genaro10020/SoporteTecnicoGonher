@@ -9,7 +9,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Final</title>
+    <title>Test Inicial</title>
     <!--CSS 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <style>
-	.titulos { font-family: 'Orbitron', sans-serif; text-shadow:-1px 2px 0px black;} 
+	.titulos { font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
             
 
     /*Pequenia*/
@@ -40,7 +40,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     animation-duration: 2s;
                 }
                 .respuestas{
-                    color: #a9a8a8 ; 
+                    color: #c68d38 ; 
                     margin-left:4px; 
                     animation: fadeInDown;
                     animation-duration: 2s;
@@ -55,7 +55,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     border-radius: 0px 10px 0px 0px;
                     font-size:0.6em;
                     z-index:1;
-                    color:#3f83a8;
+                    color:#d1d7e6;
                     background: rgb(2,0,36);
                     background: linear-gradient(31deg, rgba(255,255,255,0) 5%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 95%, rgba(2,0,36,1) 97%); 
                     height:25px;
@@ -64,7 +64,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                   
                 }   
                 .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
-                    font-family: 'Chakra Petch', sans-serif;
+                    font-family: 'Rowdies', cursive;
+                   
                     border-radius: 0px 0px 10px 10px;
                     z-index:1;
                     margin-bottom: 20px;
@@ -151,8 +152,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 </style>
 
 
-<body style="background: rgb(32,141,255); background: radial-gradient(circle, rgba(32,141,182,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,100,1) 90%, rgba(0,19,68,100) 100%);
- background-repeat: no-repeat; background-size: 100%;">
+<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
+ background-repeat: no-repeat; background-size: 100%">
 
  <div class="container-fluid">
 
@@ -230,7 +231,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
               
 
                 <div class="col-12 col-xl-3 col-xxl-4 my-auto d-flex justify-content-center justify-content-xxl-start ">
-                     <h1 class="titulos animate__animated animate__pulse text-center text-xxl-start ms-xxl-0 text-light mt-5">TEST FINAL</h1>
+                     <h1 class="titulos animate__animated animate__pulse text-center text-xxl-start ms-xxl-0 text-light mt-5">TEST INICIAL</h1>
                 </div> 
             </div>  
 

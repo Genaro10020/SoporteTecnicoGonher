@@ -62,7 +62,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.divconector{max-width:150px}
 	.titulos{margin-top:170px;margin-left: 0px; font-size:40px;}
 	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
-	.opciones{font-size:1.5em}
+	.opciones{font-size:1.5em; text-shadow:-1px 2px 0px black; }
 	.contorno_perilla{height:400px; margin-top:-50px;}
 	.perilla_gira{height:250px; margin-top:0px;margin-left: 0px; margin-top:26px;}
 	.icono_certificado{position:absolute; height:100px; margin-left:-40px; margin-top: 20px; }

@@ -40,7 +40,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     .icono_play{height:120px; position:absolute; margin-top:50px; z-index:1;}
     .contorno_comentario{height:170px;}
     .video_texto{color:white;  margin-top:160px; position:absolute;  z-index:3;}
-    .texto_indicaciones{color:#76e6b9; font-weight: bold; z-index: 1;}
+    .texto_indicaciones{color:#76e6b9; font-weight: bold; z-index: 1; text-shadow:-1px 2px 0px black;}
     
 }
 /*SM*/	

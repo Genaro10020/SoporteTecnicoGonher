@@ -38,12 +38,16 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 .pregunta{
                     animation: rubberBand;
                     animation-duration: 2s;
+                    text-shadow: 1px 1px 0px black;
+                    color:#b2cae6;
+                    
                 }
                 .respuestas{
-                    color: #c68d38 ; 
+                    color: #bfab78; 
                     margin-left:4px; 
                     animation: fadeInDown;
                     animation-duration: 2s;
+                    text-shadow: 1px 1px 0px black;
                 }
 
                 
@@ -55,7 +59,6 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     border-radius: 0px 10px 0px 0px;
                     font-size:0.6em;
                     z-index:1;
-                    color:#d1d7e6;
                     background: rgb(2,0,36);
                     background: linear-gradient(31deg, rgba(255,255,255,0) 5%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 95%, rgba(2,0,36,1) 97%); 
                     height:25px;
@@ -118,32 +121,31 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
         
 
         .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10  {
-            font-size:0.9em;
+            font-size:1em;
         }
 
     
     }
 
     /*XL X-Large devices (large desktops, 1200px and up)*/
-    @media (min-width: 1200px;) { 
-       
+    @media (min-width: 1200px) { 
+        .formulario{ height:1550px;width:900px; }
+        .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10  {
+                width: 805px;
+                margin-right: 50px;
+        }
+        .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
+            font-size:1.5em;
+            height:100px;
+            width: 764px;
+            margin-right: 50px;
+           
+        }
     }
 
     /*XXL XX-Large devices (larger desktops, 1400px and up)*/
     @media (min-width: 1400px) { 
-        .formulario{ height:1150px;width:900px; }
-        .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10  {
-    
-                width: 705px;
-                margin-right: 100px;
-        }
-        .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
-            height:60px;
-            width: 668px;
-            margin-left: 32px;
-            margin-right: 100px;
-           
-        }
+        
 
     }
 
@@ -175,8 +177,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
              
                         <div class="encabezado1 "><p class="pregunta">¿Que es una acumulador?</p></div>
                         <div class="divrespuesta1 text-start ">
-                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
+                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
+                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
                         </div>
                         <div class="encabezado2 "><p class="pregunta">¿Cual es la función principal del acumulador de arranque?</p></div>
                         <div class="divrespuesta2 text-start">

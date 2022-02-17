@@ -18,7 +18,7 @@ include "conexionGhoner.php";
   <script src="jquery/jquery3.6.0.min.js"></script>
 
 </head>
-<body>
+<body >
     <style type="text/css">
 
 #ac,#at{
@@ -40,7 +40,7 @@ include "conexionGhoner.php";
 
                 </div>
 
-                    <div class="col-8 col-sm-9 col-md-9 col-lg-11" style="height:60px; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(37,33,140,0.8708215708158263) 15%, rgba(3,91,25,1) 100%);">    
+                    <div class="col-8 col-sm-9 col-md-9 col-lg-11" style="height:60px; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(27,85,131,1) 15%, rgba(10,8,36,1) 100%);">    
 
                         <div style="display:flex; align-items: center; color:#efeeee; font-size:20px; height:60px;"> <div class="mx-auto fw-bolder">Soporte Técnico <span class="fw-light">capacitación virtual</span></div></div>
 
@@ -72,9 +72,7 @@ include "conexionGhoner.php";
 
 
 
-    <div  class="mt-5 "  style=" background: linear-gradient(90deg, rgba(255,255,255) 0%, rgba(37,33,140) 0%, rgba(3,91,25,1) 100%); min-height: 285px; ">
-
-   
+    <div  class="mt-5 "  style=" background: #1b5583; min-height: 285px; ">
 
     </div>
 

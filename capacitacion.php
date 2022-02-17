@@ -30,6 +30,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 <style>
 	.titulos {
                 font-family: 'Orbitron', sans-serif;
+                text-shadow:-1px 2px 0px black;
             } 
 
 /*Pequenia*/
@@ -106,17 +107,17 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 			</div>
 
  
-			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctronico</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Fisíca</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Niveles de Electrolito</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Coloración de Electrolito</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label><img class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+			<div id="app" class="contenido row d-flex mt-5" style="min-height: 80vh;">
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label><img style="cursor: pointer" v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctronico</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Fisíca</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Niveles de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Coloración de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
                 <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative" style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
@@ -136,11 +137,17 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 const app = {
 	data(){
 		return{
-
+           
 		}
 	},
 	mounted(){
-	}
+      //llama funcion desde method para que inicializen al empezar
+	},
+    methods:{
+        introduccion(){
+          window.location.href='video_introduccion.php'
+        }
+    }
 }
 
 var mountedApp = Vue.createApp(app).mount('#app');

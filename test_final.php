@@ -30,7 +30,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <style>
-	.titulos { font-family: 'Orbitron', sans-serif;} 
+	.titulos { font-family: 'Orbitron', sans-serif; text-shadow:-1px 2px 0px black;} 
             
 
     /*Pequenia*/
@@ -65,7 +65,6 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 }   
                 .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
                     font-family: 'Chakra Petch', sans-serif;
-                    font-family: 'Rowdies', cursive;
                     border-radius: 0px 0px 10px 10px;
                     z-index:1;
                     margin-bottom: 20px;

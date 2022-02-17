@@ -134,7 +134,7 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                                         <div class="input-group-prepend ">
                                                             <span class="input-group-text " id="basic-addon1"><i class=" mt-2 mb-2 mx-2 fas fa-user-tie" style="color: #42b4cf "></i></span>
                                                         </div>
-                                                        <input v-model="user" v-on:input="presiona"  :required="requerido" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                                                        <input id="inputuser" v-model="user" v-on:input="presiona"  :required="requerido" type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" autocomplete="off">
                                                         <!--{{contador}}<br>
                                                         {{rando}}-->
                                                     </div>
@@ -144,7 +144,7 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text " id="basic-addon1"><i class=" mt-2 mb-2 mx-2 fas fa-lock" style="color: #42b4cf "></i></span>
                                                         </div>
-                                                        <input v-model="password" v-on:input="presiona" :required="requerido" type="text" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+                                                        <input id="inputpass" v-model="password" v-on:input="presiona" :required="requerido" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
                                                         
                                                     </div>
                                                     <!--fin input password-->
@@ -219,9 +219,13 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                     //alert(response.data)
                                         if(response.data=="Administrador"){
                                             window.location.href = 'menu.php';
+                                            document.getElementById("inputuser").value = "";
+                                            document.getElementById("inputpass").value = "";
                                         }else{
                                             if(response.data=="Usuario"){
                                                  window.location.href = 'menu_cliente.php';
+                                                 document.getElementById("inputuser").value = "";
+                                                document.getElementById("inputpass").value = "";
                                              }else{
                                                 alert("CREDENCIALES INCORRECTAS")
                                              }

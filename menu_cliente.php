@@ -30,6 +30,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 <style>
 	.titulos {
                 font-family: 'Orbitron', sans-serif;
+				text-shadow:-1px 2px 0px black;
             } 
 	/* Small devices (landscape phones, 576px and up)*/
 	.opciones{
@@ -45,7 +46,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:300px;}
 	.perilla_gira{position:absolute; height:200px; margin-top:50px; margin-left:0px}
 	.contorno_certificado{height:200px; margin-top: 0px;}
-	.icono_certificado{position:absolute; height:80px; margin-right:50px; margin-top: 100px; }
+	.icono_certificado{position:absolute; height:100px; margin-left:-40px; margin-top: 100px; }
 	 /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 *//* Firefox 16+, IE 10+, Opera */
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
@@ -64,7 +65,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.opciones{font-size:1.5em}
 	.contorno_perilla{height:400px; margin-top:-50px;}
 	.perilla_gira{height:250px; margin-top:0px;margin-left: 0px; margin-top:26px;}
-	.icono_certificado{position:absolute; height:100px; margin-right:40px; margin-top: 20px; }
+	.icono_certificado{position:absolute; height:100px; margin-left:-40px; margin-top: 20px; }
 	.contorno_certificado{height:180px;margin-top:-50px;}
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); }
@@ -79,7 +80,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:300px; margin-top:0px}
 	.perilla_gira{height:200px; margin-top:50px; margin-left: 0px;}
 	.contorno_certificado{height:200px;}
-	.icono_certificado{position:absolute; height:100px; margin-right:30px; margin-top: 40px; }
+	.icono_certificado{position:absolute; height:100px; margin-left:-30px; margin-top: 40px; }
 	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
 	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 180px; max-height: 180px; min-height:180px; min-width:180px; }
 	.circuito_uno{transform: rotate(90deg); }
@@ -106,7 +107,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:450px;}
 	.perilla_gira{height:280px; margin-top:85px; margin-left: 0px;}
 	.contorno_certificado{height:250px;margin-right:-40px;}
-	.icono_certificado{position:absolute; height:130px; margin-right:10px; margin-top: 50px; }
+	.icono_certificado{position:absolute; height:130px; margin-left:-10px;  margin-right:40px;  margin-top: 50px; }
 	.titulos{margin-top:190px; margin-left: 650px; font-size:80px;}
  }
 
@@ -116,7 +117,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:600px;}
 	.perilla_gira{height:280px; margin-top:155px; margin-left: 0px;}
 	.contorno_certificado{height:280px; margin-right:0px;}
-	.icono_certificado{position:absolute; height:130px; margin-right:55px; margin-top: 50px; }
+	.icono_certificado{position:absolute; height:130px; margin-left:-55px; margin-top: 50px; }
 	.titulos{margin-top:600px; margin-left: 0px; font-size:60px;}
  }
 
@@ -128,11 +129,22 @@ border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circ
 border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
 border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
 border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+
+ transform: scale(1);
+
+
 }
  .circulos:hover{
 	background: rgb(22,17,111);
-background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%, rgba(9,9,121,1) 92%, rgba(0,104,255,1) 100%); 
+	background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%, rgba(9,9,121,1) 92%, rgba(0,104,255,1) 100%); 
+	transform: scale(1.1);
+
  }
+
+ 
+
+
+
 
 @keyframes rotate {
 	from {transform: rotate(360deg);}
@@ -270,7 +282,7 @@ background-size: cover;" >
 					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3 d-flex align-items-end"><!--Certificado-->
 							<div class="col-12 justify-content-end d-flex">
 							
-							<img class="icono_certificado"  src="Imagenes/icono_certificado.png"/>
+							<img class="icono_certificado me-5"  src="Imagenes/icono_certificado.png"/>
 							<img class="contorno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
 							
 							</div>

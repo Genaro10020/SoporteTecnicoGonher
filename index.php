@@ -216,16 +216,26 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                     pass: this.password
                                 })
                                 .then(function (response) {
-                                    //alert(response.data)
+                                    console.log(response.data)
+                                        
                                         if(response.data=="Administrador"){
-                                            window.location.href = 'menu.php';
-                                            document.getElementById("inputuser").value = "";
-                                            document.getElementById("inputpass").value = "";
+                                            
+                                            window.location.href = 'menu.php'
+                                            document.getElementById("inputuser").value = ""
+                                            document.getElementById("inputpass").value = ""
                                         }else{
                                             if(response.data=="Usuario"){
-                                                 window.location.href = 'menu_cliente.php';
-                                                 document.getElementById("inputuser").value = "";
-                                                document.getElementById("inputpass").value = "";
+                                                axios({ //verificando si existe en test.
+                                                    method:'POST',
+                                                    url:'verificando_user_entest.php',
+                                                    data:{
+                                                        usuario_test: response.data
+                                                    }
+                                                }).then(res=>console.log(res.data))
+                                                
+                                                //window.location.href = 'tomando_informacion.php'
+                                                document.getElementById("inputuser").value = ""
+                                                document.getElementById("inputpass").value = ""
                                              }else{
                                                 alert("CREDENCIALES INCORRECTAS")
                                              }

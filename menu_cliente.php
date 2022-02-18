@@ -46,7 +46,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:300px;}
 	.perilla_gira{position:absolute; height:200px; margin-top:50px; margin-left:0px}
 	.contorno_certificado{height:200px; margin-top: 0px;}
-	.icono_certificado{position:absolute; height:100px; margin-left:-40px; margin-top: 100px; }
+	.icono_certificado{position:absolute; height:100px;  margin-top: 65px; margin-left: -50px; margin-right: 40px;}
 	 /* Chrome, Opera 15+, Safari 3.1+ */ /* IE 9 *//* Firefox 16+, IE 10+, Opera */
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
@@ -65,7 +65,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.opciones{font-size:1.5em; text-shadow:-1px 2px 0px black; }
 	.contorno_perilla{height:400px; margin-top:-50px;}
 	.perilla_gira{height:250px; margin-top:0px;margin-left: 0px; margin-top:26px;}
-	.icono_certificado{position:absolute; height:100px; margin-left:-40px; margin-top: 20px; }
+	.icono_certificado{position:absolute; height:100px; margin-left: -30px;  margin-top: 20px; }
 	.contorno_certificado{height:180px;margin-top:-50px;}
 	.circuito_uno{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1);}
 	.circuito_dos{-webkit-transform : rotate(10deg) scaleY(-1); -ms-transform:rotate(10deg) scaleY(-1); transform : rotate(10deg) scaleY(-1); }
@@ -80,7 +80,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:300px; margin-top:0px}
 	.perilla_gira{height:200px; margin-top:50px; margin-left: 0px;}
 	.contorno_certificado{height:200px;}
-	.icono_certificado{position:absolute; height:100px; margin-left:-30px; margin-top: 40px; }
+	.icono_certificado{position:absolute; height:100px; margin-left: -40px;  margin-top: 40px; }
 	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
 	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 180px; max-height: 180px; min-height:180px; min-width:180px; }
 	.circuito_uno{transform: rotate(90deg); }
@@ -106,8 +106,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.divconector{max-height:150px}
 	.contorno_perilla{height:450px;}
 	.perilla_gira{height:280px; margin-top:85px; margin-left: 0px;}
-	.contorno_certificado{height:250px;margin-right:-40px;}
-	.icono_certificado{position:absolute; height:130px; margin-left:-10px;  margin-right:40px;  margin-top: 50px; }
+	.contorno_certificado{height:250px;}
+	.icono_certificado{position:absolute; height:130px; margin-left:-40px;  margin-right:40px;  margin-top: 50px; }
 	.titulos{margin-top:190px; margin-left: 650px; font-size:80px;}
  }
 
@@ -117,7 +117,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.contorno_perilla{height:600px;}
 	.perilla_gira{height:280px; margin-top:155px; margin-left: 0px;}
 	.contorno_certificado{height:280px; margin-right:0px;}
-	.icono_certificado{position:absolute; height:130px; margin-left:-55px; margin-top: 50px; }
+	.icono_certificado{position:absolute; height:130px; margin-left:-60px; margin-right:60px; }
 	.titulos{margin-top:600px; margin-left: 0px; font-size:60px;}
  }
 
@@ -183,7 +183,7 @@ background-size: cover;" >
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
 			</div>
- <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
+<!-- <div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
@@ -282,7 +282,7 @@ background-size: cover;" >
 					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3 d-flex align-items-end"><!--Certificado-->
 							<div class="col-12 justify-content-end d-flex">
 							
-							<img class="icono_certificado me-5"  src="Imagenes/icono_certificado.png"/>
+							<img class="icono_certificado"  src="Imagenes/icono_certificado.png"/>
 							<img class="contorno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
 							
 							</div>

@@ -10,21 +10,15 @@ $usuariotest = $arreglo['usuario_test'];
 $consulta = "SELECT * FROM test WHERE Usuario = '$usuariotest'";
 $resultado = $conexion->query($consulta);
 while($datos=$resultado->fetch_array()){
-
-    if(isset($datos['Usuario']){
+  
+    if($usuariotest==$datos['Usuario']){
         echo "Existe";
     }else{
+        session_destroy();
         echo "No existe";
     }   
 }
 
-   /* if($resultado->num_rows>0){
-        echo "existe";
-    }else{
-        echo "no existe";
-    }*/
-
-//echo json_encode($usuarios);
 
 }else{
 	header("Location: index.php");

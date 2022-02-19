@@ -9,7 +9,10 @@ $consulta = "SELECT * FROM UsuariosServicio WHERE Usuario = '$usuario' AND Clave
 $resultado=$conexion->query($consulta);
 while($admin=$resultado->fetch_array()){
         $_SESSION['usuario']=$admin['Usuario'];   
-       echo $_SESSION['tipo']=$admin['tipo']; 
+        $_SESSION['tipo']=$admin['tipo']; 
+        $datos = $admin;
 }
+
+echo json_encode($datos);
 
 ?>

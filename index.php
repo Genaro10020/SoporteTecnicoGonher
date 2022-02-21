@@ -216,7 +216,7 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                     pass: this.password
                                 })
                                 .then(function (response) {
-                                    console.log(response.data)
+                                    //console.log(response.data)
                                         
                                         if(response.data.tipo=="Administrador"){
                                             window.location.href = 'menu.php'
@@ -230,13 +230,20 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                                     data:{
                                                         usuario_test: response.data.Usuario
                                                     }
-                                                }).then(function(){
-                                                    res=>console.log(res.data)
-                                                    window.location.href = 'menu_cliente.php'
-                                                    document.getElementById("inputuser").value = ""
-                                                    document.getElementById("inputpass").value = ""
+                                                }).then(function(responsedos){
+                                                    //console.log(responsedos.data)
 
-                                                })
+                                                    if(responsedos.data=="Si"){
+                                                        window.location.href = 'menu_cliente.php'
+                                                        document.getElementById("inputuser").value = ""
+                                                        document.getElementById("inputpass").value = ""
+                                                    }else{
+                                                        alert("VERIFIQUE SUS CREDENCIALES")
+                                                    }
+
+                                                }).catch(function (error) {
+                                                    console.log(error);
+                                                 });
                                                 
                                                 
                                              }else{

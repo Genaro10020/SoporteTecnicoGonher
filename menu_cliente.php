@@ -39,7 +39,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 /*Pequenia*/
 @media (min-width: 0px) { 
 	.titulos{margin-top:130px; margin-left: 0px; font-size:30px;}
-	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
+	.circulos, .circulos_deshabilitados{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1em}
 	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 120px; max-height: 120px;}
 	.divconector{max-width:80px}
@@ -61,7 +61,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 130px; max-height: 130px;}
 	.divconector{max-width:150px}
 	.titulos{margin-top:170px;margin-left: 0px; font-size:40px;}
-	.circulos{height:90px; min-height:90px; width:90px; min-width:90px;}
+	.circulos, .circulos_deshabilitados{height:90px; min-height:90px; width:90px; min-width:90px;}
 	.opciones{font-size:1.5em; text-shadow:-1px 2px 0px black; }
 	.contorno_perilla{height:400px; margin-top:-50px;}
 	.perilla_gira{height:250px; margin-top:0px;margin-left: 0px; margin-top:26px;}
@@ -81,7 +81,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.perilla_gira{height:200px; margin-top:50px; margin-left: 0px;}
 	.contorno_certificado{height:200px;}
 	.icono_certificado{position:absolute; height:100px; margin-left: -40px;  margin-top: 40px; }
-	.circulos{min-width:100px; min-height:100px; height:100px; width:100px;}
+	.circulos, .circulos_deshabilitados{min-width:100px; min-height:100px; height:100px; width:100px;}
 	.circuito_uno, .circuito_dos, .circuito_tres, .circuito_cuatro{max-width: 180px; max-height: 180px; min-height:180px; min-width:180px; }
 	.circuito_uno{transform: rotate(90deg); }
 	.circuito_dos{transform: rotate(70deg); }
@@ -124,22 +124,21 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
  /*.circuito_uno, .circuito_dos ,.circuito_tres, .circuito_cuatro{
 	 display: none;
  }*/
-.circulos{
-border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
-border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
-border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
-border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
 
- transform: scale(1);
+	.circulos_deshabilitados{
+		border-radius:100px;  background: rgb(60,60,60);
+background: radial-gradient(circle, rgba(60,60,60,1) 0%, rgba(143,143,143,1) 100%, rgba(119,119,119,1) 100%); 
+	}
+	.circulos{
+	border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+	transform: scale(1);
+	}
+	.circulos:hover{
+		background: rgb(22,17,111);
+		background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%, rgba(9,9,121,1) 92%, rgba(0,104,255,1) 100%); 
+		transform: scale(1.1);
 
-
-}
- .circulos:hover{
-	background: rgb(22,17,111);
-	background: radial-gradient(circle, rgba(22,17,111,1) 40%, rgba(5,23,183,1) 74%, rgba(9,9,121,1) 92%, rgba(0,104,255,1) 100%); 
-	transform: scale(1.1);
-
- }
+	 }
 
  
 
@@ -188,12 +187,16 @@ background-size: cover;" >
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
-			<div id="app" class="row" style="min-height: 85vh;">
+ 
+			<div id="app" v-on="BuscarInformacion"  class="row" style="min-height: 85vh;">
 				
+			<div class="row d-flex justify-content-center text-warning">TEST INICIAL ES{{test_inicial}}</div>
+			
 					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-4 col-xxl-4 my-auto"><!--Opciones y Circulos-->
 						<div  class="row  divtextoycirculos">
-						
+							
 							<div class="col-3 col-md-12 col-lg-10 col-xl-10   col-xxl-11 p-0 offset-md-0 offset-lg-2 offset-xl-3 offset-xxl-1 my-lg-5  my-md-4 justify-content-end d-lg-flex align-items-center">
+							
 								<div class=" col-12 col-md-12 col-md-12 mt-3 mt-md-0  text-center justify-content-end d-lg-flex ">
 									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Test Inicial</h3>
 								</div>
@@ -211,11 +214,17 @@ background-size: cover;" >
 									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Capacitación</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<a href="capacitacion.php">
+									<a v-if="test_inicial !=''" href="capacitacion.php">
 										<div  @mouseout="(conectado2 = false)"  @mouseover="(conectado2 = true)" class="circulos border animate__animated animate__zoomIn border-info border-3 mx-auto" >
 											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
 										</div>
 								    </a>
+									<a v-else>
+										<div class="circulos_deshabilitados border animate__animated animate__zoomIn border-info border-3 mx-auto" >
+											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										</div>
+								    </a>
+									
 								</div>
 							</div>
 
@@ -293,8 +302,9 @@ background-size: cover;" >
 					<div class="col-12  ">
 						<p class="font-monospace text-info">Soporte Técnico (Curso de capacitación)</p>
 					</div>
-
 				</div>
+
+				<input id="user" type="hidden" name="action" value="<?php echo $_SESSION['usuario'];?>"> 
 	</div>  
 
 </body>
@@ -306,11 +316,25 @@ const app = {
 			conectado1: false,
 			conectado2: false,
 			conectado3: false,
-			conectado4: false
+			conectado4: false,
+			usuario: '',
+			test_inicial: null,
+			info: null
 		}
 	},
 	mounted(){
-	
+				this.usuario=document.getElementById("user").value;
+				//console.log(this.usuario)
+				axios.post('dato_menu_cliente.php', {
+					usu:  this.usuario
+				}).then(response => {
+					this.test_inicial =response.data.TestInicial
+				}).catch(function (error){
+					console.log(error)
+					});
+	},
+	methods:{
+
 	}
 }
 

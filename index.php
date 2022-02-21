@@ -265,3 +265,8 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
     </div><!--fin container-->
 </body>
 </html>
+
+
+<!--filter: grayscale(1);
+        transition-property: filter;
+        transition-duration: 1s;  -->    

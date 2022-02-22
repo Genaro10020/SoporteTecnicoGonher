@@ -32,7 +32,27 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 <style>
 	.titulos { font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
             
-
+    .miboton {
+            height:50px;
+           
+            width:200px;
+            position:absolute;
+            z-index: 1;
+            font-family: 'Rowdies', cursive;
+            background: rgb(0,97,135);
+            background: linear-gradient(31deg, rgba(255,255,255,0) 10%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 90%, rgba(255,255,255,0) 10%); 
+            border-radius:6px;
+           
+            cursor:pointer;
+            color:#CEECF5;
+            font-size:20px;
+            padding:7px 14px;
+            text-decoration:none;
+             }
+        .miboton:hover {
+            background: rgb(23,0,94);
+            background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
+        }
     /*Pequenia*/
     @media (min-width: 0px) { 
                 .pregunta{
@@ -54,7 +74,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 .formulario{height:1300px; width:100%; z-index:0;  }
                 /*.formulario_rectangular{height:100%; width:100%; z-index:0;}*/
                 .pie,.respuestas{font-size:0.7em;}
-                .encabezado1, .encabezado2, .encabezado3, .encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10  {
+                .div_boton{ height:25px;width: 400px;}
+                .encabezado1, .encabezado2, .encabezado3, .encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10   {
                     font-family: 'Rowdies', cursive;
                     border-radius: 0px 10px 0px 0px;
                     font-size:0.6em;
@@ -87,7 +108,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     @media (min-width: 576px) { 
        
         
-        .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10  {
+        .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10{
             font-size:0.8em;
             width: 500px;
            
@@ -145,7 +166,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 
     /*XXL XX-Large devices (larger desktops, 1400px and up)*/
     @media (min-width: 1400px) { 
-        
+        .div_boton{ height:25px; width: 805px;margin-right: 40px;}
 
     }
 
@@ -157,7 +178,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 <body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
  background-repeat: no-repeat; background-size: 100%">
 
- <div class="container-fluid">
+ <div id="app" class="container-fluid">
 
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
@@ -171,7 +192,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 				</div>
 			</div>
 
-			<div class="row " style="min-height: 80vh;">
+			<div  class="row " style="min-height: 80vh;">
                 <div class="h-90 col-12 col-xl-9 col-xxl-8 flex-column  align-items-center align-items-xxl-end d-flex align-content-center justify-content-center  text-center  mt-5 mt-lg-1 mt-5 mt-xl-0">
                     
              
@@ -225,15 +246,17 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                              <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="azul" style="color:blue;" > 35% agua/65%acido</p></label><br>
                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="azul" style="color:blue;" > 65% agua/35%acido</p></label><!--Correcta-->
                         </div>
-               
+                        <div class="div_boton d-flex justify-content-center">
+                                 <div id="boton" class="miboton  animate__animated animate__pulse mt-3  ">Guardar</div>
+                        </div>
 
+                       
                     <img class="formulario position-absolute" src="Imagenes/formulario.png" alt="">
-                    <!--<img class="formulario_rectangular position-absolute" src="Imagenes/formulario_rectangular.png" alt="">-->
                 </div>
               
 
                 <div class="col-12 col-xl-3 col-xxl-4 my-auto d-flex justify-content-center justify-content-xxl-start ">
-                     <h1 class="titulos animate__animated animate__pulse text-center text-xxl-start ms-xxl-0 text-light mt-5">TEST INICIAL</h1>
+                     <h1 class="titulos animate__animated animate__pulse text-center text-xxl-start ms-xxl-0 text-light mt-5 ">TEST INICIAL</h1>
                 </div> 
             </div>  
 
@@ -247,7 +270,22 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 </body>
 <script>
 
-const app = {
+const app ={
+    data(){
+        return{
+            saludo: 'hola'
+        }
+    },
+    mounted(){
+
+    },
+    methods:{
+
+    }
+}
+
+var mountedApp = Vue.createApp(app).mount('#app');
+/*const app = {
 	data(){
 		return{
 
@@ -257,7 +295,7 @@ const app = {
 	}
 }
 
-var mountedApp = Vue.createApp(app).mount('#app');
+var mountedApp = Vue.createApp(app).mount('#app');*/
 </script>
 
 </html>

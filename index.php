@@ -25,7 +25,7 @@ session_destroy();
     <script src="https://unpkg.com/vue@next"></script>
     <!--Axios--> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+  
 </head>
         <style type="text/css">
             .titulos {
@@ -231,15 +231,17 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                                         usuario_test: response.data.Usuario
                                                     }
                                                 }).then(function(responsedos){
-                                                    //console.log(responsedos.data)
+                                                    console.log(responsedos.data)
 
                                                     if(responsedos.data=="Si"){
                                                         window.location.href = 'menu_cliente.php'
                                                         document.getElementById("inputuser").value = ""
                                                         document.getElementById("inputpass").value = ""
-                                                    }else{
-                                                        alert("VERIFIQUE SUS CREDENCIALES")
                                                     }
+
+                                                    if(responsedos.data=="No existe"){ alert("No esta dado de Alta para la capacitación.")}
+                                                    if(responsedos.data=="Fecha Caducada"){ alert("Capacitación Caducada, verifique su fecha limite.")}
+
 
                                                 }).catch(function (error) {
                                                     console.log(error);

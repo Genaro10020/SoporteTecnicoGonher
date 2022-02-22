@@ -166,6 +166,7 @@ background: radial-gradient(circle, rgba(60,60,60,1) 0%, rgba(143,143,143,1) 100
 }
 
 
+
 </style>
 
 
@@ -177,6 +178,7 @@ background: radial-gradient(circle, rgba(60,60,60,1) 0%, rgba(143,143,143,1) 100
 -o-background-size: cover;
 background-size: cover;" >
  
+
 			<div class="row" style="height: 5vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
@@ -190,7 +192,6 @@ background-size: cover;" >
  
 			<div id="app" v-on="BuscarInformacion"  class="row" style="min-height: 85vh;">
 				
-			<div class="row d-flex justify-content-center text-warning">TEST INICIAL ES{{test_inicial}}</div>
 			
 					<div class="col-12 col-sm-12 col-md-3 col-lg-4 col-xl-4 col-xxl-4 my-auto"><!--Opciones y Circulos-->
 						<div  class="row  divtextoycirculos">
@@ -214,13 +215,13 @@ background-size: cover;" >
 									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Capacitación</h3>
 								</div>
 								<div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<a v-if="test_inicial !=''" href="capacitacion.php">
+									<a id="capacitacionActiva" v-if="test_inicial !=''" v-bind:href="url_capacitacion"  style=" visibility:hidden">
 										<div  @mouseout="(conectado2 = false)"  @mouseover="(conectado2 = true)" class="circulos border animate__animated animate__zoomIn border-info border-3 mx-auto" >
 											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
 										</div>
 								    </a>
-									<a v-else>
-										<div class="circulos_deshabilitados border animate__animated animate__zoomIn border-info border-3 mx-auto" >
+									<a v-else >
+										<div class="circulos_deshabilitados border animate__animated animate__zoomIn border-info border-3 mx-auto"  >
 											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
 										</div>
 								    </a>
@@ -246,8 +247,13 @@ background-size: cover;" >
 									<h3 id="" class="opciones animate__animated animate__lightSpeedInLeft text-light">Test Final</h3>
 								</div>
 								<div  class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-3 d-flex justify-content-md-center">
-									<a href="test_final.php">
+									<a v-if="test_final!=''" id="testFinalActivo" v-bind:href="url_testFinal" style="visibility:hidden;">
 										<div  @mouseout="(conectado4 = false)"  @mouseover="(conectado4 = true)" class="circulos animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
+											<img  src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
+										</div>
+									</a>
+									<a v-else>
+										<div class="circulos_deshabilitados animate__animated animate__zoomIn border border-info border-3 mx-auto"  >
 											<img  src="Imagenes/testprueba.png" alt="" class="img-fluid w-50 my-4 mx-4">
 										</div>
 									</a>
@@ -310,6 +316,7 @@ background-size: cover;" >
 </body>
 <script>
 
+
 const app = {
 	data(){
 		return{
@@ -319,16 +326,40 @@ const app = {
 			conectado4: false,
 			usuario: '',
 			test_inicial: null,
-			info: null
+			test_final: null,
+			info: null,
+			url_capacitacion: '',
+			title_capacitacion: '',
+			url_testFinal: ''
 		}
 	},
 	mounted(){
+		
+
+
 				this.usuario=document.getElementById("user").value;
 				//console.log(this.usuario)
 				axios.post('dato_menu_cliente.php', {
 					usu:  this.usuario
 				}).then(response => {
+					
 					this.test_inicial =response.data.TestInicial
+					if(this.test_inicial==""){
+						console.log("no se a realizado el test inicial")
+						this.title_capacitacion= 'Realice la capacitación para su activación'						
+					}else{
+						document.getElementById("capacitacionActiva").style.visibility="visible"
+						this.url_capacitacion = 'capacitacion.php'
+					}
+
+					this.test_final=response.data.Prueba9
+					if(this.test_final==""){
+						console.log("no se a realizado la prueba 9")
+					}else{
+						document.getElementById("testFinalActivo").style.visibility="visible"
+						this.url_testFinal ="test_final.php"
+					}
+
 				}).catch(function (error){
 					console.log(error)
 					});

@@ -30,31 +30,40 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <style>
-	.titulos { font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
-            
-    .miboton {
-            height:50px;
-           
-            width:200px;
-            position:absolute;
-            z-index: 1;
-            font-family: 'Rowdies', cursive;
-            background: rgb(0,97,135);
-            background: linear-gradient(31deg, rgba(255,255,255,0) 10%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 90%, rgba(255,255,255,0) 10%); 
-            border-radius:6px;
-           
-            cursor:pointer;
-            color:#CEECF5;
-            font-size:20px;
-            padding:7px 14px;
-            text-decoration:none;
-             }
-        .miboton:hover {
-            background: rgb(23,0,94);
-            background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
-        }
+    .mensajemoviemiento{
+        color:red;
+        animation: shakeX; /* referring directly to the animation's @keyframe declaration */
+        animation-duration: 3s; /* don't forget to set a duration! */
+        animation-iteration-count: infinite;
+
+    }
+
+  
     /*Pequenia*/
     @media (min-width: 0px) { 
+        .calificacion{ font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
+            .titulos { font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
+            .mensajes{ font-size:0.6em; font-weight:bold}
+            .miboton {
+                    height:50px;
+                    width:200px;
+                    position:absolute;
+                    z-index: 1;
+                    font-family: 'Rowdies', cursive;
+                    background: rgb(0,97,135);
+                    background: linear-gradient(31deg, rgba(255,255,255,0) 10%, rgba( 2,0,36,1 ) 5%, rgba(2,0,36,1) 90%, rgba(255,255,255,0) 10%); 
+                    border-radius:6px;
+                
+                    cursor:pointer;
+                    color:#CEECF5;
+                    font-size:20px;
+                    padding:7px 14px;
+                    text-decoration:none;
+                    }
+                .miboton:hover {
+                    background: rgb(23,0,94);
+                    background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
+                }
                 .pregunta{
                     animation: rubberBand;
                     animation-duration: 2s;
@@ -89,37 +98,30 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 }   
                 .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
                     font-family: 'Rowdies', cursive;
-                   
                     border-radius: 0px 0px 10px 10px;
                     z-index:1;
                     margin-bottom: 20px;
                     margin-left: 27px;
                     height:75px;
                     width: 373px;
-                    background: #0b2848;
-                    
-                    /*background: rgb(255,255,255);
-                    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(9,150,223,1) 0%, rgba(24,20,102,1) 9%, rgba(16,11,135,1) 97%); */
-                    
+                    background: #0b2848;                    
+                }
+                .mensajes, .calificacion{
+                    margin-top:-10px;
+                    z-index:1; 
                 }
         
     }
     /*SM*/	
-    @media (min-width: 576px) { 
-       
-        
+    @media (min-width: 576px) {  
+        .mensajes{ font-size:1em; font-weight:bold}
         .encabezado1, .encabezado2, .encabezado3,.encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8,.encabezado9, .encabezado10{
             font-size:0.8em;
             width: 500px;
-           
-          
-            
         }
         .divrespuesta1, .divrespuesta2, .divrespuesta3, .divrespuesta4, .divrespuesta5, .divrespuesta6, .divrespuesta7, .divrespuesta8, .divrespuesta9, .divrespuesta10{
             width: 473px;
-            
         }
-        
     }
 
     /*MD Medium MD devices (tablets, 768px and up)*/
@@ -196,58 +198,60 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 <div class="h-90 col-12 col-xl-9 col-xxl-8 flex-column  align-items-center align-items-xxl-end d-flex align-content-center justify-content-center  text-center  mt-5 mt-lg-1 mt-5 mt-xl-0">
                     
              
-                        <div class="encabezado1 "><p class="pregunta">¿Que es una acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaUno}}</p></div>
+                        <div class="encabezado1 "><p class="pregunta">1.- ¿Que es una acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"> {{respuestaUno}}</label></p></div>
                         <div class="divrespuesta1 text-start ">
-                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="1" value="1" v-model="respuestaUno" style="color:blue;" > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
-                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="2" value="2" v-model="respuestaUno" style="color:blue;" > Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
+                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="1" value="1" v-model="respuestaUno" style="color:blue;" required > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
+                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="2" value="2" v-model="respuestaUno" style="color:blue;" required> Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
                         </div>
-                        <div class="encabezado2 "><p class="pregunta">¿Cual es la función principal del acumulador de arranque? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaDos}}</p></div>
+                        <div class="encabezado2 "><p class="pregunta">2.- ¿Cual es la función principal del acumulador de arranque? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaDos}}</label></p></div>
                         <div class="divrespuesta2 text-start">
                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="1" v-model="respuestaDos"  style="color:blue;" > Liberar energía para mantener encendidos los accesorios. </p></label><br>
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="2" v-model="respuestaDos" style="color:blue;"> Liberar energía para arrancar el motor. </p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado3 "><p class="pregunta">¿Menciona algunos componentes del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaTres}}</p></div>
+                        <div class="encabezado3 "><p class="pregunta">3.- ¿Menciona algunos componentes del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaTres}}</label></p></div>
                         <div class="divrespuesta3  text-start">
                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="1"  v-model="respuestaTres"style="color:blue;" > Caja/tapa, acido sulfúrico, placas, conectores y etiquetas.</p></label><br><!--Correcta-->
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="2" v-model="respuestaTres" style="color:blue;" > Caja/tapa, cables, regulador, conectores y etiquetas.</p></label>
                         </div>
-                        <div class="encabezado4 "><p class="pregunta">¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaCuatro}}</p></div>
+                        <div class="encabezado4 "><p class="pregunta">4.- ¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaCuatro}}</label></p></div>
                         <div class="divrespuesta4  text-start">
                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="1" v-model="respuestaCuatro" style="color:blue;" > 6 Celdas.</p></label><br><!--Correcta-->
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="2" v-model="respuestaCuatro" style="color:blue;" > 4 Celdas.</p></label>
                         </div>
-                        <div class="encabezado5 "><p class="pregunta">Para asignar el número a las celdas ¿Cuál es la forma correcta? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaCinco}}</p></div>
+                        <div class="encabezado5 "><p class="pregunta">5.- Para asignar el número a las celdas ¿Cuál es la forma correcta? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaCinco}}</label></p></div>
                         <div class="divrespuesta5  text-start">
                              <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="1" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de positivo a negativo.</p></label><br><!--Correcta-->
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="2" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de negativo a positivo.</p></label>
                         </div>
-                        <div class="encabezado6 "><p class="pregunta">¿Cómo están conectadas las celdas en el interior del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaSeis}}</p></div>
+                        <div class="encabezado6 "><p class="pregunta">6.- ¿Cómo están conectadas las celdas en el interior del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaSeis}}</label></p></div>
                         <div class="divrespuesta6  text-start">
                              <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="1" v-model="respuestaSeis" style="color:blue;" > Conexión en paralelo</p></label><br>
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="2" v-model="respuestaSeis" style="color:blue;" > Conexión en serie</p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado7 "><p class="pregunta">¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaSiete}}</p></div>
+                        <div class="encabezado7 "><p class="pregunta">7.- ¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaSiete}}</label></p></div>
                         <div class="divrespuesta7  text-start">
                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="1" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, regulador de voltaje y acumulador.</p></label><br><!--Correcta-->
                             <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="2" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, compresor y acumulador.</p></label>
                         </div>
-                        <div class="encabezado8 "><p class="pregunta">¿Cuando un acumulador esta al 100% cargado, qué voltaje representa? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaOcho}}</p></div>
+                        <div class="encabezado8 "><p class="pregunta">8.- ¿Cuando un acumulador esta al 100% cargado, qué voltaje representa? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaOcho}}</label></p></div>
                         <div class="divrespuesta8  text-start">
                              <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="1" v-model="respuestaOcho"  style="color:blue;" > 12.75 Volts.</p></label><br><!--Correcta-->
                              <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="2" v-model="respuestaOcho" style="color:blue;" > 12.55 Volts.</p></label>
                         </div>
-                        <div class="encabezado9 "><p class="pregunta">¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaNueve}}</p></div>
+                        <div class="encabezado9 "><p class="pregunta">9.- ¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaNueve}}</label></p></div>
                         <div class="divrespuesta9  text-start">
                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="1"  v-model="respuestaNueve" style="color:blue;" > 11.90 Volts</p></label><br>
                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="2" v-model="respuestaNueve" style="color:blue;" > 10.5 Volts</p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado10 "><p class="pregunta">¿Cómo esta compuesto el electrolito? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaDiez}}</p></div>
+                        <div class="encabezado10 "><p class="pregunta">10.- ¿Cómo esta compuesto el electrolito? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaDiez}}</label></p></div>
                         <div class="divrespuesta10  text-start">
                              <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="1" v-model="respuestaDiez" style="color:blue;" > 35% agua/65%acido</p></label><br>
                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="2" v-model="respuestaDiez" style="color:blue;" > 65% agua/35%acido</p></label><!--Correcta-->
                         </div>
                         <div class="div_boton d-flex justify-content-center" >
-                                 <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton  animate__animated animate__pulse mt-3">Guardar</div>
+                                 <div id="mensaje" class="mensajes text-info me-2">{{mensaje}}</div>
+                                 <div class="calificacion text-warning text-info" v-if="calificacion!=0">TU CALIFICACIÓN: <label class="text-info">{{calificacion}} ACIERTOS<label></div>
+                                 <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton animate__animated animate__pulse mt-4">Guardar</div>
                         </div>
 
                        
@@ -275,6 +279,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     const app ={
         data(){
             return{
+                campo_respuestas: '',
                 respuestaUno: '',
                 respuestaDos: '',
                 respuestaTres: '',
@@ -287,21 +292,24 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 respuestaDiez: '', 
                 saludo: 'hola',
                 suma: 0,
-                respuesta: null
+                respuesta: null,
+                mensaje: '',
+                calificacion: 0
             }
         },
         mounted(){
             axios.post('verificando_testInicial.php',{
                 dato: ''
             }).then(respuesta=>{
-                var campo_respuestas
-                campo_respuestas=respuesta.data.RespuestasTI
-                if(campo_respuestas==''){
+             
+                this.campo_respuestas=respuesta.data.RespuestasTI
+                console.log('consulta inicial'+this.campo_respuestas)
+                if(this.campo_respuestas==''){
                     console.log('No se ha realizado el test Inical')
                     this.respuesta= 'no realizado'
                 }else{
                     console.log('Si test Inical Completado')
-                    this.respuesta= 'si realizado'
+                    this.traerRespuestas()
                 }
                 //this.respuesta='sin realizar'
             }).catch(function (error){
@@ -310,28 +318,73 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 
         },
         methods:{
-            guardarRespuestas(){
-               var valor1 = parseInt(this.respuestaUno)
-               var valor2 = parseInt(this.respuestaUno)
-               
-                console.log(valor1+valor2)
-        
-            }
-        }
+
+            async traerRespuestas(){
+                    //console.log('todas estan contestadadas')
+                    this.mensaje=''; 
+                    axios.post('guardar_test_inicial.php',{
+                    }).then(respuesta =>{
+                        console.log(respuesta.data)
+                            if(respuesta.data[0]=='Guardado' || respuesta.data[0]=='Ya Contestado'){
+                                this.respuesta= 'si realizado'
+                                this.calificacion= respuesta.data[1]
+                            }
+                    })
+            },
+
+
+            async guardarRespuestas(){
+               if(this.respuestaUno !='' && this.respuestaDos !='' && this.respuestaTres !='' && this.respuestaCuatro!='' && this.respuestaCinco!='' && this.respuestaSeis!='' && this.respuestaSiete!='' && this.respuestaOcho!='' && this.respuestaNueve!='' && this.respuestaDiez!=''){ 
+                    //console.log('todas estan contestadadas')
+                    this.mensaje=''; 
+                    axios.post('guardar_test_inicial.php',{
+                        respuesta1: this.respuestaUno,
+                        respuesta2: this.respuestaDos,
+                        respuesta3: this.respuestaTres,
+                        respuesta4: this.respuestaCuatro,
+                        respuesta5: this.respuestaCinco,
+                        respuesta6: this.respuestaSeis,
+                        respuesta7: this.respuestaSiete,
+                        respuesta8: this.respuestaOcho,
+                        respuesta9: this.respuestaNueve,
+                        respuesta10: this.respuestaDiez
+                    }).then(respuesta =>{
+                        console.log(respuesta.data)
+                       
+                            if(respuesta.data[0]=='Guardado' || respuesta.data[0]=='Ya Contestado'){
+                                this.respuesta= 'si realizado'
+                                this.calificacion= respuesta.data[1]
+                            }
+                      
+                    })
+                    
+               }else{
+                        if(this.respuestaUno==''){this.mensaje = "Conteste la pregunta No. 1"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                            if(this.respuestaDos==''){this.mensaje = "Conteste la pregunta No. 2"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                if(this.respuestaTres==''){this.mensaje = "Conteste la pregunta No. 3"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                    if(this.respuestaCuatro==''){this.mensaje = "Conteste la pregunta No. 4"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                        if(this.respuestaCinco==''){this.mensaje = "Conteste la pregunta No. 5"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                            if(this.respuestaSeis==''){this.mensaje = "Conteste la pregunta No. 6"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                                if(this.respuestaSiete==''){this.mensaje = "Conteste la pregunta No. 7"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                                    if(this.respuestaOcho==''){this.mensaje = "Conteste la pregunta No. 8"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                                        if(this.respuestaNueve==''){this.mensaje = "Conteste la pregunta No. 9"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
+                                                            if(this.respuestaDiez==''){this.mensaje = "Conteste la pregunta No. 10"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+               }
+            }//fin guardarRespuesta
+        }//fin methods
     }
 
     var mountedApp = Vue.createApp(app).mount('#app');
-    /*const app = {
-        data(){
-            return{
 
-            }
-        },
-        mounted(){
-        }
-    }
-
-    var mountedApp = Vue.createApp(app).mount('#app');*/
 </script>
 
 </html>

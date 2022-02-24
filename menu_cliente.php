@@ -36,6 +36,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	.opciones{
         font-family: 'Righteous', cursive;
     }
+
+
 /*Pequenia*/
 @media (min-width: 0px) { 
 	.titulos{margin-top:130px; margin-left: 0px; font-size:30px;}

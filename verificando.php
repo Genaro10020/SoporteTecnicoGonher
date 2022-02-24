@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 include "conexionGhoner.php";
 header("Content-Type: application/json");

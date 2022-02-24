@@ -196,58 +196,58 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 <div class="h-90 col-12 col-xl-9 col-xxl-8 flex-column  align-items-center align-items-xxl-end d-flex align-content-center justify-content-center  text-center  mt-5 mt-lg-1 mt-5 mt-xl-0">
                     
              
-                        <div class="encabezado1 "><p class="pregunta">¿Que es una acumulador?</p></div>
+                        <div class="encabezado1 "><p class="pregunta">¿Que es una acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaUno}}</p></div>
                         <div class="divrespuesta1 text-start ">
-                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
-                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="respuesta" value="azul" style="color:blue;" > Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
+                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="1" value="1" v-model="respuestaUno" style="color:blue;" > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
+                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="2" value="2" v-model="respuestaUno" style="color:blue;" > Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
                         </div>
-                        <div class="encabezado2 "><p class="pregunta">¿Cual es la función principal del acumulador de arranque?</p></div>
+                        <div class="encabezado2 "><p class="pregunta">¿Cual es la función principal del acumulador de arranque? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaDos}}</p></div>
                         <div class="divrespuesta2 text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="azul" style="color:blue;" > Liberar energía para mantener encendidos los accesorios. </p></label><br>
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="azul" style="color:blue;"> Liberar energía para arrancar el motor. </p></label><!--Correcta-->
+                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="1" v-model="respuestaDos"  style="color:blue;" > Liberar energía para mantener encendidos los accesorios. </p></label><br>
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="2" v-model="respuestaDos" style="color:blue;"> Liberar energía para arrancar el motor. </p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado3 "><p class="pregunta">¿Menciona algunos componentes del acumulador?</p></div>
+                        <div class="encabezado3 "><p class="pregunta">¿Menciona algunos componentes del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaTres}}</p></div>
                         <div class="divrespuesta3  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="azul" style="color:blue;" > Caja/tapa, acido sulfúrico, placas, conectores y etiquetas.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="azul" style="color:blue;" > Caja/tapa, cables, regulador, conectores y etiquetas.</p></label>
+                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="1"  v-model="respuestaTres"style="color:blue;" > Caja/tapa, acido sulfúrico, placas, conectores y etiquetas.</p></label><br><!--Correcta-->
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="2" v-model="respuestaTres" style="color:blue;" > Caja/tapa, cables, regulador, conectores y etiquetas.</p></label>
                         </div>
-                        <div class="encabezado4 "><p class="pregunta">¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios?</p></div>
+                        <div class="encabezado4 "><p class="pregunta">¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaCuatro}}</p></div>
                         <div class="divrespuesta4  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="azul" style="color:blue;" > 6 Celdas.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="azul" style="color:blue;" > 4 Celdas.</p></label>
+                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="1" v-model="respuestaCuatro" style="color:blue;" > 6 Celdas.</p></label><br><!--Correcta-->
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="2" v-model="respuestaCuatro" style="color:blue;" > 4 Celdas.</p></label>
                         </div>
-                        <div class="encabezado5 "><p class="pregunta">Para asignar el número a las celdas ¿Cuál es la forma correcta ?</p></div>
+                        <div class="encabezado5 "><p class="pregunta">Para asignar el número a las celdas ¿Cuál es la forma correcta? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaCinco}}</p></div>
                         <div class="divrespuesta5  text-start">
-                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="azul" style="color:blue;" > Enumerar la celda #1 de positivo a negativo.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="azul" style="color:blue;" > Enumerar la celda #1 de negativo a positivo.</p></label>
+                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="1" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de positivo a negativo.</p></label><br><!--Correcta-->
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="2" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de negativo a positivo.</p></label>
                         </div>
-                        <div class="encabezado6 "><p class="pregunta">¿Cómo están conectadas las celdas en el interior del acumulador?</p></div>
+                        <div class="encabezado6 "><p class="pregunta">¿Cómo están conectadas las celdas en el interior del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaSeis}}</p></div>
                         <div class="divrespuesta6  text-start">
-                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="azul" style="color:blue;" > Conexión en paralelo</p></label><br>
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="azul" style="color:blue;" > Conexión en serie</p></label><!--Correcta-->
+                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="1" v-model="respuestaSeis" style="color:blue;" > Conexión en paralelo</p></label><br>
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="2" v-model="respuestaSeis" style="color:blue;" > Conexión en serie</p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado7 "><p class="pregunta">¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz?</p></div>
+                        <div class="encabezado7 "><p class="pregunta">¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaSiete}}</p></div>
                         <div class="divrespuesta7  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="azul" style="color:blue;" > Marcha, generador/alternador, regulador de voltaje y acumulador.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="azul" style="color:blue;" > Marcha, generador/alternador, compresor y acumulador.</p></label>
+                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="1" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, regulador de voltaje y acumulador.</p></label><br><!--Correcta-->
+                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="2" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, compresor y acumulador.</p></label>
                         </div>
-                        <div class="encabezado8 "><p class="pregunta">¿Cuando un acumulador esta al 100% cargado, qué voltaje representa?</p></div>
+                        <div class="encabezado8 "><p class="pregunta">¿Cuando un acumulador esta al 100% cargado, qué voltaje representa? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaOcho}}</p></div>
                         <div class="divrespuesta8  text-start">
-                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="azul" style="color:blue;" > 12.75 Volts.</p></label><br><!--Correcta-->
-                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="azul" style="color:blue;" > 12.55 Volts.</p></label>
+                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="1" v-model="respuestaOcho"  style="color:blue;" > 12.75 Volts.</p></label><br><!--Correcta-->
+                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="2" v-model="respuestaOcho" style="color:blue;" > 12.55 Volts.</p></label>
                         </div>
-                        <div class="encabezado9 "><p class="pregunta">¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda?</p></div>
+                        <div class="encabezado9 "><p class="pregunta">¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaNueve}}</p></div>
                         <div class="divrespuesta9  text-start">
-                            <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="azul" style="color:blue;" > 11.90 Volts</p></label><br>
-                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="azul" style="color:blue;" > 10.5 Volts</p></label><!--Correcta-->
+                            <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="1"  v-model="respuestaNueve" style="color:blue;" > 11.90 Volts</p></label><br>
+                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="2" v-model="respuestaNueve" style="color:blue;" > 10.5 Volts</p></label><!--Correcta-->
                         </div>
-                        <div class="encabezado10 "><p class="pregunta">¿Cómo esta compuesto el electrolito?</p></div>
+                        <div class="encabezado10 "><p class="pregunta">¿Cómo esta compuesto el electrolito? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  0pción:{{respuestaDiez}}</p></div>
                         <div class="divrespuesta10  text-start">
-                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="azul" style="color:blue;" > 35% agua/65%acido</p></label><br>
-                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="azul" style="color:blue;" > 65% agua/35%acido</p></label><!--Correcta-->
+                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="1" v-model="respuestaDiez" style="color:blue;" > 35% agua/65%acido</p></label><br>
+                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="2" v-model="respuestaDiez" style="color:blue;" > 65% agua/35%acido</p></label><!--Correcta-->
                         </div>
-                        <div class="div_boton d-flex justify-content-center">
-                                 <div id="boton" class="miboton  animate__animated animate__pulse mt-3  ">Guardar</div>
+                        <div class="div_boton d-flex justify-content-center" >
+                                 <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton  animate__animated animate__pulse mt-3">Guardar</div>
                         </div>
 
                        
@@ -257,6 +257,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 
                 <div class="col-12 col-xl-3 col-xxl-4 my-auto d-flex justify-content-center justify-content-xxl-start ">
                      <h1 class="titulos animate__animated animate__pulse text-center text-xxl-start ms-xxl-0 text-light mt-5 ">TEST INICIAL</h1>
+                     
                 </div> 
             </div>  
 
@@ -270,32 +271,67 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 </body>
 <script>
 
-const app ={
-    data(){
-        return{
-            saludo: 'hola'
+
+    const app ={
+        data(){
+            return{
+                respuestaUno: '',
+                respuestaDos: '',
+                respuestaTres: '',
+                respuestaCuatro: '',
+                respuestaCinco: '',
+                respuestaSeis: '',
+                respuestaSiete: '',
+                respuestaOcho: '',
+                respuestaNueve: '',
+                respuestaDiez: '', 
+                saludo: 'hola',
+                suma: 0,
+                respuesta: null
+            }
+        },
+        mounted(){
+            axios.post('verificando_testInicial.php',{
+                dato: ''
+            }).then(respuesta=>{
+                var campo_respuestas
+                campo_respuestas=respuesta.data.RespuestasTI
+                if(campo_respuestas==''){
+                    console.log('No se ha realizado el test Inical')
+                    this.respuesta= 'no realizado'
+                }else{
+                    console.log('Si test Inical Completado')
+                    this.respuesta= 'si realizado'
+                }
+                //this.respuesta='sin realizar'
+            }).catch(function (error){
+					console.log(error)
+			});
+
+        },
+        methods:{
+            guardarRespuestas(){
+               var valor1 = parseInt(this.respuestaUno)
+               var valor2 = parseInt(this.respuestaUno)
+               
+                console.log(valor1+valor2)
+        
+            }
         }
-    },
-    mounted(){
-
-    },
-    methods:{
-
     }
-}
 
-var mountedApp = Vue.createApp(app).mount('#app');
-/*const app = {
-	data(){
-		return{
+    var mountedApp = Vue.createApp(app).mount('#app');
+    /*const app = {
+        data(){
+            return{
 
-		}
-	},
-	mounted(){
-	}
-}
+            }
+        },
+        mounted(){
+        }
+    }
 
-var mountedApp = Vue.createApp(app).mount('#app');*/
+    var mountedApp = Vue.createApp(app).mount('#app');*/
 </script>
 
 </html>

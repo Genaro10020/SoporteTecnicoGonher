@@ -339,7 +339,7 @@ const app = {
 
 				this.usuario=document.getElementById("user").value;
 				//console.log(this.usuario)
-				axios.post('dato_menu_cliente.php', {
+				 axios.post('dato_menu_cliente.php', {
 					usu:  this.usuario
 				}).then(response => {
 					

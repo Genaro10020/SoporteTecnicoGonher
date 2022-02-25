@@ -70,9 +70,10 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     text-shadow: 1px 1px 0px black;
                     color:#b2cae6;
                     
+                    
                 }
                 .respuestas{
-                    color: #bfab78; 
+                    color: #bfab78;
                     margin-left:4px; 
                     animation: fadeInDown;
                     animation-duration: 2s;
@@ -198,59 +199,59 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 <div class="h-90 col-12 col-xl-9 col-xxl-8 flex-column  align-items-center align-items-xxl-end d-flex align-content-center justify-content-center  text-center  mt-5 mt-lg-1 mt-5 mt-xl-0">
                     
              
-                        <div class="encabezado1 "><p class="pregunta">1.- ¿Que es una acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"> {{respuestaUno}}</label></p></div>
+                        <div class="encabezado1 "><p class="pregunta">1.- ¿Que es una acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"> </label></p></div>
                         <div class="divrespuesta1 text-start ">
-                             <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="1" value="1" v-model="respuestaUno" style="color:blue;" required > Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
-                            <label><p class="respuestas m-0 ms-2 lh-sm"><input type="radio" name="2" value="2" v-model="respuestaUno" style="color:blue;" required> Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
+                             <label><p id="x1" class="respuestas m-0 ms-2 lh-sm"><input type="radio" @click="resetmessage" name="respuesta1" value="1" v-model="respuestaUno" :disabled="deshabilitar"> Es un dispositivo que por medio de una reacción química, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label><!--Correcta-->
+                            <label><p id="x2" class="respuestas m-0 ms-2 lh-sm"><input type="radio"  @click="resetmessage" name="respuesta1" value="2" v-model="respuestaUno" :disabled="deshabilitar"> Es un dispositivo que por medio de una reacción física, almacena energía y la libera en energía eléctrica cuando es requerida.</p></label>
                         </div>
-                        <div class="encabezado2 "><p class="pregunta">2.- ¿Cual es la función principal del acumulador de arranque? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaDos}}</label></p></div>
+                        <div class="encabezado2 "><p class="pregunta">2.- ¿Cual es la función principal del acumulador de arranque? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta2 text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="1" v-model="respuestaDos"  style="color:blue;" > Liberar energía para mantener encendidos los accesorios. </p></label><br>
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta2" value="2" v-model="respuestaDos" style="color:blue;"> Liberar energía para arrancar el motor. </p></label><!--Correcta-->
+                            <label><p id="x3" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta2" value="1" v-model="respuestaDos"  :disabled="deshabilitar"> Liberar energía para mantener encendidos los accesorios. </p></label><br>
+                            <label> <p id="x4" class="respuestas m-0 ms-2"><input type="radio" @click="resetmessage" name="respuesta2" value="2" v-model="respuestaDos" :disabled="deshabilitar"> Liberar energía para arrancar el motor. </p></label>
                         </div>
-                        <div class="encabezado3 "><p class="pregunta">3.- ¿Menciona algunos componentes del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaTres}}</label></p></div>
+                        <div class="encabezado3 "><p class="pregunta">3.- ¿Menciona algunos componentes del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta3  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="1"  v-model="respuestaTres"style="color:blue;" > Caja/tapa, acido sulfúrico, placas, conectores y etiquetas.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta3" value="2" v-model="respuestaTres" style="color:blue;" > Caja/tapa, cables, regulador, conectores y etiquetas.</p></label>
+                            <label><p id="x5" class="respuestas m-0 ms-2"><input type="radio" @click="resetmessage" name="respuesta3" value="1"  v-model="respuestaTres":disabled="deshabilitar"> Caja/tapa, acido sulfúrico, placas, conectores y etiquetas.</p></label><br>
+                            <label> <p  id="x6" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta3" value="2" v-model="respuestaTres" :disabled="deshabilitar"> Caja/tapa, cables, regulador, conectores y etiquetas.</p></label>
                         </div>
-                        <div class="encabezado4 "><p class="pregunta">4.- ¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaCuatro}}</label></p></div>
+                        <div class="encabezado4 "><p class="pregunta">4.- ¿Cuántas celdas o vasos tienen los acumuladores de 12 voltios? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta4  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="1" v-model="respuestaCuatro" style="color:blue;" > 6 Celdas.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta4" value="2" v-model="respuestaCuatro" style="color:blue;" > 4 Celdas.</p></label>
+                            <label><p id="x7" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta4" value="1" v-model="respuestaCuatro" :disabled="deshabilitar"> 6 Celdas.</p></label><br>
+                            <label> <p id="x8" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta4" value="2" v-model="respuestaCuatro" :disabled="deshabilitar"> 4 Celdas.</p></label>
                         </div>
-                        <div class="encabezado5 "><p class="pregunta">5.- Para asignar el número a las celdas ¿Cuál es la forma correcta? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaCinco}}</label></p></div>
+                        <div class="encabezado5 "><p class="pregunta">5.- Para asignar el número a las celdas ¿Cuál es la forma correcta? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta5  text-start">
-                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="1" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de positivo a negativo.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta5" value="2" v-model="respuestaCinco" style="color:blue;" > Enumerar la celda #1 de negativo a positivo.</p></label>
+                             <label><p id="x9" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta5" value="1" v-model="respuestaCinco" :disabled="deshabilitar"> Enumerar la celda #1 de positivo a negativo.</p></label><br>
+                            <label> <p id="x10" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta5" value="2" v-model="respuestaCinco" :disabled="deshabilitar"> Enumerar la celda #1 de negativo a positivo.</p></label>
                         </div>
-                        <div class="encabezado6 "><p class="pregunta">6.- ¿Cómo están conectadas las celdas en el interior del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaSeis}}</label></p></div>
+                        <div class="encabezado6 "><p class="pregunta">6.- ¿Cómo están conectadas las celdas en el interior del acumulador? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta6  text-start">
-                             <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="1" v-model="respuestaSeis" style="color:blue;" > Conexión en paralelo</p></label><br>
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta6" value="2" v-model="respuestaSeis" style="color:blue;" > Conexión en serie</p></label><!--Correcta-->
+                             <label><p id="x11" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta6" value="1" v-model="respuestaSeis" :disabled="deshabilitar"> Conexión en paralelo</p></label><br>
+                            <label> <p id="x12" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta6" value="2" v-model="respuestaSeis" :disabled="deshabilitar"> Conexión en serie</p></label>
                         </div>
-                        <div class="encabezado7 "><p class="pregunta">7.- ¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaSiete}}</label></p></div>
+                        <div class="encabezado7 "><p class="pregunta">7.- ¿Cuáles son las 4 subsistemas del sistema eléctronico automotriz? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta7  text-start">
-                            <label><p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="1" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, regulador de voltaje y acumulador.</p></label><br><!--Correcta-->
-                            <label> <p class="respuestas m-0 ms-2"><input type="radio" name="respuesta7" value="2" v-model="respuestaSiete" style="color:blue;" > Marcha, generador/alternador, compresor y acumulador.</p></label>
+                            <label><p id="x13" class="respuestas m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta7" value="1" v-model="respuestaSiete" :disabled="deshabilitar"> Marcha, generador/alternador, regulador de voltaje y acumulador.</p></label><br>
+                            <label> <p id="x14" class="respuestas m-0 ms-2"><input type="radio" @click="resetmessage"  name="respuesta7" value="2" v-model="respuestaSiete" :disabled="deshabilitar"> Marcha, generador/alternador, compresor y acumulador.</p></label>
                         </div>
-                        <div class="encabezado8 "><p class="pregunta">8.- ¿Cuando un acumulador esta al 100% cargado, qué voltaje representa? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaOcho}}</label></p></div>
+                        <div class="encabezado8 "><p class="pregunta">8.- ¿Cuando un acumulador esta al 100% cargado, qué voltaje representa? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta8  text-start">
-                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="1" v-model="respuestaOcho"  style="color:blue;" > 12.75 Volts.</p></label><br><!--Correcta-->
-                             <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta8" value="2" v-model="respuestaOcho" style="color:blue;" > 12.55 Volts.</p></label>
+                             <label><p id="x15" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta8" value="1" v-model="respuestaOcho"  :disabled="deshabilitar"> 12.75 Volts.</p></label><br>
+                             <label> <p id="x16" class="respuestas  m-0 ms-2"><input type="radio" @click="resetmessage"  name="respuesta8" value="2" v-model="respuestaOcho" :disabled="deshabilitar"> 12.55 Volts.</p></label>
                         </div>
-                        <div class="encabezado9 "><p class="pregunta">9.- ¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaNueve}}</label></p></div>
+                        <div class="encabezado9 "><p class="pregunta">9.- ¿Qué voltaje presenta normalmente un acumulador que tiene corto en una celda? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta9  text-start">
-                            <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="1"  v-model="respuestaNueve" style="color:blue;" > 11.90 Volts</p></label><br>
-                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta9" value="2" v-model="respuestaNueve" style="color:blue;" > 10.5 Volts</p></label><!--Correcta-->
+                            <label><p id="x17" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta9" value="1"  v-model="respuestaNueve" :disabled="deshabilitar"> 11.90 Volts</p></label><br>
+                            <label> <p id="x18" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta9" value="2" v-model="respuestaNueve" :disabled="deshabilitar"> 10.5 Volts</p></label>
                         </div>
-                        <div class="encabezado10 "><p class="pregunta">10.- ¿Cómo esta compuesto el electrolito? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info">{{respuestaDiez}}</label></p></div>
+                        <div class="encabezado10 "><p class="pregunta">10.- ¿Cómo esta compuesto el electrolito? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta10  text-start">
-                             <label><p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="1" v-model="respuestaDiez" style="color:blue;" > 35% agua/65%acido</p></label><br>
-                            <label> <p class="respuestas  m-0 ms-2"><input type="radio" name="respuesta10" value="2" v-model="respuestaDiez" style="color:blue;" > 65% agua/35%acido</p></label><!--Correcta-->
+                             <label><p id="x19" class="respuestas  m-0 ms-2" ><input type="radio"  @click="resetmessage" name="respuesta10" value="1" v-model="respuestaDiez" :disabled="deshabilitar"> 35% agua/65%acido</p></label><br>
+                            <label> <p id="x20" class="respuestas  m-0 ms-2" ><input type="radio" @click="resetmessage"  name="respuesta10" value="2" v-model="respuestaDiez" :disabled="deshabilitar" > 65% agua/35%acido</p></label>
                         </div>
                         <div class="div_boton d-flex justify-content-center" >
                                  <div id="mensaje" class="mensajes text-info me-2">{{mensaje}}</div>
-                                 <div class="calificacion text-warning text-info" v-if="calificacion!=0">TU CALIFICACIÓN: <label class="text-info">{{calificacion}} ACIERTOS<label></div>
+                                 <div class="calificacion text-warning text-info" v-if="calificacion!=''">TU CALIFICACIÓN: <label class="text-success fs-4">{{calificacion}} ACIERTOS<label></div>
                                  <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton animate__animated animate__pulse mt-4">Guardar</div>
                         </div>
 
@@ -279,6 +280,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     const app ={
         data(){
             return{
+                
                 campo_respuestas: '',
                 respuestaUno: '',
                 respuestaDos: '',
@@ -290,54 +292,58 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 respuestaOcho: '',
                 respuestaNueve: '',
                 respuestaDiez: '', 
-                saludo: 'hola',
                 suma: 0,
                 respuesta: null,
                 mensaje: '',
-                calificacion: 0
+                calificacion: '',
+                deshabilitar: false,
             }
         },
         mounted(){
-            axios.post('verificando_testInicial.php',{
-                dato: ''
-            }).then(respuesta=>{
-             
-                this.campo_respuestas=respuesta.data.RespuestasTI
-                console.log('consulta inicial'+this.campo_respuestas)
+            axios.post('verificar_guardar_ti.php',{
+                accion: 'verificar'
+            }).then(response=>{
+                this.campo_respuestas=response.data[1]
                 if(this.campo_respuestas==''){
-                    console.log('No se ha realizado el test Inical')
+                    //console.log("no realizado")
                     this.respuesta= 'no realizado'
                 }else{
-                    console.log('Si test Inical Completado')
-                    this.traerRespuestas()
+                    //this.color="red"
+                    console.log(response.data)
+                    this.calificacion= response.data[1]
+                    this.respuestaUno= response.data[2]
+                    this.respuestaDos= response.data[3]
+                    this.respuestaTres= response.data[4]
+                    this.respuestaCuatro= response.data[5]
+                    this.respuestaCinco= response.data[6]
+                    this.respuestaSeis= response.data[7]
+                    this.respuestaSiete= response.data[8]
+                    this.respuestaOcho= response.data[9]
+                    this.respuestaNueve= response.data[10]
+                    this.respuestaDiez= response.data[11]
+                    if(response.data[2]==response.data[12]){ document.getElementById("x1").style.color="green"; }else{document.getElementById("x2").style.color="#b52c0f";}
+                    if(response.data[3]==response.data[13]){ document.getElementById("x4").style.color="green"; }else{document.getElementById("x3").style.color="#b52c0f";}
+                    if(response.data[4]==response.data[12]){ document.getElementById("x5").style.color="green"; }else{document.getElementById("x6").style.color="#b52c0f";}
+                    if(response.data[5]==response.data[12]){ document.getElementById("x7").style.color="green"; }else{document.getElementById("x8").style.color="#b52c0f";}
+                    if(response.data[6]==response.data[12]){ document.getElementById("x9").style.color="green"; }else{document.getElementById("x10").style.color="#b52c0f";}
+                    if(response.data[7]==response.data[13]){ document.getElementById("x12").style.color="green"; }else{document.getElementById("x11").style.color="#b52c0f";}
+                    if(response.data[8]==response.data[12]){ document.getElementById("x13").style.color="green"; }else{document.getElementById("x14").style.color="#b52c0f";}
+                    if(response.data[9]==response.data[12]){ document.getElementById("x15").style.color="green"; }else{document.getElementById("x16").style.color="#b52c0f";}
+                    if(response.data[10]==response.data[13]){ document.getElementById("x18").style.color="green";}else{document.getElementById("x17").style.color="#b52c0f"; }
+                    if(response.data[11]==response.data[13]){ document.getElementById("x20").style.color="green"; }else{document.getElementById("x19").style.color="#b52c0f";}
+                    this.deshabilitar=true
                 }
-                //this.respuesta='sin realizar'
             }).catch(function (error){
 					console.log(error)
 			});
-
         },
         methods:{
-
-            async traerRespuestas(){
-                    //console.log('todas estan contestadadas')
-                    this.mensaje=''; 
-                    axios.post('guardar_test_inicial.php',{
-                    }).then(respuesta =>{
-                        console.log(respuesta.data)
-                            if(respuesta.data[0]=='Guardado' || respuesta.data[0]=='Ya Contestado'){
-                                this.respuesta= 'si realizado'
-                                this.calificacion= respuesta.data[1]
-                            }
-                    })
-            },
-
-
             async guardarRespuestas(){
                if(this.respuestaUno !='' && this.respuestaDos !='' && this.respuestaTres !='' && this.respuestaCuatro!='' && this.respuestaCinco!='' && this.respuestaSeis!='' && this.respuestaSiete!='' && this.respuestaOcho!='' && this.respuestaNueve!='' && this.respuestaDiez!=''){ 
                     //console.log('todas estan contestadadas')
                     this.mensaje=''; 
-                    axios.post('guardar_test_inicial.php',{
+                    axios.post('verificar_guardar_ti.php',{
+                        accion: 'guardar',
                         respuesta1: this.respuestaUno,
                         respuesta2: this.respuestaDos,
                         respuesta3: this.respuestaTres,
@@ -350,14 +356,32 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                         respuesta10: this.respuestaDiez
                     }).then(respuesta =>{
                         console.log(respuesta.data)
-                       
                             if(respuesta.data[0]=='Guardado' || respuesta.data[0]=='Ya Contestado'){
                                 this.respuesta= 'si realizado'
                                 this.calificacion= respuesta.data[1]
+                                this.respuestaUno= respuesta.data[2]
+                                this.respuestaDos= respuesta.data[3]
+                                this.respuestaTres= respuesta.data[4]
+                                this.respuestaCuatro= respuesta.data[5]
+                                this.respuestaCinco= respuesta.data[6]
+                                this.respuestaSeis= respuesta.data[7]
+                                this.respuestaSiete= respuesta.data[8]
+                                this.respuestaOcho= respuesta.data[9]
+                                this.respuestaNueve= respuesta.data[10]
+                                this.respuestaDiez= respuesta.data[11]
+                                if(respuesta.data[2]==respuesta.data[12]){ document.getElementById("x1").style.color="green"; }else{document.getElementById("x2").style.color="#b52c0f";}
+                                if(respuesta.data[3]==respuesta.data[13]){ document.getElementById("x4").style.color="green"; }else{document.getElementById("x3").style.color="#b52c0f";}
+                                if(respuesta.data[4]==respuesta.data[12]){ document.getElementById("x5").style.color="green"; }else{document.getElementById("x6").style.color="#b52c0f";}
+                                if(respuesta.data[5]==respuesta.data[12]){ document.getElementById("x7").style.color="green"; }else{document.getElementById("x8").style.color="#b52c0f";}
+                                if(respuesta.data[6]==respuesta.data[12]){ document.getElementById("x9").style.color="green"; }else{document.getElementById("x10").style.color="#b52c0f";}
+                                if(respuesta.data[7]==respuesta.data[13]){ document.getElementById("x12").style.color="green"; }else{document.getElementById("x11").style.color="#b52c0f";}
+                                if(respuesta.data[8]==respuesta.data[12]){ document.getElementById("x13").style.color="green"; }else{document.getElementById("x14").style.color="#b52c0f";}
+                                if(respuesta.data[9]==respuesta.data[12]){ document.getElementById("x15").style.color="green"; }else{document.getElementById("x16").style.color="#b52c0f";}
+                                if(respuesta.data[10]==respuesta.data[13]){ document.getElementById("x18").style.color="green";}else{document.getElementById("x17").style.color="#b52c0f"; }
+                                if(respuesta.data[11]==respuesta.data[13]){ document.getElementById("x20").style.color="green"; }else{document.getElementById("x19").style.color="#b52c0f";}
+                                this.deshabilitar=true
                             }
-                      
                     })
-                    
                }else{
                         if(this.respuestaUno==''){this.mensaje = "Conteste la pregunta No. 1"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
                             if(this.respuestaDos==''){this.mensaje = "Conteste la pregunta No. 2"; var mensaje = document.getElementById("mensaje"); mensaje.classList.add("mensajemoviemiento");}else{
@@ -379,7 +403,10 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                             }
                         }
                }
-            }//fin guardarRespuesta
+            },//fin guardarRespuesta
+            resetmessage(){
+                this.mensaje = ''
+            }
         }//fin methods
     }
 

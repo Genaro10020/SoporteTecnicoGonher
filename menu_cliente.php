@@ -227,7 +227,6 @@ background-size: cover;" >
 											<img src="Imagenes/capacitacion.png" alt="" class="img-fluid w-50 my-4 mx-4">
 										</div>
 								    </a>
-									
 								</div>
 							</div>
 

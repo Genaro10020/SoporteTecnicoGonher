@@ -38,6 +38,11 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 
     }
 
+    .calificacion {
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    }
+
   
     /*Pequenia*/
     @media (min-width: 0px) { 
@@ -251,7 +256,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                         </div>
                         <div class="div_boton d-flex justify-content-center" >
                                  <div id="mensaje" class="mensajes text-info me-2">{{mensaje}}</div>
-                                 <div class="calificacion text-warning text-info" v-if="calificacion!=''">TU CALIFICACIÓN: <label class="text-success fs-4">{{calificacion}} ACIERTOS<label></div>
+                                 <div class="calificacion text-warning text-info" v-if="calificacion!=''">TU CALIFICACIÓN:  &nbsp; <label  class="text-success fs-4">{{calificacion}} ACIERTOS<label></div>
                                  <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton animate__animated animate__pulse mt-4">Guardar</div>
                         </div>
 
@@ -309,6 +314,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     this.respuesta= 'no realizado'
                 }else{
                     //this.color="red"
+                    
+                    
                     console.log(response.data)
                     this.calificacion= response.data[1]
                     this.respuestaUno= response.data[2]
@@ -332,6 +339,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     if(response.data[10]==response.data[13]){ document.getElementById("x18").style.color="green";}else{document.getElementById("x17").style.color="#b52c0f"; }
                     if(response.data[11]==response.data[13]){ document.getElementById("x20").style.color="green"; }else{document.getElementById("x19").style.color="#b52c0f";}
                     this.deshabilitar=true
+
                 }
             }).catch(function (error){
 					console.log(error)
@@ -357,6 +365,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                     }).then(respuesta =>{
                         console.log(respuesta.data)
                             if(respuesta.data[0]=='Guardado' || respuesta.data[0]=='Ya Contestado'){
+                                
                                 this.respuesta= 'si realizado'
                                 this.calificacion= respuesta.data[1]
                                 this.respuestaUno= respuesta.data[2]

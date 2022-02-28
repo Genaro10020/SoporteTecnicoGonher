@@ -256,10 +256,9 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                         </div>
                         <div class="div_boton d-flex justify-content-center" >
                                  <div id="mensaje" class="mensajes text-info me-2">{{mensaje}}</div>
-                                 <div class="calificacion text-warning text-info" v-if="calificacion!=''">TU CALIFICACIÓN:  &nbsp; <label  class="text-success fs-4">{{calificacion}} ACIERTOS<label></div>
+                                 <div class="calificacion text-warning text-info" v-if="calificacion!=''">TU CALIFICACIÓN:  &nbsp; <label  class="text-info fs-4">{{calificacion}} ACIERTOS<label></div>
                                  <div v-if="respuesta=='no realizado'" @click="guardarRespuestas" id="boton" class="miboton animate__animated animate__pulse mt-4">Guardar</div>
                         </div>
-
                        
                     <img class="formulario position-absolute" src="Imagenes/formulario.png" alt="">
                 </div>

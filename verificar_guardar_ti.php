@@ -46,14 +46,15 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                                             $respuesta[0] = "Guardado";
                                             $respuesta[1] = $calificacion;
                                             $respuesta[2] = $respueta1;
-                                            $respuesta[3] = $respueta1;
-                                            $respuesta[4] = $respueta1;
-                                            $respuesta[5] = $respueta1;
-                                            $respuesta[6] = $respueta1;
-                                            $respuesta[7] = $respueta1;
-                                            $respuesta[8] = $respueta1;
-                                            $respuesta[9] = $respueta1;
-                                            $respuesta[10] = $respueta1;
+                                            $respuesta[3] = $respueta2;
+                                            $respuesta[4] = $respueta3;
+                                            $respuesta[5] = $respueta4;
+                                            $respuesta[6] = $respueta5;
+                                            $respuesta[7] = $respueta6;
+                                            $respuesta[8] = $respueta7;
+                                            $respuesta[9] = $respueta8;
+                                            $respuesta[10] = $respueta9;
+                                            $respuesta[11] = $respueta10;
                                             $respuesta[12]="1";
                                             $respuesta[13]="2";
                                         }else{

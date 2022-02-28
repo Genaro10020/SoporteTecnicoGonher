@@ -1,7 +1,8 @@
 <?php
 session_start();
 if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
-
+$tipo=$_GET['tipo'];
+$video=$_GET['video'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +30,10 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <style>
-	.titulos, .miboton {
-                font-family: 'Orbitron', sans-serif;
-                text-shadow:-1px 2px 0px black;
-            }       
+.titulos, .miboton {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow:-1px 2px 0px black;
+}       
 
 .miboton {
     
@@ -57,7 +58,6 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
 }
 
-
 /*Pequenia*/
 @media (min-width: 0px) { 
     .texto_indicaciones{color:#76e6b9;font-size: 1em; font-weight: bold; font-family: 'Rowdies', cursive; text-shadow:-2px 2px 2px black;}
@@ -66,13 +66,10 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 }
 /*SM*/	
 @media (min-width: 576px) { 
-
 }
 
 /*MD Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
-    
-   
 }
 
 /*LG Large LG devices (desktops, 992px and up)*/
@@ -89,17 +86,13 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
 /*XXL XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
-    
  }
-
-
-
 </style>
 
 
-<body style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
+<body  style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
  background-repeat: no-repeat; background-size: 100%"  >
-<div class="container-fluid" oncontextmenu="return false" onkeydown="return false">
+<div id="app" class="container-fluid" oncontextmenu="return false" onkeydown="return false">
 
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
@@ -118,37 +111,34 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
  
 			<div  class="row mt-xl-2 "><!--contenido-->
-                           
-
                                     <div class="texto_indicaciones text-center animate__animated animate__zoomIn">
                                          Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad.
                                     </div>
                                     <div class=" d-flex justify-content-center mt-5">
-                                        <div id="boton" onclick="reproducir();" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>
+                                        <div id="boton" @click="reproducir" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>
                                     </div>
                                     <div class="d-flex justify-content-center ">
                                         <video id="verificar"  class="etiquetavideo" opreload="auto">
                                                 <source id="video" src="videos/Introduccion.mp4" type="video/mp4">
                                         </video> 
+                                        {{get}}
                                     </div>
             </div>  
 
-                             
+          
             <div class="row justify-content-end mt-5 " style="min-height: 10vh;">	
                             <div class="col-12 text-light d-flex ">
                             <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                             </div>
             </div>
-	      
+	      <input id="tipo" type="hidden" value="<?php echo $tipo; ?>">
+          <input id="video"  type="hidden" value="<?php echo $video; ?>">
  </div>
 </body>
 
  
 <script>
-
-
-
-function reproducir(){
+/*function reproducir(){
     var boton = document.getElementById("boton").style.visibility="hidden";
     var video = document.getElementById("verificar"); 
     video.load();
@@ -159,28 +149,47 @@ function reproducir(){
 function verifica_fin(){
             console.log('verificando..');
            if (video.ended){clearInterval(t)}
-       }
+       }*/
 
 
 
 const app = {
 	data(){
 		return{
-
+            get:'',
+            video: ''
 		}
 	},
 	mounted(){
+       this.get = document.getElementById("tipo").value;
+        axios.post({
+
+        }).then({
+
+        }).catch(function(error){
+
+        })
         
 	},
     methods:{
         reproducir(){
-            
+            console.log('hola')
+            var boton = document.getElementById("boton").style.visibility="hidden";
+            var video = document.getElementById("verificar"); 
+            video.load();
+            video.play();
+            var t = setInterval(this.verifica_fin,700);
         },
+        verifica_fin(){
+            console.log('verificando..');
+           if (video.ended){
+               clearInterval(t); console.log("TERMINO");
+            }
+       }
         
 
     }
 }
-
 var mountedApp = Vue.createApp(app).mount('#app');
 </script>
 </html>

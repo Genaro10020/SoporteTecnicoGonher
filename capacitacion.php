@@ -138,7 +138,7 @@ if($respuesta=="continuar"){
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
                 <img  v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label>
-                <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
+                <img  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
                 <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative" style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
@@ -186,17 +186,89 @@ const app = {
      }).then(response =>{
         if(response.data != ''){
             console.log(response.data)
+                if(response.data.IntroVisto!=""){
+                       this.agregandoCSS(1)
+                }
+                if(response.data.Prueba1!=""){
+                       this.agregandoCSS(2)
+                }
+                if(response.data.Prueba2!=""){
+                       this.agregandoCSS(3)
+                }
+                if(response.data.Prueba3!=""){
+                       this.agregandoCSS(4)
+                }
+                if(response.data.Prueba4!=""){
+                       this.agregandoCSS(5)
+                }
+                if(response.data.Prueba5!=""){
+                       this.agregandoCSS(6)
+                }
+                if(response.data.Prueba6!=""){
+                       this.agregandoCSS(7)
+                }
+                if(response.data.Prueba7!=""){
+                       this.agregandoCSS(8)
+                }
+                if(response.data.Prueba8!=""){
+                       this.agregandoCSS(9)
+                }
+
+                
         }else{
             window.location.href = 'menu_cliente.php'
-            
         }
      }).catch(function (error) {
          console.log(error)
      })
 	},
     methods:{
+        agregandoCSS(num){
+            var icono = document.getElementsByClassName("icono_play");
+            icono[num].style.cursor='pointer'
+                if(num==1){
+                    this.vali_rutamarco= 'Imagenes/marcovideos.png'
+                    this.vali_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==2){
+                    this.sis_rutamarco= 'Imagenes/marcovideos.png'
+                    this.sis_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==3){
+                    this.ins_rutamarco= 'Imagenes/marcovideos.png'
+                    this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==4){
+                    this.medi_rutamarco= 'Imagenes/marcovideos.png'
+                    this.medi_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==4){
+                    this.ins_rutamarco= 'Imagenes/marcovideos.png'
+                    this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==5){
+                    this.nive_rutamarco= 'Imagenes/marcovideos.png'
+                    this.nive_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==6){
+                    this.colo_rutamarco= 'Imagenes/marcovideos.png'
+                    this.colo_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==7){
+                    this.den_rutamarco= 'Imagenes/marcovideos.png'
+                    this.den_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==8){
+                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
+                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==9){
+                    this.dia_rutamarco= 'Imagenes/marcovideos.png'
+                    this.dia_rutaplay='Imagenes/icono_reproducir.png'
+                }
+        },
         introduccion(){
-          window.location.href="video_actividades.php?tipo=Capacitacion & video=introduccion"
+          window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
         }
     },create(){
         

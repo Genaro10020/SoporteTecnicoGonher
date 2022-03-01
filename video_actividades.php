@@ -2,7 +2,13 @@
 session_start();
 if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 $tipo=$_GET['tipo'];
-$video=$_GET['video'];
+$video_solicitado=$_GET['video'];
+if($tipo=="capacitacion" || $tipo=="videos"){
+
+    if($video_solicitado=="introduccion" || $video_solicitado=="validacion"){
+
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +98,8 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
 <body  style="background: rgb(32,141,152); background: radial-gradient(circle, rgba(32,141,152,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,121,1) 90%, rgba(0,19,68,1) 100%);
  background-repeat: no-repeat; background-size: 100%"  >
-<div id="app" class="container-fluid" oncontextmenu="return false" onkeydown="return false">
+<div id="app" class="container-fluid" >
+<!--oncontextmenu="return false" onkeydown="return false"-->
 
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
@@ -105,7 +112,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
-                     <h1 class="titulos animate__animated animate__flash  text-light">INTRODUCCIÓN</h1>
+                     <h1 class="titulos animate__animated animate__flash  text-light">{{titulo}}</h1>
                 </div>
 			</div>
 
@@ -119,9 +126,10 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                     </div>
                                     <div class="d-flex justify-content-center ">
                                         <video id="verificar"  class="etiquetavideo" opreload="auto">
-                                                <source id="video" src="videos/Introduccion.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='introduccion'" id="video" src="videos/Introduccion.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='validacion'" id="video" src="videos/Validacion.mp4" type="video/mp4">
                                         </video> 
-                                        {{get}}
+                                        
                                     </div>
             </div>  
 
@@ -131,60 +139,62 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                             <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                             </div>
             </div>
-	      <input id="tipo" type="hidden" value="<?php echo $tipo; ?>">
-          <input id="video"  type="hidden" value="<?php echo $video; ?>">
+            <input id="valortipo" type="hidden" value="<?php echo $tipo;?>" class="form-control">
+            <input id="valorvideo" type="hidden" value="<?php echo $video_solicitado;?>" class="form-control">
+	      
+         
  </div>
 </body>
 
  
 <script>
-/*function reproducir(){
-    var boton = document.getElementById("boton").style.visibility="hidden";
-    var video = document.getElementById("verificar"); 
-    video.load();
-    video.play();
-    var t = setInterval('verifica_fin()',1000);
-}
-
-function verifica_fin(){
-            console.log('verificando..');
-           if (video.ended){clearInterval(t)}
-       }*/
-
-
 
 const app = {
 	data(){
 		return{
-            get:'',
-            video: ''
+            titulo:'INTRODUCCION',
+            tipo_solicitud:'',
+            video_solicitado: '',
+            revisando:0,
+            video:0,
 		}
 	},
 	mounted(){
-       this.get = document.getElementById("tipo").value;
-        axios.post({
-
-        }).then({
-
-        }).catch(function(error){
-
-        })
+       this.video_solicitado = document.getElementById("valorvideo").value;
+       this.tipo_solicitud = document.getElementById("valortipo").value;
+    
         
 	},
     methods:{
         reproducir(){
-            console.log('hola')
+            
             var boton = document.getElementById("boton").style.visibility="hidden";
-            var video = document.getElementById("verificar"); 
-            video.load();
-            video.play();
-            var t = setInterval(this.verifica_fin,700);
+            this.video = document.getElementById("verificar"); 
+            this.video.load();
+            this.video.play();
+            this.revisando = setInterval(this.verifica_fin,700);
+            
         },
-        verifica_fin(){
-            console.log('verificando..');
-           if (video.ended){
-               clearInterval(t); console.log("TERMINO");
-            }
+         verifica_fin(){
+                console.log('verificando..');
+                if (this.video.ended){
+                    console.log("TERMINO")
+                     clearInterval(this.revisando);
+                        axios.post('verificando_video.php',{
+                            tipo_var:this.tipo_solicitud,
+                            video_var:this.video_solicitado
+                        }).then(response =>{
+                            console.log(response.data)
+                            if(response.data=="Terminado Intro" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = 'capacitacion.php'
+                            }
+
+                        }).catch(function(error){
+
+                        })
+
+                 }
+       
        }
         
 
@@ -194,6 +204,12 @@ var mountedApp = Vue.createApp(app).mount('#app');
 </script>
 </html>
 <?php
+}else{
+    header("Location: menu_cliente.php");
+}
+}else{
+    header("Location: menu_cliente.php");
+}
 }else{
 	header("Location: index.php");
 };

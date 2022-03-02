@@ -18,12 +18,13 @@ header("Content-Type: application/json");
 
         switch ($video) {
             case 'introduccion':
-               
-                                $actualizando = "UPDATE Test SET IntroVisto='1'  WHERE Usuario = '$usuariotest'";
-                                if($conexion->query($actualizando)){
-                                    $datos="Terminado Intro";
-                                }
- 
+                    $actualizando = "UPDATE Test SET IntroVisto='1'  WHERE Usuario = '$usuariotest'";
+                    if($conexion->query($actualizando)){
+                        $datos="Terminado Intro";}
+                break;
+
+            case 'validacion':
+                        $datos="Terminado Validacion";
                 break;
             default:
                 # code...

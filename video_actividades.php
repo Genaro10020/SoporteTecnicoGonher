@@ -125,9 +125,9 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                         <div id="boton" @click="reproducir" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>
                                     </div>
                                     <div class="d-flex justify-content-center ">
-                                        <video id="verificar"  class="etiquetavideo" opreload="auto">
+                                        <video id="verificar"  class="etiquetavideo" opreload="auto" controls>
                                                 <source v-if="video_solicitado=='introduccion'" id="video" src="videos/Introduccion.mp4" type="video/mp4">
-                                                <source v-if="video_solicitado=='validacion'" id="video" src="videos/Validacion.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='validacion'" id="video" src="videos/Validacion_Poliza.mp4" type="video/mp4">
                                         </video> 
                                         
                                     </div>
@@ -152,7 +152,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 const app = {
 	data(){
 		return{
-            titulo:'INTRODUCCION',
+            titulo:'',
             tipo_solicitud:'',
             video_solicitado: '',
             revisando:0,
@@ -162,7 +162,12 @@ const app = {
 	mounted(){
        this.video_solicitado = document.getElementById("valorvideo").value;
        this.tipo_solicitud = document.getElementById("valortipo").value;
-    
+       console.log(this.video_solicitado)
+       if(this.video_solicitado=="introduccion"){
+            this.titulo="INTRODUCCIÓN";
+       }else if(this.video_solicitado=="validacion"){
+            this.titulo="VALIDACIÓN PÓLIZA";
+       }
         
 	},
     methods:{
@@ -186,7 +191,9 @@ const app = {
                         }).then(response =>{
                             console.log(response.data)
                             if(response.data=="Terminado Intro" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = 'capacitacion.php'
+                                window.location.href = "videos.php?videos_capacitacion=capacitacion"
+                            }else if(response.data=="Terminado Validacion" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = "actividades.php?actividad=validacion"
                             }
 
                         }).catch(function(error){

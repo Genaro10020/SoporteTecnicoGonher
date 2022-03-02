@@ -350,7 +350,7 @@ const app = {
 						this.title_capacitacion= 'Realice la capacitación para su activación'						
 					}else{
 						document.getElementById("capacitacionActiva").style.visibility="visible"
-						this.url_capacitacion = 'capacitacion.php'
+						this.url_capacitacion = "videos.php?videos_capacitacion=capacitacion"
 					}
 
 					this.test_final=response.data.Prueba9

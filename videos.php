@@ -1,7 +1,22 @@
 <?php
 session_start();
 if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
+    include("conexionGhoner.php");
+    $usuario = $_SESSION["usuario"];
+    $consulta = "SELECT * FROM Test WHERE Usuario = '$usuario'";
+    $resultado=$conexion->query($consulta);
+    while($datos=$resultado->fetch_array()){ 
+        if($datos['TestInicial'] !="" && $datos['RespuestasTI']!= ""){
+            $respuesta="continuar";
+        }else{
+           $respuesta = "regresar";
+        }  
+    }
+$video_capacitacion = $_GET['videos_capacitacion'];
+if($respuesta=="continuar"){
+    if($video_capacitacion=="capacitacion"){
 
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +24,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videos</title>
+    <title>Capacitación</title>
     <!--CSS 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -29,7 +44,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 </head>
 <style>
 	.titulos {
-                font-family: 'Orbitron', sans-serif; text-shadow:-1px 2px 0px black;
+                font-family: 'Orbitron', sans-serif;
+                text-shadow:-1px 2px 0px black;
             } 
 
 /*Pequenia*/
@@ -77,8 +93,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     .marcovideo{height:220px;}
     .video_texto{margin-top:160px;}
     .icono_play{height:120px; position:absolute; margin-top:40px;}
-    .contorno_comentario{height:250px;}
-    .texto_indicaciones{font-size: 1.3em;margin-top:-10px;}
+    .contorno_comentario{height:245px; width:700px;}
+    .texto_indicaciones{font-size: 20px;margin-top:-10px;}
  }
 
 
@@ -96,34 +112,44 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 
-			<div class="row" style="min-height: 10vh;">
+			<div class="row" style="height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
-                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">VIDEOS</h1>
+                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">CAPACITACIÓN</h1>
                 </div>
 			</div>
 
-
-			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctronico</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Fisíca</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Niveles de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Coloración de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label><img style="cursor: pointer" v-on:click="introduccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " src="Imagenes/icono_reproducir.png" alt=""><img class="marcovideo animate__animated animate__zoomIn" src="Imagenes/marcovideos.png" alt=""></div>
+ 
+			<div id="app" class="contenido row d-flex mt-5" style="min-height: 80vh;">
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
+                <img style="cursor: pointer" v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
+                <img  v-on:click="validacion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="vali_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="vali_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctronico</label>
+                <img  v-on:click="sistema" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="sis_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="sis_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Fisíca</label>
+                <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label>
+                <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Niveles de Electrolito</label>
+                <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Coloración de Electrolito</label>
+                <img  v-on:click="coloracion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="colo_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="colo_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label>
+                <img  v-on:click="densidad" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="den_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="den_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
+                <img  v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label>
+                <img  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
                 <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative" style="min-height: 200px;">
-                        <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x  lh-sm mt-4 mt-sm-5"> INDICACIONES <br><br> Reproduce los videos la cantidad de veces necesarias, para mayor entendimiento. </p>
-                    <img class="contorno_comentario position-absolute top-2 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
+                        <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
+                    <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
                 </div>
             </div>  
 
-            <div class="row justify-content-between " style="min-height: 10vh; ">	
+            <div class="row justify-content-between " style="min-height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                 </div>
@@ -136,17 +162,136 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 const app = {
 	data(){
 		return{
-
+            intro_rutamarco: 'Imagenes/marcovideos.png', intro_rutaplay: 'Imagenes/icono_reproducir.png',
+            //introduccion: '',
+            vali_rutamarco: 'Imagenes/marcovideos_disable.png', vali_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //validacion:'',
+            sis_rutamarco: 'Imagenes/marcovideos_disable.png', sis_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //sistema:'',
+            ins_rutamarco: 'Imagenes/marcovideos_disable.png', ins_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //inspeccion:'',
+            medi_rutamarco: 'Imagenes/marcovideos_disable.png', medi_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //medidor:'',
+            nive_rutamarco: 'Imagenes/marcovideos_disable.png', nive_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //niveles:'',
+            colo_rutamarco: 'Imagenes/marcovideos_disable.png', colo_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //coloracion:'',
+            den_rutamarco: 'Imagenes/marcovideos_disable.png', den_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //densidad:'',
+            pru_rutamarco: 'Imagenes/marcovideos_disable.png', pru_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //prueba:'',
+            dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            //diagnistico:''
 		}
 	},
 	mounted(){
-	}
+     axios.post('datos_capacitacion.php',{
+        
+     }).then(response =>{
+        if(response.data != ''){
+            console.log(response.data)
+                if(response.data.IntroVisto!=""){
+                       this.agregandoCSS(1)
+                }
+                if(response.data.Prueba1!=""){
+                       this.agregandoCSS(2)
+                }
+                if(response.data.Prueba2!=""){
+                       this.agregandoCSS(3)
+                }
+                if(response.data.Prueba3!=""){
+                       this.agregandoCSS(4)
+                }
+                if(response.data.Prueba4!=""){
+                       this.agregandoCSS(5)
+                }
+                if(response.data.Prueba5!=""){
+                       this.agregandoCSS(6)
+                }
+                if(response.data.Prueba6!=""){
+                       this.agregandoCSS(7)
+                }
+                if(response.data.Prueba7!=""){
+                       this.agregandoCSS(8)
+                }
+                if(response.data.Prueba8!=""){
+                       this.agregandoCSS(9)
+                }
+
+                
+        }else{
+            window.location.href = 'menu_cliente.php'
+        }
+     }).catch(function (error) {
+         console.log(error)
+     })
+	},
+    methods:{
+        agregandoCSS(num){
+            var icono = document.getElementsByClassName("icono_play");
+            icono[num].style.cursor='pointer'
+                if(num==1){
+                    this.vali_rutamarco= 'Imagenes/marcovideos.png'
+                    this.vali_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==2){
+                    this.sis_rutamarco= 'Imagenes/marcovideos.png'
+                    this.sis_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==3){
+                    this.ins_rutamarco= 'Imagenes/marcovideos.png'
+                    this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==4){
+                    this.medi_rutamarco= 'Imagenes/marcovideos.png'
+                    this.medi_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==4){
+                    this.ins_rutamarco= 'Imagenes/marcovideos.png'
+                    this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==5){
+                    this.nive_rutamarco= 'Imagenes/marcovideos.png'
+                    this.nive_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==6){
+                    this.colo_rutamarco= 'Imagenes/marcovideos.png'
+                    this.colo_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==7){
+                    this.den_rutamarco= 'Imagenes/marcovideos.png'
+                    this.den_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==8){
+                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
+                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
+                }
+                if(num==9){
+                    this.dia_rutamarco= 'Imagenes/marcovideos.png'
+                    this.dia_rutaplay='Imagenes/icono_reproducir.png'
+                }
+        },
+        introduccion(){
+          window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
+        },
+        validacion(){
+          window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
+        }
+    },create(){
+        
+    }
 }
 
 var mountedApp = Vue.createApp(app).mount('#app');
 </script>
 </html>
 <?php
+}else{
+    header("Location: menu_cliente.php");
+}
+}else{
+    header("Location: menu_cliente.php");
+}
 }else{
 	header("Location: index.php");
 };

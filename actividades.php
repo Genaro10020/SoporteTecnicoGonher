@@ -48,8 +48,8 @@ if($respuesta=="continuar"){
 <style>
 	
 /*Pequenia*/
-@media (min-width: 0px) { 
-
+@media (min-width: 0px)
+{ 
     .pushablef, .pushablev {
         border-radius: 12px;
         border: none;
@@ -72,57 +72,78 @@ if($respuesta=="continuar"){
     .pushablev:active .frontv, .pushablef:active .frontf {
         transform: translateY(-2px);
     }
-    .acumulador{height: 600px; width: 650px; }
+    .acumulador{margin-top:50px; height: 300px; width: 350px; }
     .titulos {font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
     .texto_indicaciones{color:#9bd2ff; font-weight: bold; text-shadow:-1px 2px 0px blue;}
-    .etiqueta{
-        position:absolute; margin-top:350px; margin-left:30px;
-
-
-
-
-
-      
-
-    transform: rotate(32deg) scale(0.781) skew(29deg) translate(0px);
-    -webkit-transform: rotate(32deg) scale(0.781) skew(29deg) translate(0px);
-    -moz-transform: rotate(32deg) scale(0.781) skew(29deg) translate(0px);
-    -o-transform: rotate(32deg) scale(0.781) skew(29deg) translate(0px);
-    -ms-transform: rotate(32deg) scale(0.781) skew(29deg) translate(0px);
-
-
-
-
-
-
-
-
-
-
-
+    .etiqueta{width: 50px; height: 50px; position:absolute; margin-top:220px; margin-left:15px; cursor: pointer;
+    transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
+    -webkit-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
+    -moz-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
+    -o-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
+    -ms-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
+    border-width: 2px;
+    border-style: solid;
+    border-color: purple;
+    transition-duration: 2s;
     }
+    .etiqueta_ver {
+        -webkit-transform:scale(1);transform:scale(1); width: 350px; height: 250px; cursor: default;
+    }
+    .flecha{margin-top:320px; width: 100px; position: absolute; z-index:3; 
+        transform: rotate(-90deg);
+        -webkit-transform:rotate(-90deg);
+        -moz-transform:rotate(-90deg);
+        -o-transform:rotate(-90deg);
+        -ms-transform:rotate(-90deg);
+        animation: identifier; 
+        animation-duration: 2s;
+        animation-iteration-count:infinite;
+    }
+
+    @keyframes identifier {
+        0% { margin-top:320px; }
+        50%{ margin-top:300px;}      
+        100% { margin-top:320px; }
+    }    
 }
 /*SM*/	
 @media (min-width: 576px) { 
     
 
 }
-
 /* Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
-  
+    .acumulador{height: 600px; width: 650px; }
+    .etiqueta{width: 70px; height: 70px; position:absolute; margin-top:380px; margin-left:45px;
+    }
+    .etiqueta_ver{
+        -webkit-transform:scale(1.3);transform:scale(1.3); width: 450px; height: 350px; cursor: default;
+    }
+    .flecha{margin-top:360px; width: 100px; position: absolute; z-index:3; margin-left: -80px;
+        transform: rotate(0deg);
+        -webkit-transform:rotate(0deg);
+        -moz-transform:rotate(0deg);
+        -o-transform:rotate(0deg);
+        -ms-transform:rotate(0deg);
+        animation: identifiere; 
+        animation-duration: 2s;
+        animation-iteration-count:infinite;
+    }
+    @keyframes identifiere {
+        0%{margin-left: -80px}
+        100%{margin-left: -50px}
+    }
 }
-
 /* Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
 
- }
 
+
+ }
 /* X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
 
  }
-
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
 	
@@ -137,41 +158,36 @@ if($respuesta=="continuar"){
  background-repeat: no-repeat; background-size: 100%"  >
     <div id="app" class="container-fluid">
  
-            <div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
+            <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
             <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
             <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
             <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
-            <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>
+            <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 
             <div class="row" style="min-height: 10vh;">
                     <div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
                         <img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
                     </div>
                     <div class="d-flex justify-content-center col-12">
-                        <h1 class=" titulos animate__animated animate__pulse animate__delay-2s text-light">ACTIVIDAD</h1>
+                        <h1 class=" titulos animate__animated animate__pulse text-light">ACTIVIDAD</h1>
                     </div>
                     <div class="d-flex justify-content-center col-12">
-                        <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">{{titulo_actividad}}</h1>
+                        <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
                     <div class="d-flex justify-content-center col-12">
-                    <p class="texto_indicaciones fs-5 text-center "> {{texto_indicaciones}}</p> 
+                    <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}}</p> 
                     </div> 
             </div>
                     <!---Actividad validacion-->
                     <div v-if="nombre_actividad=='validacion'" class="row mt-5" style="min-height: 80vh;">
      
                                                         <div class="row d-flex ">  
-                                                                    <div class="col-12 text-center"> <img width="80"  class="etiqueta" src="Imagenes/etiqueta_poliza.jpg"><img class="acumulador" src="Imagenes/acumulador.png"> </img>
+                                                                    <div class="col-12 text-center">
+                                                                        <img v-if="visible_flecha==true" class="flecha" src="Imagenes/flecha_etiqueta.png"></img>
+                                                                        <img id="etiqueta" @click="hola" class="etiqueta" src="Imagenes/etiqueta_poliza.jpg" ></img>
+                                                                        <img class="acumulador" src="Imagenes/acumulador.png"> </img>
+                                                                        <label class="">FA> {{fecha_actual}} FG> {{fecha_generada}} </label>
                                                                     </div>
-                                                                    <!--<div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>
-                                                                    <div class="col-12 col-sm-6 col-md-6  col-lg-4 col-xl-3 text-center"> <img class="acumulador" src="Imagenes/acumulador.png"></img></div>-->
                                                          
                                                     </div>
                                                     <div class="d-flex h-100  align-items-center justify-content-center">
@@ -211,7 +227,14 @@ const app = {
 		titulo_actividad:'', 
         texto_indicaciones:'',
         btn_verde:'',
-        btn_rojo:''
+        btn_rojo:'',
+        visible_flecha:true,
+        dia:0,
+        mes:0,
+        anio:0,
+        fecha_actual:'',
+        fecha_generada:'',
+        direfencia_meses:''
 		}
 	},
 	mounted(){
@@ -222,6 +245,7 @@ const app = {
             this.texto_indicaciones = 'Verifica que los acumuladores que estén dentro del periodo de Garantía.'
             this.btn_rojo = "Sin Garantía"
             this.btn_verde = "Con Garantía"
+            
         }
         else if (actividad == "sistema"){
             this.nombre_actividad = actividad
@@ -231,6 +255,44 @@ const app = {
         
 	},
 	methods:{
+        hola(){
+            var date = new Date()
+            console.log(date)
+            var new_date = new Date(date);
+            this.fecha_actual.new_data
+            /*var dia=f.getDate();
+            var mes=f.getMonth() +1;
+            var anio=f.getFullYear();
+            var new_date;
+            console.log(dia+"/"+mes+"/"+anio);*/
+            // Obtenemos un numero aleatorio entre 1 y 60
+            var add_days = Math.floor((Math.random()*60)+1);
+            // Obtenemos un numero aleatorio entre 1 y 13
+            var add_months = Math.floor((Math.random()*20)+1);
+            // Resta los dias
+            new_date.setDate(date.getDate() - add_days);
+            // Resta los meses
+            new_date.setMonth(new_date.getMonth() - add_months);
+
+            this.fecha_actual=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+            this.fecha_generada=new_date.getFullYear()+'-'+(new_date.getMonth()+1)+'-'+new_date.getDate()
+           
+             // Compara anio mes y dia
+            var dateFrom = new Date(this.fecha_generada);//'2020-25-12' 
+            var dateTo = new Date(this.fecha_actual);//'2021-20-12' 
+
+            console.log(dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()))) 
+           
+
+            var etiquetas=document.getElementById("etiqueta")
+            etiquetas.className += " etiqueta_ver";
+            this.visible_flecha=false
+
+
+        },
+        
+               
+          
 
 	}
 }

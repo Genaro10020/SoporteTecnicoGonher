@@ -129,11 +129,11 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 
 	.circulos_deshabilitados{
 		border-radius:100px;  background: rgb(60,60,60);
-background: radial-gradient(circle, rgba(60,60,60,1) 0%, rgba(143,143,143,1) 100%, rgba(119,119,119,1) 100%); 
+		background: radial-gradient(circle, rgba(60,60,60,1) 0%, rgba(143,143,143,1) 100%, rgba(119,119,119,1) 100%); 
 	}
 	.circulos{
-	border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
-	transform: scale(1);
+		border-radius:100px; background: rgb(11,0,196); background: radial-gradient(circle, rgba(11,0,196,1) 0%, rgba(4,4,101,1) 56%, rgba(8,8,47,1) 99%, rgba(11,1,37,1) 100%);
+		transform: scale(1);
 	}
 	.circulos:hover{
 		background: rgb(22,17,111);

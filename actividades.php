@@ -38,6 +38,7 @@ if($respuesta=="continuar"){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet"><!--TITULOS-->
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"><!--OPCIONES--> 
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet"> <!--PREGUNTAS-->
     <!--ANIMATE-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!--VUE 3-->
@@ -50,6 +51,7 @@ if($respuesta=="continuar"){
 /*Pequenia*/
 @media (min-width: 0px)
 { 
+    
     .pushablef, .pushablev {
         border-radius: 12px;
         border: none;
@@ -66,6 +68,7 @@ if($respuesta=="continuar"){
         padding: 12px 42px;
         border-radius: 12px;
         font-size: 1.15rem;
+        font-weight: bold;
         color: white;
         transform: translateY(-6px);
     }
@@ -104,7 +107,25 @@ if($respuesta=="continuar"){
         0% { margin-top:320px; }
         50%{ margin-top:300px;}      
         100% { margin-top:320px; }
-    }    
+    }
+
+    .fecha_poliza{
+        position:absolute;
+        font-family: 'Rowdies', cursive;
+        margin-top:305px;
+        margin-left:230px;
+        z-index: 4;
+        font-size: 20px;
+    }
+    .cantidad_actividad{
+        color:#eebe0e;
+        font-size: 2em;
+        font-family:'Rowdies', cursive;
+        text-shadow: 1px 1px black;
+        
+    }   
+
+    
 }
 /*SM*/	
 @media (min-width: 576px) { 
@@ -132,6 +153,20 @@ if($respuesta=="continuar"){
     @keyframes identifiere {
         0%{margin-left: -80px}
         100%{margin-left: -50px}
+    }
+    .fecha_poliza{
+        position:absolute;
+        font-family: 'Rowdies', cursive;
+        margin-top:485px;
+        margin-left:365px;
+        z-index: 4;
+        font-size: 30px;
+        opacity: 0;
+    }
+    
+    .correcta_incorrecta{
+        font-family: 'Rowdies', cursive;
+        font-size: 40px;
     }
 }
 /* Large LG devices (desktops, 992px and up)*/
@@ -175,31 +210,48 @@ if($respuesta=="continuar"){
                         <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
                     <div class="d-flex justify-content-center col-12">
-                    <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}}</p> 
+                    <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
                     </div> 
             </div>
                     <!---Actividad validacion-->
-                    <div v-if="nombre_actividad=='validacion'" class="row mt-5" style="min-height: 80vh;">
+                    <div v-if="nombre_actividad=='validacion'" class="row " style="min-height: 80vh;">
      
-                                                        <div class="row d-flex ">  
+                                                    <div class="row d-flex ">  
+                                                                    
                                                                     <div class="col-12 text-center">
+                                                                    <div class="d-flex justify-content-between justify-content-md-around justify-content-xxl-evenly">
+                                                                        <div class="">
+                                                                            <label id="" class="cantidad_actividad text-center">POLIZAS: {{cantidad_actividad}}/10</label>
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <label id="" class="cantidad_actividad text-center">PUNTOS: {{correctas}}</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                        <label id="fecha_poliza" class="fecha_poliza" >{{fechas_polizas}}</label>
                                                                         <img v-if="visible_flecha==true" class="flecha" src="Imagenes/flecha_etiqueta.png"></img>
-                                                                        <img id="etiqueta" @click="hola" class="etiqueta" src="Imagenes/etiqueta_poliza.jpg" ></img>
+                                                                        <img id="etiqueta" @click="generar_Fecha" class="etiqueta" src="Imagenes/etiqueta_poliza.jpg" ></img>
                                                                         <img class="acumulador" src="Imagenes/acumulador.png"> </img>
-                                                                        <label class="">FA> {{fecha_actual}} FG> {{fecha_generada}} </label>
+                                                                        
                                                                     </div>
                                                          
                                                     </div>
-                                                    <div class="d-flex h-100  align-items-center justify-content-center">
-                                                            <div class="div_botones row w-100">
+                                                    <div class="d-flex h-full  align-items-end justify-content-center " style=" min-height:200px">
+                                                            <div class="div_botones w-100  d-flex mt-5">
                                                                     <div class="col-6 text-center ">
-                                                                        <button class="pushablev"><span class="frontv">{{btn_verde}}</span></button>
+                                                                        <button id="boton1" @click="bien_o_mal('con')" class="pushablev" disabled="true"><span class="frontv" >{{btn_verde}}</span></button>
                                                                     </div>
+                                                                    
                                                                     <div class="col-6 text-center">
-                                                                        <button class="pushablef"><span class="frontf">{{btn_rojo}}</span></button>
+                                                                        <button id="boton2" @click="bien_o_mal('sin')" class="pushablef" disabled="true"><span class="frontf">{{btn_rojo}}</span></button>
                                                                     </div>
+                                                                    
                                                             </div>    
                                                     </div>
+                                                    <div class=" text-center" style="min-height:80px;">
+                                                                    <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                                                    </div>
+                                                    
                                     
                     </div>
 
@@ -208,7 +260,7 @@ if($respuesta=="continuar"){
                             <h3 class="text-warning">BLOQUE 2</h3>
                     </div>  
 
-            <div class="row " style="max-height: 10vh;">	
+            <div class="row " style="height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                 </div>
@@ -232,20 +284,27 @@ const app = {
         dia:0,
         mes:0,
         anio:0,
+        fecha_hoy:'',
+        fechas_polizas:'',
         fecha_actual:'',
         fecha_generada:'',
-        direfencia_meses:''
+        direfencia_meses:'',
+        cantidad_actividad:1,
+        meses:0,
+        correcta_incorrecta:'',
+        correctas:0,
 		}
 	},
 	mounted(){
 		var actividad = document.getElementById('actividad').value;
         if (actividad == "validacion"){
+            var date = new Date()
+            this.fecha_hoy=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()
             this.nombre_actividad = actividad
             this.titulo_actividad = 'Validación de Póliza'
-            this.texto_indicaciones = 'Verifica que los acumuladores que estén dentro del periodo de Garantía.'
+            this.texto_indicaciones = 'Verifica que los acumuladores estén dentro del periodo de garantía, tome en cuenta fecha actual es: '
             this.btn_rojo = "Sin Garantía"
             this.btn_verde = "Con Garantía"
-            
         }
         else if (actividad == "sistema"){
             this.nombre_actividad = actividad
@@ -255,41 +314,118 @@ const app = {
         
 	},
 	methods:{
-        hola(){
+        generar_Fecha(){
             var date = new Date()
-            console.log(date)
             var new_date = new Date(date);
-            this.fecha_actual.new_data
-            /*var dia=f.getDate();
-            var mes=f.getMonth() +1;
-            var anio=f.getFullYear();
-            var new_date;
-            console.log(dia+"/"+mes+"/"+anio);*/
             // Obtenemos un numero aleatorio entre 1 y 60
             var add_days = Math.floor((Math.random()*60)+1);
-            // Obtenemos un numero aleatorio entre 1 y 13
+            // Obtenemos un numero aleatorio entre 1 y 20
             var add_months = Math.floor((Math.random()*20)+1);
             // Resta los dias
             new_date.setDate(date.getDate() - add_days);
             // Resta los meses
-            new_date.setMonth(new_date.getMonth() - add_months);
+            new_date.setMonth(date.getMonth() - add_months);
 
             this.fecha_actual=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
             this.fecha_generada=new_date.getFullYear()+'-'+(new_date.getMonth()+1)+'-'+new_date.getDate()
-           
+            
+
              // Compara anio mes y dia
             var dateFrom = new Date(this.fecha_generada);//'2020-25-12' 
             var dateTo = new Date(this.fecha_actual);//'2021-20-12' 
+            //calculo mese de diferencia
+            this.meses = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear())) 
+            //verifico si cuenta con garantia
+            if(this.meses < 12){
+                console.log(this.fecha_generada+"menor a 12 menor"+this.fecha_actual+"con "+this.meses+" meses TIENE GARANTIA")
+            }else{
+                console.log(this.fecha_generada+"mayor a 12 meses"+this.fecha_actual+"con "+this.meses+" meses NO TIENE GARANTIA")
+            }
 
-            console.log(dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()))) 
+            var label_poliza = document.getElementById("fecha_poliza")
+            setTimeout(function(){
+                label_poliza.style.opacity ="1"
+            },2000)
+            this.fechas_polizas = new_date.getDate()+"/"+(new_date.getMonth()+1)+"/"+ new_date.getFullYear();
            
+            
 
+            var boton1 = document.getElementById("boton1")
+            var boton2 = document.getElementById("boton2")
+            boton1.removeAttribute("disabled");
+            boton2.removeAttribute("disabled");
             var etiquetas=document.getElementById("etiqueta")
             etiquetas.className += " etiqueta_ver";
             this.visible_flecha=false
-
-
         },
+        bien_o_mal(respuesta){
+            document.getElementById("correcta_incorrecta").style.opacity="1";
+            
+            if(this.meses<=12 && respuesta=="con"){
+                //console.log("correctoCon")
+                this.correcta_incorrecta="C O R R E C T A"
+                this.correctas++;
+                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                
+                
+
+               
+            } else if (this.meses>12 && respuesta=="sin"){
+               // console.log("correctoSin")
+                this.correcta_incorrecta="C O R R E C T A"
+                this.correctas++;
+                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+   
+
+
+               
+            } else if (this.meses<=12 && respuesta=="sin"){
+                //console.log("IncorrectaSin")
+                this.correcta_incorrecta="I N C O R R E C T A"
+                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+     
+
+
+            } else if (this.meses>12 && respuesta=="con"){
+               // console.log("IncorrectaCon")
+                this.correcta_incorrecta="I N C O R R E C T A"
+                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+               
+
+            }   
+
+
+            axios.post('guardar_actividad_validacion_poliza.php',{
+               puntos: this.correctas,
+               cantidad_activiti: this.cantidad_actividad 
+            }).then(response =>{
+                if(response.data=='Fin Actividad'){
+                    window.location.href="videos.php?videos_capacitacion=capacitacion"
+                }
+
+
+            }).catch(function (error){
+					console.log(error)
+		    });
+            
+                document.getElementById("etiqueta").classList.remove("etiqueta_ver")
+                document.getElementById("boton1").disabled="true"
+                document.getElementById("boton2").disabled="true"
+                document.getElementById("fecha_poliza").style.opacity="0"
+                
+                setTimeout(function(){
+                    document.getElementById("correcta_incorrecta").style.opacity="0";
+                   
+                
+                },2000)
+
+                setTimeout( ()=> {
+                    this.visible_flecha=true
+                    }, 2000)
+
+                this.cantidad_respuestas++
+                this.cantidad_actividad++
+        }
         
                
           

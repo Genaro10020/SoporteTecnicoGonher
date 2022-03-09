@@ -221,10 +221,11 @@ if($respuesta=="continuar"){
                                                                     <div class="col-12 text-center">
                                                                     <div class="d-flex justify-content-between justify-content-md-around justify-content-xxl-evenly">
                                                                         <div class="">
-                                                                            <label id="" class="cantidad_actividad text-center">POLIZAS: {{cantidad_actividad}}/10</label>
+                                                                            <label v-if="cantidad_actividad<=1"  class="cantidad_actividad text-center">POLIZAS: 1/10</label>
+                                                                            <label  v-else class="cantidad_actividad text-center">POLIZAS: {{cantidad_actividad}}/10</label>
                                                                         </div>
                                                                         <div class="">
-                                                                            <label id="" class="cantidad_actividad text-center">PUNTOS: {{correctas}}</label>
+                                                                            <label  class="cantidad_actividad text-center">PUNTOS: {{correctas}}</label>
                                                                         </div>
                                                                     </div>
                                                                     
@@ -289,7 +290,7 @@ const app = {
         fecha_actual:'',
         fecha_generada:'',
         direfencia_meses:'',
-        cantidad_actividad:1,
+        cantidad_actividad:0,
         meses:0,
         correcta_incorrecta:'',
         correctas:0,
@@ -315,6 +316,9 @@ const app = {
 	},
 	methods:{
         generar_Fecha(){
+    
+                this.cantidad_actividad++
+           
             var date = new Date()
             var new_date = new Date(date);
             // Obtenemos un numero aleatorio entre 1 y 60
@@ -424,7 +428,7 @@ const app = {
                     }, 2000)
 
                 this.cantidad_respuestas++
-                this.cantidad_actividad++
+                
         }
         
                

@@ -78,7 +78,7 @@ if($respuesta=="continuar"){
     .acumulador{margin-top:50px; height: 300px; width: 350px; }
     .titulos {font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
     .texto_indicaciones{color:#9bd2ff; font-weight: bold; text-shadow:-1px 2px 0px blue;}
-    .etiqueta{width: 50px; height: 50px; position:absolute; margin-top:220px; margin-left:15px; cursor: pointer;
+    .etiqueta{width: 50px; height: 50px; position:absolute; margin-top:220px; margin-left:15px; cursor: pointer;z-index: 1;  
     transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
     -webkit-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
     -moz-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
@@ -232,7 +232,7 @@ if($respuesta=="continuar"){
                                                                         <label id="fecha_poliza" class="fecha_poliza" >{{fechas_polizas}}</label>
                                                                         <img v-if="visible_flecha==true" class="flecha" src="Imagenes/flecha_etiqueta.png"></img>
                                                                         <img id="etiqueta" @click="generar_Fecha" class="etiqueta" src="Imagenes/etiqueta_poliza.jpg" ></img>
-                                                                        <img class="acumulador" src="Imagenes/acumulador.png"> </img>
+                                                                        <img id="acumulador" class="acumulador" src="Imagenes/acumulador.png"> </img>
                                                                         
                                                                     </div>
                                                          
@@ -363,8 +363,17 @@ const app = {
             this.visible_flecha=false
         },
         bien_o_mal(respuesta){
-            document.getElementById("correcta_incorrecta").style.opacity="1";
+            const prefix = 'animate__'
+            const animation = 'bounceOutLeft'
+            const animationName = `${prefix}${animation}`;
             
+            document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
+            setTimeout(function(){
+                document.getElementById("acumulador").classList.remove(`${prefix}animated`, animationName);
+                document.getElementById("acumulador").className +=" animate__animated animate__backInRight" 
+            },1000)
+
+            document.getElementById("correcta_incorrecta").style.opacity="1";
             if(this.meses<=12 && respuesta=="con"){
                 //console.log("correctoCon")
                 this.correcta_incorrecta="C O R R E C T A"
@@ -413,6 +422,7 @@ const app = {
 		    });
             
                 document.getElementById("etiqueta").classList.remove("etiqueta_ver")
+                document.getElementById("etiqueta").style.opacity="0"
                 document.getElementById("boton1").disabled="true"
                 document.getElementById("boton2").disabled="true"
                 document.getElementById("fecha_poliza").style.opacity="0"
@@ -424,6 +434,7 @@ const app = {
                 },2000)
 
                 setTimeout( ()=> {
+                    document.getElementById("etiqueta").style.opacity="1"
                     this.visible_flecha=true
                     }, 2000)
 

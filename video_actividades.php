@@ -5,7 +5,7 @@ $tipo=$_GET['tipo'];
 $video_solicitado=$_GET['video'];
 if($tipo=="capacitacion" || $tipo=="videos"){
 
-    if($video_solicitado=="introduccion" || $video_solicitado=="validacion"){
+    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" | $video_solicitado=="sistema"){
 
     
 
@@ -128,6 +128,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                         <video id="verificar"  class="etiquetavideo" opreload="auto" controls>
                                                 <source v-if="video_solicitado=='introduccion'" id="video" src="videos/Introduccion.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='validacion'" id="video" src="videos/Validacion_Poliza.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='sistema'" id="video" src="videos/Sistema_Electrico.mp4" type="video/mp4">
                                         </video> 
                                         
                                     </div>
@@ -162,12 +163,16 @@ const app = {
 	mounted(){
        this.video_solicitado = document.getElementById("valorvideo").value;
        this.tipo_solicitud = document.getElementById("valortipo").value;
+       console.log(this.tipo_solicitud);
        console.log(this.video_solicitado)
        if(this.video_solicitado=="introduccion"){
             this.titulo="INTRODUCCIÓN";
        }else if(this.video_solicitado=="validacion"){
             this.titulo="VALIDACIÓN PÓLIZA";
+       }else if(this.video_solicitado=="sistema"){
+            this.titulo="SISTEMA ELÉCTRICO";
        }
+       
         
 	},
     methods:{
@@ -194,6 +199,8 @@ const app = {
                                 window.location.href = "videos.php?videos_capacitacion=capacitacion"
                             }else if(response.data=="Terminado Validacion" && this.tipo_solicitud=="capacitacion"){
                                 window.location.href = "actividades.php?actividad=validacion"
+                            }else if(response.data=="Terminado Sistema" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = "actividades.php?actividad=sistema"
                             }
 
                         }).catch(function(error){

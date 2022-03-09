@@ -125,7 +125,19 @@ if($respuesta=="continuar"){
         
     }   
 
-    
+    /*ACTIVIDAD 2 SISTEMA ELECTRICO*/
+    .voltaje{
+        margin-top:-20px; margin-left:-40px; font-size:40px; font-family: 'Rowdies', cursive;
+        -moz-transform:skewY(10deg);
+        -webkit-transform:skewY(10deg);
+        -o-transform:skewY(10deg);
+        -ms-transform:skewY(10deg);
+        transform:skewY(10deg);
+    }
+    .medidor{
+        height:500px; width:250px;
+    }
+    /*FIN ACTIVIDAD 2 */
 }
 /*SM*/	
 @media (min-width: 576px) { 
@@ -178,9 +190,21 @@ if($respuesta=="continuar"){
 /* X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) { 
 
+
+    /*ACTIVIDAD 2 SISTEMA ELECTRICO*/
+    .voltaje{font-size:80px;margin-top:-50px;margin-left:-90px;}
+    .medidor{height:600px; width:350px;}
+    /*FIN ACTIVIDAD 2 */
+
  }
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) { 
+
+     /*ACTIVIDAD 2 SISTEMA ELECTRICO*/
+     .medidor{
+        height:800px; width:450px;
+    }
+    /*FIN ACTIVIDAD 2 */
 	
  }
 
@@ -209,13 +233,15 @@ if($respuesta=="continuar"){
                     <div class="d-flex justify-content-center col-12">
                         <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
-                    <div class="d-flex justify-content-center col-12">
-                    <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
+                    <div v-if="nombre_actividad=='validacion'" class="d-flex justify-content-center col-12">
+                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
+                    </div> 
+                    <div v-if="nombre_actividad!='validacion'" class="d-flex justify-content-center col-12">
+                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow ">{{texto_indicaciones}} </p> 
                     </div> 
             </div>
-                    <!---Actividad validacion-->
+                    <!---INICIO Actividad validacion-->
                     <div v-if="nombre_actividad=='validacion'" class="row " style="min-height: 80vh;">
-     
                                                     <div class="row d-flex ">  
                                                                     
                                                                     <div class="col-12 text-center">
@@ -235,7 +261,6 @@ if($respuesta=="continuar"){
                                                                         <img id="acumulador" class="acumulador" src="Imagenes/acumulador.png"> </img>
                                                                         
                                                                     </div>
-                                                         
                                                     </div>
                                                     <div class="d-flex h-full  align-items-end justify-content-center " style=" min-height:200px">
                                                             <div class="div_botones w-100  d-flex mt-5">
@@ -252,13 +277,46 @@ if($respuesta=="continuar"){
                                                     <div class=" text-center" style="min-height:80px;">
                                                                     <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
                                                     </div>
-                                                    
-                                    
                     </div>
+                    <!---FIN Actividad validacion-->
 
-                    <!---Actividad validacion-->
-                    <div v-else-if="nombre_actividad=='sistema'" class="row  mt-5" style="min-height: 80vh;">
-                            <h3 class="text-warning">BLOQUE 2</h3>
+                    <!---INICIO Actividad validacion-->
+                    <div v-else-if="nombre_actividad=='sistema'" class="row" style="min-height: 80vh;">
+                                        
+                                        <div class="row ">
+                                                <div class="col-12 col-md-8 text-center">
+                                                    <img class="img-fluid w-75 h-100" src="Imagenes/diagrama_sistema_electrico.png">
+                                                </div>
+                                                <div class="col-12 col-md-4 text-warning position-relative d-flex align-items-center justify-content-center ">
+                                                    <img class="medidor" src="Imagenes/medidor.png">
+                                                    <label class="voltaje position-absolute top-50 start-50">{{voltaje}}</label><!--style=" position: absolute; margin-top:12%; margin-left:-10%;"-->
+                                                </div>
+                                               
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <div class="col-xxl-2 ">
+                                                <label  class="cantidad_actividad text-center">VERIFICACIÓN: {{cantidad_actividad}}/10</label>
+                                                <label  class="cantidad_actividad text-center">PUNTOS: {{correctas}}</label>
+                                            </div>
+                                            <div class="col-xx-2 ">
+                                            
+                                            </div>
+                                        </div>     
+                                        <div class="d-flex h-full  align-items-start justify-content-center">
+                                            <div class="div_botones w-100  d-flex mt-5">
+                                                    <div class="col-6 text-center ">
+                                                        <button id="boton1" @click="bien_o_mal('correcto')" class="pushablev"><span class="frontv" >{{btn_verde}}</span></button>
+                                                    </div>
+                                                    
+                                                    <div class="col-6 text-center">
+                                                        <button id="boton2" @click="bien_o_mal('incorrecto')" class="pushablef"><span class="frontf">{{btn_rojo}}</span></button>
+                                                    </div>
+                                                    
+                                            </div>    
+                                        </div>
+                                        <div class=" text-center" style="min-height:80px;">
+                                                                    <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                                        </div>
                     </div>  
 
             <div class="row " style="height: 10vh;">	
@@ -273,181 +331,239 @@ if($respuesta=="continuar"){
 </body>
 </html>
 <script>
-const app = {
-	data(){
-		return{
-        nombre_actividad:'',
-		titulo_actividad:'', 
-        texto_indicaciones:'',
-        btn_verde:'',
-        btn_rojo:'',
-        visible_flecha:true,
-        dia:0,
-        mes:0,
-        anio:0,
-        fecha_hoy:'',
-        fechas_polizas:'',
-        fecha_actual:'',
-        fecha_generada:'',
-        direfencia_meses:'',
-        cantidad_actividad:0,
-        meses:0,
-        correcta_incorrecta:'',
-        correctas:0,
-		}
-	},
-	mounted(){
-		var actividad = document.getElementById('actividad').value;
-        if (actividad == "validacion"){
-            var date = new Date()
-            this.fecha_hoy=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()
-            this.nombre_actividad = actividad
-            this.titulo_actividad = 'Validación de Póliza'
-            this.texto_indicaciones = 'Verifica que los acumuladores estén dentro del periodo de garantía, tome en cuenta fecha actual es: '
-            this.btn_rojo = "Sin Garantía"
-            this.btn_verde = "Con Garantía"
-        }
-        else if (actividad == "sistema"){
-            this.nombre_actividad = actividad
-            this.titulo_actividad = 'Validación Eléctrico'
-            this.texto_indicaciones = 'Verifica que los acumuladores esten dentro del periodo de Garantia.'
-        }
-        
-	},
-	methods:{
-        generar_Fecha(){
-    
-                this.cantidad_actividad++
-           
-            var date = new Date()
-            var new_date = new Date(date);
-            // Obtenemos un numero aleatorio entre 1 y 60
-            var add_days = Math.floor((Math.random()*60)+1);
-            // Obtenemos un numero aleatorio entre 1 y 20
-            var add_months = Math.floor((Math.random()*20)+1);
-            // Resta los dias
-            new_date.setDate(date.getDate() - add_days);
-            // Resta los meses
-            new_date.setMonth(date.getMonth() - add_months);
 
-            this.fecha_actual=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
-            this.fecha_generada=new_date.getFullYear()+'-'+(new_date.getMonth()+1)+'-'+new_date.getDate()
-            
-
-             // Compara anio mes y dia
-            var dateFrom = new Date(this.fecha_generada);//'2020-25-12' 
-            var dateTo = new Date(this.fecha_actual);//'2021-20-12' 
-            //calculo mese de diferencia
-            this.meses = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear())) 
-            //verifico si cuenta con garantia
-            if(this.meses < 12){
-                console.log(this.fecha_generada+"menor a 12 menor"+this.fecha_actual+"con "+this.meses+" meses TIENE GARANTIA")
-            }else{
-                console.log(this.fecha_generada+"mayor a 12 meses"+this.fecha_actual+"con "+this.meses+" meses NO TIENE GARANTIA")
-            }
-
-            var label_poliza = document.getElementById("fecha_poliza")
-            setTimeout(function(){
-                label_poliza.style.opacity ="1"
-            },2000)
-            this.fechas_polizas = new_date.getDate()+"/"+(new_date.getMonth()+1)+"/"+ new_date.getFullYear();
-           
-            
-
-            var boton1 = document.getElementById("boton1")
-            var boton2 = document.getElementById("boton2")
-            boton1.removeAttribute("disabled");
-            boton2.removeAttribute("disabled");
-            var etiquetas=document.getElementById("etiqueta")
-            etiquetas.className += " etiqueta_ver";
-            this.visible_flecha=false
-        },
-        bien_o_mal(respuesta){
-            const prefix = 'animate__'
-            const animation = 'bounceOutLeft'
-            const animationName = `${prefix}${animation}`;
-            
-            document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
-            setTimeout(function(){
-                document.getElementById("acumulador").classList.remove(`${prefix}animated`, animationName);
-                document.getElementById("acumulador").className +=" animate__animated animate__backInRight" 
-            },1000)
-
-            document.getElementById("correcta_incorrecta").style.opacity="1";
-            if(this.meses<=12 && respuesta=="con"){
-                //console.log("correctoCon")
-                this.correcta_incorrecta="C O R R E C T A"
-                this.correctas++;
-                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
-                
-                
-
-               
-            } else if (this.meses>12 && respuesta=="sin"){
-               // console.log("correctoSin")
-                this.correcta_incorrecta="C O R R E C T A"
-                this.correctas++;
-                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
-   
-
-
-               
-            } else if (this.meses<=12 && respuesta=="sin"){
-                //console.log("IncorrectaSin")
-                this.correcta_incorrecta="I N C O R R E C T A"
-                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
-     
-
-
-            } else if (this.meses>12 && respuesta=="con"){
-               // console.log("IncorrectaCon")
-                this.correcta_incorrecta="I N C O R R E C T A"
-                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
-               
-
-            }   
-
-
-            axios.post('guardar_actividad_validacion_poliza.php',{
-               puntos: this.correctas,
-               cantidad_activiti: this.cantidad_actividad 
-            }).then(response =>{
-                if(response.data=='Fin Actividad'){
-                    window.location.href="videos.php?videos_capacitacion=capacitacion"
+var actividad = document.getElementById('actividad').value;
+if (actividad == "validacion"){//ACTIVIDAD VALIDACION
+        const app = {
+            data(){
+                return{
+                nombre_actividad:'',
+                titulo_actividad:'', 
+                texto_indicaciones:'',
+                btn_verde:'',
+                btn_rojo:'',
+                visible_flecha:true,
+                dia:0,
+                mes:0,
+                anio:0,
+                fecha_hoy:'',
+                fechas_polizas:'',
+                fecha_actual:'',
+                fecha_generada:'',
+                direfencia_meses:'',
+                cantidad_actividad:0,
+                meses:0,
+                correcta_incorrecta:'',
+                correctas:0,
                 }
-
-
-            }).catch(function (error){
-					console.log(error)
-		    });
+            },
+            mounted(){
+                var actividad = document.getElementById('actividad').value;
+                if (actividad == "validacion"){
+                    var date = new Date()
+                    this.fecha_hoy=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()
+                    this.nombre_actividad = actividad
+                    this.titulo_actividad = 'Validación de Póliza'
+                    this.texto_indicaciones = 'Verifica que los acumuladores estén dentro del periodo de garantía, tome en cuenta fecha actual es: '
+                    this.btn_rojo = "Sin Garantía"
+                    this.btn_verde = "Con Garantía"
+                }
+                else if (actividad == "sistema"){
+                    this.nombre_actividad = actividad
+                    this.titulo_actividad = 'Validación Eléctrico'
+                    this.texto_indicaciones = 'Verifica que los acumuladores esten dentro del periodo de Garantia.'
+                }
+                
+            },
+            methods:{
+                generar_Fecha(){
             
-                document.getElementById("etiqueta").classList.remove("etiqueta_ver")
-                document.getElementById("etiqueta").style.opacity="0"
-                document.getElementById("boton1").disabled="true"
-                document.getElementById("boton2").disabled="true"
-                document.getElementById("fecha_poliza").style.opacity="0"
+                        this.cantidad_actividad++
                 
-                setTimeout(function(){
-                    document.getElementById("correcta_incorrecta").style.opacity="0";
-                   
-                
-                },2000)
+                    var date = new Date()
+                    var new_date = new Date(date);
+                    // Obtenemos un numero aleatorio entre 1 y 60
+                    var add_days = Math.floor((Math.random()*60)+1);
+                    // Obtenemos un numero aleatorio entre 1 y 20
+                    var add_months = Math.floor((Math.random()*20)+1);
+                    // Resta los dias
+                    new_date.setDate(date.getDate() - add_days);
+                    // Resta los meses
+                    new_date.setMonth(date.getMonth() - add_months);
 
-                setTimeout( ()=> {
-                    document.getElementById("etiqueta").style.opacity="1"
-                    this.visible_flecha=true
-                    }, 2000)
+                    this.fecha_actual=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+                    this.fecha_generada=new_date.getFullYear()+'-'+(new_date.getMonth()+1)+'-'+new_date.getDate()
+                    
 
-                this.cantidad_respuestas++
+                    // Compara anio mes y dia
+                    var dateFrom = new Date(this.fecha_generada);//'2020-25-12' 
+                    var dateTo = new Date(this.fecha_actual);//'2021-20-12' 
+                    //calculo mese de diferencia
+                    this.meses = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear())) 
+                    //verifico si cuenta con garantia
+                    if(this.meses < 12){
+                        console.log(this.fecha_generada+"menor a 12 menor"+this.fecha_actual+"con "+this.meses+" meses TIENE GARANTIA")
+                    }else{
+                        console.log(this.fecha_generada+"mayor a 12 meses"+this.fecha_actual+"con "+this.meses+" meses NO TIENE GARANTIA")
+                    }
+
+                    var label_poliza = document.getElementById("fecha_poliza")
+                    setTimeout(function(){
+                        label_poliza.style.opacity ="1"
+                    },2000)
+                    this.fechas_polizas = new_date.getDate()+"/"+(new_date.getMonth()+1)+"/"+ new_date.getFullYear();
                 
+                    
+
+                    var boton1 = document.getElementById("boton1")
+                    var boton2 = document.getElementById("boton2")
+                    boton1.removeAttribute("disabled");
+                    boton2.removeAttribute("disabled");
+                    var etiquetas=document.getElementById("etiqueta")
+                    etiquetas.className += " etiqueta_ver";
+                    this.visible_flecha=false
+                },
+                bien_o_mal(respuesta){
+                    const prefix = 'animate__'
+                    const animation = 'bounceOutLeft'
+                    const animationName = `${prefix}${animation}`;
+                    
+                    document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
+                    setTimeout(function(){
+                        document.getElementById("acumulador").classList.remove(`${prefix}animated`, animationName);
+                        document.getElementById("acumulador").className +=" animate__animated animate__backInRight" 
+                    },1000)
+
+                    document.getElementById("correcta_incorrecta").style.opacity="1";
+                    if(this.meses<=12 && respuesta=="con"){
+                        //console.log("correctoCon")
+                        this.correcta_incorrecta="C O R R E C T A"
+                        this.correctas++;
+                        document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+
+                    } else if (this.meses>12 && respuesta=="sin"){
+                    // console.log("correctoSin")
+                        this.correcta_incorrecta="C O R R E C T A"
+                        this.correctas++;
+                        document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+
+                    } else if (this.meses<=12 && respuesta=="sin"){
+                        //console.log("IncorrectaSin")
+                        this.correcta_incorrecta="I N C O R R E C T A"
+                        document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+            
+
+
+                    } else if (this.meses>12 && respuesta=="con"){
+                    // console.log("IncorrectaCon")
+                        this.correcta_incorrecta="I N C O R R E C T A"
+                        document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                    }   
+
+
+                    axios.post('guardar_actividad_validacion_poliza.php',{
+                    puntos: this.correctas,
+                    cantidad_activiti: this.cantidad_actividad 
+                    }).then(response =>{
+                        if(response.data=='Fin Actividad'){
+                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                        }
+
+
+                    }).catch(function (error){
+                            console.log(error)
+                    });
+                    
+                        document.getElementById("etiqueta").classList.remove("etiqueta_ver")
+                        document.getElementById("etiqueta").style.opacity="0"
+                        document.getElementById("boton1").disabled="true"
+                        document.getElementById("boton2").disabled="true"
+                        document.getElementById("fecha_poliza").style.opacity="0"
+                        
+                        setTimeout(function(){
+                            document.getElementById("correcta_incorrecta").style.opacity="0";
+                        },2000)
+
+                        setTimeout( ()=> {
+                            document.getElementById("etiqueta").style.opacity="1"
+                            this.visible_flecha=true
+                            }, 2000)
+
+                        this.cantidad_respuestas++
+                        
+                }
+            }
         }
-        
-               
-          
+        var mountedApp = Vue.createApp(app).mount('#app');
 
-	}
-}
-var mountedApp = Vue.createApp(app).mount('#app');
+        }else if (actividad == "sistema"){//ACTIVIDAD SISTEMA ELÉCTRICO--------------------------------------------------------------
+            const app = {
+                    data(){
+                        return{
+                        nombre_actividad:'',
+                        titulo_actividad:'', 
+                        texto_indicaciones:'',
+                        btn_verde:'',
+                        btn_rojo:'',
+                        voltaje:0,
+                        cantidad_actividad:1,
+                        correctas:0,
+                        correcta_incorrecta:'',
+                        }
+                    },
+                    mounted(){
+                            var actividad = document.getElementById('actividad').value;
+                            this.nombre_actividad = actividad
+                            this.titulo_actividad = 'Sistema Eléctrico'
+                            this.texto_indicaciones = 'Revisa el sistema eléctrico y verifica que el voltaje este dentro del rango de operación de un vehículo convencional.'
+                            this.btn_verde ='Correcto'
+                            this.btn_rojo ='Incorrecto'
+                            //var random = (Math.random() * (20 - 1)).toFixed(1)
+                            this.voltaje = 13.5
+                            
+
+                    },
+                    methods:{
+                        bien_o_mal(respuesta){
+                                console.log('presionaste')
+                            if(this.voltaje < 13.5 || this.voltaje >14.5){
+                                this.correctas++
+                                this.correcta_incorrecta="C O R R E C T A"
+                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";     
+
+                            }/*else if (respuesta=='incorrecto' && this.voltaje <=13.14 || this.voltaje >=14.6){
+                                this.correctas++
+                                this.correcta_incorrecta="C O R R E C T A"
+                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";     
+                            } else if (respuesta=='correcto' && this.voltaje <=13.14 || this.voltaje >=14.6){
+                                this.correcta_incorrecta="I N C O R R E C T A"
+                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                
+                            } else if (respuesta=='incorrecto' && this.voltaje >=13.5 || respuesta=='incorrecto' && this.voltaje <=14.5){
+                                this.correcta_incorrecta="I N C O R R E C T A"
+                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                    
+                            }*/
+
+                            document.getElementById("boton1").disabled = true; 
+                            document.getElementById("boton2").disabled = true;   
+
+                            setTimeout( ()=>{
+                                document.getElementById("correcta_incorrecta").style.opacity="0";
+                                document.getElementById("boton1").disabled = false;
+                                document.getElementById("boton2").disabled = false;
+
+                                /*var random = (Math.random() * (20 - 1)).toFixed(1)
+                                this.voltaje=random;*/
+
+                            },2000)
+                                this.cantidad_actividad++       
+                        }
+                    }
+                }   
+                var mountedApp = Vue.createApp(app).mount('#app');
+        }
+
 </script>
 
 <?php

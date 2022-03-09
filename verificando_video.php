@@ -26,6 +26,9 @@ header("Content-Type: application/json");
             case 'validacion':
                         $datos="Terminado Validacion";
                 break;
+            case 'sistema':
+                        $datos="Terminado Sistema";
+            break;
             default:
                 # code...
                 break;

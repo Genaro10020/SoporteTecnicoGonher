@@ -285,11 +285,11 @@ if($respuesta=="continuar"){
                                         
                                         <div class="row ">
                                                 <div class="col-12 col-md-8 text-center">
-                                                    <img class="img-fluid w-75 h-100" src="Imagenes/diagrama_sistema_electrico.png">
+                                                    <img class="img-fluid w-75 h-100 animate__animated animate__zoomIn" src="Imagenes/diagrama_sistema_electrico.png">
                                                 </div>
                                                 <div class="col-12 col-md-4 text-warning position-relative d-flex align-items-center justify-content-center ">
-                                                    <img class="medidor" src="Imagenes/medidor.png">
-                                                    <label class="voltaje position-absolute top-50 start-50">{{voltaje}}</label><!--style=" position: absolute; margin-top:12%; margin-left:-10%;"-->
+                                                    <img class="medidor animate__animated animate__zoomIn animate__delay-1s" src="Imagenes/medidor.png">
+                                                    <label class="voltaje position-absolute top-50 start-50 animate__animated animate__zoomIn animate__delay-2s">{{voltaje}}</label><!--style=" position: absolute; margin-top:12%; margin-left:-10%;"-->
                                                 </div>
                                                
                                         </div>
@@ -461,7 +461,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                     }   
 
 
-                    axios.post('guardar_actividad_validacion_poliza.php',{
+                    axios.post('guardar_actividades.php',{
+                    actividad: this.nombre_actividad,
                     puntos: this.correctas,
                     cantidad_activiti: this.cantidad_actividad 
                     }).then(response =>{
@@ -509,6 +510,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         cantidad_actividad:1,
                         correctas:0,
                         correcta_incorrecta:'',
+                        true_false:null,
                         }
                     },
                     mounted(){
@@ -516,50 +518,68 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                             this.nombre_actividad = actividad
                             this.titulo_actividad = 'Sistema Eléctrico'
                             this.texto_indicaciones = 'Revisa el sistema eléctrico y verifica que el voltaje este dentro del rango de operación de un vehículo convencional.'
-                            this.btn_verde ='Correcto'
-                            this.btn_rojo ='Incorrecto'
-                            //var random = (Math.random() * (20 - 1)).toFixed(1)
-                            this.voltaje = 13.5
+                            this.btn_verde ='Buen Voltaje'
+                            this.btn_rojo ='Mal Voltaje'
+                            var random=(Math.random() * (2)+13 ).toFixed(1)
+                            this.voltaje =random
                             
-
+                            
                     },
                     methods:{
                         bien_o_mal(respuesta){
-                                console.log('presionaste')
-                            if(this.voltaje < 13.5 || this.voltaje >14.5){
-                                this.correctas++
-                                this.correcta_incorrecta="C O R R E C T A"
-                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";     
+                               this.true_false=this.inRange(this.voltaje,13.5, 14.5)
+                                    if(this.true_false==true){
+                                            if(respuesta=="correcto"){
+                                                this.correctas++
+                                                this.correcta_incorrecta="C O R R E C T O"
+                                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;"; 
+                                                
+                                            }else{
+                                                this.correcta_incorrecta="I N C O R R E C T O"
+                                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                            }
+                                    }
+                                    if(this.true_false==false){
+                                            if(respuesta=="incorrecto"){
+                                                this.correctas++
+                                                this.correcta_incorrecta="C O R R E C T O"
+                                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;"; 
+                                                
+                                            }else{
+                                                this.correcta_incorrecta="I N C O R R E C T O"
+                                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                            }
+                                    }
+                                    console.log(this.nombre_actividad)
+                                axios.post('guardar_actividades.php',{
+                                    actividad: this.nombre_actividad,
+                                    puntos: this.correctas,
+                                    cantidad_activiti: this.cantidad_actividad 
+                                    }).then(response =>{
+                                        console.log(response.data)
+                                        if(response.data=='Fin Actividad'){
+                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                        }
 
-                            }/*else if (respuesta=='incorrecto' && this.voltaje <=13.14 || this.voltaje >=14.6){
-                                this.correctas++
-                                this.correcta_incorrecta="C O R R E C T A"
-                                document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";     
-                            } else if (respuesta=='correcto' && this.voltaje <=13.14 || this.voltaje >=14.6){
-                                this.correcta_incorrecta="I N C O R R E C T A"
-                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
-                                
-                            } else if (respuesta=='incorrecto' && this.voltaje >=13.5 || respuesta=='incorrecto' && this.voltaje <=14.5){
-                                this.correcta_incorrecta="I N C O R R E C T A"
-                                document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
-                                    
-                            }*/
 
+                                    }).catch(function (error){
+                                            console.log(error)
+                                    });
                             document.getElementById("boton1").disabled = true; 
                             document.getElementById("boton2").disabled = true;   
-
                             setTimeout( ()=>{
                                 document.getElementById("correcta_incorrecta").style.opacity="0";
                                 document.getElementById("boton1").disabled = false;
                                 document.getElementById("boton2").disabled = false;
-
-                                /*var random = (Math.random() * (20 - 1)).toFixed(1)
-                                this.voltaje=random;*/
-
+                                var randon = (Math.random() * (2)+13 ).toFixed(1)
+                                this.voltaje=randon;
                             },2000)
                                 this.cantidad_actividad++       
+                        },
+                        inRange(x, min, max) {
+                                return ((x-min)*(x-max) <= 0);
+                            }  
                         }
-                    }
                 }   
                 var mountedApp = Vue.createApp(app).mount('#app');
         }

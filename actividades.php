@@ -11,13 +11,14 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
             $respuesta="continuar";
                 $Prueba1=$datos['Prueba1'];
                 $Prueba2=$datos['Prueba2'];
+                $Prueba3=$datos['Prueba3'];
         }else{
            $respuesta = "regresar";
         }  
     }
 $actividad = $_GET['actividad'];
 if($respuesta=="continuar"){
-    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2==""){
+    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3==""){
 
     
 ?>
@@ -45,8 +46,17 @@ if($respuesta=="continuar"){
     <script src="https://unpkg.com/vue@next"></script>
     <!--Axios--> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--3D-->  
+    <script type="module" 
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+
+    
 </head>
+
+
 <style>
+    
 	
 /*Pequenia*/
 @media (min-width: 0px)
@@ -209,7 +219,11 @@ if($respuesta=="continuar"){
  }
 
 
-
+#modelo{
+    width:500px;
+    height:500px;
+    text-align:center;
+}
 </style>
 
 
@@ -280,7 +294,7 @@ if($respuesta=="continuar"){
                     </div>
                     <!---FIN Actividad validacion-->
 
-                    <!---INICIO Actividad validacion-->
+                    <!---INICIO Actividad Sistema Electrico-->
                     <div v-else-if="nombre_actividad=='sistema'" class="row" style="min-height: 80vh;">
                                         
                                         <div class="row ">
@@ -291,7 +305,6 @@ if($respuesta=="continuar"){
                                                     <img class="medidor animate__animated animate__zoomIn animate__delay-1s" src="Imagenes/medidor.png">
                                                     <label class="voltaje position-absolute top-50 start-50 animate__animated animate__zoomIn animate__delay-2s">{{voltaje}}</label><!--style=" position: absolute; margin-top:12%; margin-left:-10%;"-->
                                                 </div>
-                                               
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <div class="col-xxl-2 ">
@@ -316,9 +329,41 @@ if($respuesta=="continuar"){
                                         </div>
                                         <div class=" text-center" style="min-height:80px;">
                                                                     <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                                                                    
                                         </div>
                     </div>  
+                    <!---FIN Actividad validacion-->
 
+                    <!---INICIO Inpeccion Fisica-->
+                    <div v-else-if="nombre_actividad=='inspeccion'" class="row" style="min-height: 80vh;">
+                            <div class="class d-flex justify-content-center bg-warning">
+                            <model-viewer v-if="cantidad_actividad==1" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==2"id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==3" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==4" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==5" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==6" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==7" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==8" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==9" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                            <model-viewer v-if="cantidad_actividad==10" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                </model-viewer>
+                            </div>
+                            <!-- Use it like any other HTML element -->
+                                
+                            <div class="d-flex h-full  align-items-start justify-content-center">
+                                <div class="div_botones w-100  d-flex mt-5">
+                                        <div class="col-6 text-center ">
+                                            <button id="boton1" @click="bien_o_mal('correcto')" class="pushablev"><span class="frontv" >{{btn_verde}}</span></button>
+                                        </div>
+                                        
+                                        <div class="col-6 text-center">
+                                            <button id="boton2" @click="bien_o_mal('incorrecto')" class="pushablef"><span class="frontf">{{btn_rojo}}</span></button>
+                                        </div>
+                                </div>    
+                            </div>
+                    </div> 
+                    <!---FIN Inpeccion Fisica-->
             <div class="row " style="height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
@@ -559,6 +604,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         console.log(response.data)
                                         if(response.data=='Fin Actividad'){
                                             window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                        }else{
+                                            this.cantidad_actividad++ 
                                         }
 
 
@@ -574,7 +621,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                 var randon = (Math.random() * (2)+13 ).toFixed(1)
                                 this.voltaje=randon;
                             },2000)
-                                this.cantidad_actividad++       
+                                      
                         },
                         inRange(x, min, max) {
                                 return ((x-min)*(x-max) <= 0);
@@ -582,6 +629,38 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         }
                 }   
                 var mountedApp = Vue.createApp(app).mount('#app');
+        }else if (actividad == "inspeccion"){//ACTIVIDAD SISTEMA ELÉCTRICO--------------------------------------------------------------
+
+            const app = {
+                    data(){
+                        return{
+                        nombre_actividad:'',
+                        titulo_actividad:'', 
+                        texto_indicaciones:'',
+                        btn_verde:'',
+                        btn_rojo:'',
+                        voltaje:0,
+                        cantidad_actividad:1,
+                        correctas:0,
+                        correcta_incorrecta:'',
+                        true_false:null,
+                        }
+                    },
+                    mounted(){
+                            var actividad = document.getElementById('actividad').value;
+                            this.nombre_actividad = actividad
+                            this.titulo_actividad = 'Inspección Física'
+                            this.texto_indicaciones = 'Verifica que el acumulador no cuente con daños físicos.'
+                            this.btn_verde ='Sin Daño'
+                            this.btn_rojo ='Con Daño'
+     
+                    },
+                    methods:{
+  
+                        }
+                }   
+                var mountedApp = Vue.createApp(app).mount('#app');
+        
         }
 
 </script>

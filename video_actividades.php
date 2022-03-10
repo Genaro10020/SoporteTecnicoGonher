@@ -5,7 +5,7 @@ $tipo=$_GET['tipo'];
 $video_solicitado=$_GET['video'];
 if($tipo=="capacitacion" || $tipo=="videos"){
 
-    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" | $video_solicitado=="sistema"){
+    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" || $video_solicitado=="sistema" || $video_solicitado=="inspeccion"){
 
     
 
@@ -129,6 +129,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                                 <source v-if="video_solicitado=='introduccion'" id="video" src="videos/Introduccion.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='validacion'" id="video" src="videos/Validacion_Poliza.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='sistema'" id="video" src="videos/Sistema_Electrico.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='inspeccion'" id="video" src="videos/Inspeccion_Fisica.mp4" type="video/mp4">
                                         </video> 
                                         
                                     </div>
@@ -171,6 +172,8 @@ const app = {
             this.titulo="VALIDACIÓN PÓLIZA";
        }else if(this.video_solicitado=="sistema"){
             this.titulo="SISTEMA ELÉCTRICO";
+       }else if(this.video_solicitado=="inspeccion"){
+            this.titulo="INSPECCIÓN FíSICA";
        }
        
         
@@ -201,6 +204,8 @@ const app = {
                                 window.location.href = "actividades.php?actividad=validacion"
                             }else if(response.data=="Terminado Sistema" && this.tipo_solicitud=="capacitacion"){
                                 window.location.href = "actividades.php?actividad=sistema"
+                            }else if(response.data=="Terminado Inspeccion" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = "actividades.php?actividad=inspeccion"
                             }
 
                         }).catch(function(error){

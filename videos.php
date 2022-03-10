@@ -129,7 +129,7 @@ if($respuesta=="continuar"){
                 <img  v-on:click="validacion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="vali_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="vali_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctrico</label>
                 <img  v-on:click="sistema" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="sis_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="sis_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Fisíca</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Física</label>
                 <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label>
                 <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
@@ -163,25 +163,25 @@ const app = {
 	data(){
 		return{
             intro_rutamarco: 'Imagenes/marcovideos.png', intro_rutaplay: 'Imagenes/icono_reproducir.png',
-            //introduccion: '',
+            intro: '',
             vali_rutamarco: 'Imagenes/marcovideos_disable.png', vali_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //validacion:'',
+            prueba1:'',
             sis_rutamarco: 'Imagenes/marcovideos_disable.png', sis_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //sistema:'',
+            prueba2:'',
             ins_rutamarco: 'Imagenes/marcovideos_disable.png', ins_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //inspeccion:'',
+            prueba3:'',
             medi_rutamarco: 'Imagenes/marcovideos_disable.png', medi_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //medidor:'',
+            prueba4:'',
             nive_rutamarco: 'Imagenes/marcovideos_disable.png', nive_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //niveles:'',
+            prueba5:'',
             colo_rutamarco: 'Imagenes/marcovideos_disable.png', colo_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //coloracion:'',
+            prueba6:'',
             den_rutamarco: 'Imagenes/marcovideos_disable.png', den_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //densidad:'',
+            prueba7:'',
             pru_rutamarco: 'Imagenes/marcovideos_disable.png', pru_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //prueba:'',
+            prueba8:'',
             dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            //diagnistico:''
+            prueba9:''
 		}
 	},
 	mounted(){
@@ -191,30 +191,39 @@ const app = {
         if(response.data != ''){
             console.log(response.data)
                 if(response.data.IntroVisto!=""){
+                    this.intro="Visto"
                        this.agregandoCSS(1)
                 }
                 if(response.data.Prueba1!=""){
+                    this.prueba1="Visto"
                        this.agregandoCSS(2)
                 }
                 if(response.data.Prueba2!=""){
+                    this.prueba2="Visto"
                        this.agregandoCSS(3)
                 }
                 if(response.data.Prueba3!=""){
+                    this.prueba3="Visto"
                        this.agregandoCSS(4)
                 }
                 if(response.data.Prueba4!=""){
+                    this.prueba4="Visto"
                        this.agregandoCSS(5)
                 }
                 if(response.data.Prueba5!=""){
+                    this.prueba5="Visto"
                        this.agregandoCSS(6)
                 }
                 if(response.data.Prueba6!=""){
+                    this.prueba6="Visto"
                        this.agregandoCSS(7)
                 }
                 if(response.data.Prueba7!=""){
+                    this.prueba7="Visto"
                        this.agregandoCSS(8)
                 }
                 if(response.data.Prueba8!=""){
+                    this.prueba8="Visto"
                        this.agregandoCSS(9)
                 }
 
@@ -272,14 +281,24 @@ const app = {
                 }
         },
         introduccion(){
-          window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
+                window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
         },
         validacion(){
-          window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
+            if(this.intro!=""){
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
+            }
         },
         sistema(){
-          window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
+            if(this.prueba1!=""){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
+            }
+        },
+        inspeccion(){
+            if(this.prueba2!=""){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
+            }
         }
+        
     },create(){
         
     }

@@ -336,7 +336,7 @@ if($respuesta=="continuar"){
 
                     <!---INICIO Inpeccion Fisica-->
                     <div v-else-if="nombre_actividad=='inspeccion'" class="row" style="min-height: 80vh;">
-                            <div class="class d-flex justify-content-center bg-warning">
+                            <div class="class d-flex justify-content-center">
                             <model-viewer v-if="cantidad_actividad==1" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
                             <model-viewer v-if="cantidad_actividad==2"id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
                             <model-viewer v-if="cantidad_actividad==3" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>

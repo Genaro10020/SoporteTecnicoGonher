@@ -12,9 +12,9 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
            $respuesta = "regresar";
         }  
     }
-$video_capacitacion = $_GET['videos_capacitacion'];
+$video_o_capacitacion = $_GET['videos_capacitacion'];
 if($respuesta=="continuar"){
-    if($video_capacitacion=="capacitacion"){
+    if($video_o_capacitacion=="capacitacion"){
 
     
 ?>
@@ -124,7 +124,7 @@ if($respuesta=="continuar"){
  
 			<div id="app" class="contenido row d-flex mt-5" style="min-height: 80vh;">
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
-                <img style="cursor: pointer" v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
+                <img v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
                 <img  v-on:click="validacion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="vali_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="vali_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctrico</label>
@@ -155,7 +155,7 @@ if($respuesta=="continuar"){
                 </div>
             </div>
 	      
-
+       
 </body>
 <script>
 
@@ -190,39 +190,51 @@ const app = {
      }).then(response =>{
         if(response.data != ''){
             console.log(response.data)
+            var iconos = document.getElementsByClassName("icono_play");
                 if(response.data.IntroVisto!=""){
+                    iconos[0].style.cursor='default'
                     this.intro="Visto"
                        this.agregandoCSS(1)
+                }else{
+                    iconos[0].style.cursor='pointer'
                 }
                 if(response.data.Prueba1!=""){
+                    iconos[1].style.cursor='default'
                     this.prueba1="Visto"
                        this.agregandoCSS(2)
                 }
                 if(response.data.Prueba2!=""){
+                    iconos[2].style.cursor='default'
                     this.prueba2="Visto"
                        this.agregandoCSS(3)
                 }
                 if(response.data.Prueba3!=""){
+                    iconos[2].style.cursor='default'
                     this.prueba3="Visto"
                        this.agregandoCSS(4)
                 }
                 if(response.data.Prueba4!=""){
+                    iconos[4].style.cursor='default'
                     this.prueba4="Visto"
                        this.agregandoCSS(5)
                 }
                 if(response.data.Prueba5!=""){
+                    iconos[5].style.cursor='default'
                     this.prueba5="Visto"
                        this.agregandoCSS(6)
                 }
                 if(response.data.Prueba6!=""){
+                    iconos[6].style.cursor='default'
                     this.prueba6="Visto"
                        this.agregandoCSS(7)
                 }
                 if(response.data.Prueba7!=""){
+                    iconos[7].style.cursor='default'
                     this.prueba7="Visto"
                        this.agregandoCSS(8)
                 }
                 if(response.data.Prueba8!=""){
+                    iconos[8].style.cursor='default'
                     this.prueba8="Visto"
                        this.agregandoCSS(9)
                 }
@@ -238,58 +250,82 @@ const app = {
     methods:{
         agregandoCSS(num){
             var icono = document.getElementsByClassName("icono_play");
-            icono[num].style.cursor='pointer'
+           
                 if(num==1){
+                    icono[1].style.cursor='pointer'
                     this.vali_rutamarco= 'Imagenes/marcovideos.png'
                     this.vali_rutaplay='Imagenes/icono_reproducir.png'
                 }
                 if(num==2){
+                    icono[2].style.cursor='pointer'
                     this.sis_rutamarco= 'Imagenes/marcovideos.png'
                     this.sis_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[2].style.cursor='default'
                 }
                 if(num==3){
+                    icono[3].style.cursor='pointer'
                     this.ins_rutamarco= 'Imagenes/marcovideos.png'
                     this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[3].style.cursor='default'
                 }
                 if(num==4){
+                    icono[4].style.cursor='pointer'
                     this.medi_rutamarco= 'Imagenes/marcovideos.png'
                     this.medi_rutaplay='Imagenes/icono_reproducir.png'
-                }
-                if(num==4){
-                    this.ins_rutamarco= 'Imagenes/marcovideos.png'
-                    this.ins_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[4].style.cursor='default'
                 }
                 if(num==5){
+                    icono[5].style.cursor='pointer'
                     this.nive_rutamarco= 'Imagenes/marcovideos.png'
                     this.nive_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[5].style.cursor='default'
                 }
                 if(num==6){
+                    icono[6].style.cursor='pointer'
                     this.colo_rutamarco= 'Imagenes/marcovideos.png'
                     this.colo_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[6].style.cursor='default'
                 }
                 if(num==7){
+                    icono[7].style.cursor='pointer'
                     this.den_rutamarco= 'Imagenes/marcovideos.png'
                     this.den_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[7].style.cursor='default'
                 }
                 if(num==8){
+                    icono[8].style.cursor='pointer'
                     this.pru_rutamarco= 'Imagenes/marcovideos.png'
                     this.pru_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[8].style.cursor='default'
                 }
                 if(num==9){
+                    icono[9].style.cursor='pointer'
                     this.dia_rutamarco= 'Imagenes/marcovideos.png'
                     this.dia_rutaplay='Imagenes/icono_reproducir.png'
+                }else{
+                    icono[9].style.cursor='default'
                 }
         },
         introduccion(){
+            if(this.intro!="Visto"){
+                console.log(this.intro);
                 window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
+            }
         },
         validacion(){
-            if(this.intro!=""){
+            if(this.intro!="" && this.prueba1!="Visto"){
                     window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
             }
         },
         sistema(){
-            if(this.prueba1!=""){
+            if(this.prueba1!="" && this.prueba2!="Visto"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
             }
         },

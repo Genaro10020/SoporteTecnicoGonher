@@ -248,10 +248,10 @@ if($respuesta=="continuar"){
                         <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
                     <div v-if="nombre_actividad=='validacion'" class="d-flex justify-content-center col-12">
-                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow "> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
+                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower  animate__repeat-2"> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
                     </div> 
                     <div v-if="nombre_actividad!='validacion'" class="d-flex justify-content-center col-12">
-                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__flipInX animate__slow ">{{texto_indicaciones}} </p> 
+                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{texto_indicaciones}} </p> 
                     </div> 
             </div>
                     <!---INICIO Actividad validacion-->
@@ -335,22 +335,23 @@ if($respuesta=="continuar"){
                     <!---FIN Actividad validacion-->
 
                     <!---INICIO Inpeccion Fisica-->
-                    <div v-else-if="nombre_actividad=='inspeccion'" class="row" style="min-height: 80vh;">
-                            <div class="class d-flex justify-content-center">
-                            <model-viewer v-if="cantidad_actividad==1" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==2"id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==3" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==4" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==5" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==6" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==7" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==8" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==9" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                            <model-viewer v-if="cantidad_actividad==10" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                    <div v-else-if="nombre_actividad=='inspeccion'"  style="min-height: 80vh;">
+                            <div class=" d-flex justify-content-center h-100">
+                                <model-viewer v-if="cantidad_actividad==1" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==2"id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==3" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==4" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==5" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==6" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==7" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==8" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==9" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
+                                <model-viewer v-if="cantidad_actividad==10" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
                                 </model-viewer>
                             </div>
-                            <!-- Use it like any other HTML element -->
-                                
+                            <div class="">
+                                 <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">Presione sobre el acumulador para realizar la inspección.</p> 
+                            </div>
                             <div class="d-flex h-full  align-items-start justify-content-center">
                                 <div class="div_botones w-100  d-flex mt-5">
                                         <div class="col-6 text-center ">
@@ -362,6 +363,7 @@ if($respuesta=="continuar"){
                                         </div>
                                 </div>    
                             </div>
+
                     </div> 
                     <!---FIN Inpeccion Fisica-->
             <div class="row " style="height: 10vh;">	

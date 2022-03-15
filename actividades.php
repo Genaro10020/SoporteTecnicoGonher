@@ -62,18 +62,17 @@ if($respuesta=="continuar"){
 @media (min-width: 0px)
 { 
     
-    .pushablef, .pushablev {
+    .pushablef, .pushablev, .pushablec {
         border-radius: 12px;
         border: none;
         padding: 0;
         cursor: pointer;
         outline-offset: 4px;
     }
-    .frontv{background: hsl(149, 58%, 50%)}
-    .pushablev{background: hsl(149, 58%, 20%)}
-    .frontf{background: hsl(345deg 100% 47%)}
-    .pushablef{background: hsl(340deg 100% 32%)}
-    .frontv, .frontf {
+    .frontv{background: hsl(149, 58%, 50%)} .pushablev{background: hsl(149, 58%, 20%)}
+    .frontf{background: hsl(345deg 100% 47%)} .pushablef{background: hsl(340deg 100% 32%)}
+    .frontc{background: hsl(44, 100%, 46%)} .pushablec{background: hsl(44, 98%, 29%)}
+    .frontv, .frontf, .frontc {
         display: block;
         padding: 12px 42px;
         border-radius: 12px;
@@ -82,12 +81,13 @@ if($respuesta=="continuar"){
         color: white;
         transform: translateY(-6px);
     }
-    .pushablev:active .frontv, .pushablef:active .frontf {
+    .pushablev:active .frontv, .pushablef:active .frontf, .pushablec:active .frontc{
         transform: translateY(-2px);
     }
     .acumulador{margin-top:50px; height: 300px; width: 350px; }
     .titulos {font-family: 'Orbitron', sans-serif;text-shadow:-1px 2px 0px black;} 
-    .texto_indicaciones{color:#9bd2ff; font-weight: bold; text-shadow:-1px 2px 0px blue;}
+    .texto_indicaciones, .texto_indicaciones_pie{color:#9bd2ff; font-weight: bold; text-shadow:2px 2px 2px blue;}
+    /*.texto_indicaciones_pie{color:#8ef6ff; font-weight: bold; text-shadow:2px 2px 2px  black;}*/
     .etiqueta{width: 50px; height: 50px; position:absolute; margin-top:220px; margin-left:15px; cursor: pointer;z-index: 1;  
     transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
     -webkit-transform: rotate(28deg) scale(0.781) skew(34deg) skewY(38deg) translate(0px);
@@ -148,6 +148,11 @@ if($respuesta=="continuar"){
         height:500px; width:250px;
     }
     /*FIN ACTIVIDAD 2 */
+    /*INSPECCION FISICA*/
+    .indicacion_zoom_direccion{
+        font-family: 'Rowdies', cursive;
+    }
+    
 }
 /*SM*/	
 @media (min-width: 576px) { 
@@ -220,8 +225,8 @@ if($respuesta=="continuar"){
 
 
 #modelo{
-    width:500px;
-    height:500px;
+    width:600px;
+    height:550px;
     text-align:center;
 }
 </style>
@@ -336,30 +341,43 @@ if($respuesta=="continuar"){
 
                     <!---INICIO Inpeccion Fisica-->
                     <div v-else-if="nombre_actividad=='inspeccion'"  style="min-height: 80vh;">
-                            <div class=" d-flex justify-content-center h-100">
-                                <model-viewer v-if="cantidad_actividad==1" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==2"id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==3" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==4" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==5" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==6" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==7" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==8" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==9" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                <model-viewer v-if="cantidad_actividad==10" id="modelo"  src="3D/ejemplo4.glb" alt="A 3D model of a shishkebab" camera-controls>
-                                </model-viewer>
+                                <div class="d-flex justify-content-center align-items-center ">
+                                    <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
+                                    <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
+                                    <div class=""><img src="Imagenes/scroll.png" width="80"></div>
+                                    <div class="indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador aplicar Zoom</div>
+                                </div>
+               
+                                    
+                                   
+                            <div class="row d-flex justify-content-center  align-items-center">
+                                <div class="col-12 col-lg-7 d-flex  justify-content-center justify-content-lg-end">
+                                        <model-viewer  id="modelo"  :src="url_acumulador3D" alt="A 3D model of a shishkebab" camera-controls></model-viewer></div>
+                                <div class="col-12 col-lg-5 flex-column">
+                                    <div class="d-flex justify-content-center justify-content-lg-start"><label  class="cantidad_actividad ">INSPECCIÓN: {{cantidad_actividad}}/10</label></div>
+                                    <div class="d-flex justify-content-center justify-content-lg-start"><label  class="cantidad_actividad ">PUNTOS: {{correctas}}</label></div>
+                                </div>
                             </div>
                             <div class="">
-                                 <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">Presione sobre el acumulador para realizar la inspección.</p> 
+                                 <p  class="texto_indicaciones_pie fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{indicaciones_pie}}</p> 
+                                 
                             </div>
-                            <div class="d-flex h-full  align-items-start justify-content-center">
+                      
+                              
+                    
+                            <div>
+                                 <div v-if="iniciar==false" class="col-12 text-center">
+                                    <button id="btn_iniciar" @click="metodoIniciar" class="pushablec"><span class="frontc" >{{btn_iniciar}}</span></button>
+                                 </div>
+                            </div>
+                            <div v-if="iniciar!=false" class="d-flex h-full  align-items-start justify-content-center">
                                 <div class="div_botones w-100  d-flex mt-5">
                                         <div class="col-6 text-center ">
-                                            <button id="boton1" @click="bien_o_mal('correcto')" class="pushablev"><span class="frontv" >{{btn_verde}}</span></button>
+                                            <button id="boton1" @click="bien_o_mal('sin')" class="pushablev animate__animated animate__zoomIn"><span class="frontv" >{{btn_verde}}</span></button>
                                         </div>
                                         
                                         <div class="col-6 text-center">
-                                            <button id="boton2" @click="bien_o_mal('incorrecto')" class="pushablef"><span class="frontf">{{btn_rojo}}</span></button>
+                                            <button id="boton2" @click="bien_o_mal('con')" class="pushablef animate__animated animate__zoomIn"><span class="frontf">{{btn_rojo}}</span></button>
                                         </div>
                                 </div>    
                             </div>
@@ -607,7 +625,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         if(response.data=='Fin Actividad'){
                                             window.location.href="videos.php?videos_capacitacion=capacitacion"
                                         }else{
-                                            this.cantidad_actividad++ 
+                                            if(this.cantidad_actividad<10){this.cantidad_actividad++}
                                         }
 
 
@@ -632,20 +650,23 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }   
                 var mountedApp = Vue.createApp(app).mount('#app');
         }else if (actividad == "inspeccion"){//ACTIVIDAD SISTEMA ELÉCTRICO--------------------------------------------------------------
-
             const app = {
                     data(){
                         return{
                         nombre_actividad:'',
                         titulo_actividad:'', 
                         texto_indicaciones:'',
+                        indicaciones_pie:'',
+                        btn_iniciar:'',
                         btn_verde:'',
                         btn_rojo:'',
                         voltaje:0,
-                        cantidad_actividad:1,
+                        url_acumulador3D:'3D/acumulador0.glb',
+                        cantidad_actividad:0,
                         correctas:0,
                         correcta_incorrecta:'',
                         true_false:null,
+                        iniciar:false
                         }
                     },
                     mounted(){
@@ -653,12 +674,27 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                             this.nombre_actividad = actividad
                             this.titulo_actividad = 'Inspección Física'
                             this.texto_indicaciones = 'Verifica que el acumulador no cuente con daños físicos.'
+                            this.btn_iniciar ='Iniciar'
                             this.btn_verde ='Sin Daño'
                             this.btn_rojo ='Con Daño'
+                            this.indicaciones_pie='Ejemplo: Acumulador en buenas condiciones, presione sobre el acumulador y girelo. Iniciar si está listo.'
      
                     },
                     methods:{
-  
+                            metodoIniciar(){
+                                document.getElementById("btn_iniciar").className +=" animate__animated animate__zoomOut"
+                               // document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
+                               
+                            setTimeout(()=>{
+                                this.iniciar=true
+                                this.cantidad_actividad=1
+                                this.indicaciones_pie="Gire el acumulador, realice la inspección física y conteste."
+                             },1000)
+                              
+                            },
+                            bien_o_mal(respuesta){
+                                if(this.cantidad_actividad<10){this.cantidad_actividad++}
+                            }
                         }
                 }   
                 var mountedApp = Vue.createApp(app).mount('#app');

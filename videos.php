@@ -330,7 +330,7 @@ const app = {
             }
         },
         inspeccion(){
-            if(this.prueba2!=""){
+            if(this.prueba2!="" && this.prueba3!="Visto"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
             }
         }

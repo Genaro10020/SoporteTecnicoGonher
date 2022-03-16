@@ -381,6 +381,9 @@ if($respuesta=="continuar"){
                                         </div>
                                 </div>    
                             </div>
+                            <div class=" text-center" >
+                                        <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                            </div>
 
                     </div> 
                     <!---FIN Inpeccion Fisica-->
@@ -505,17 +508,23 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         this.correcta_incorrecta="C O R R E C T A"
                         this.correctas++;
                         document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                        const sonido = new Audio('Audios/correcto.mp3')
+                        sonido.play();
 
                     } else if (this.meses>12 && respuesta=="sin"){
                     // console.log("correctoSin")
                         this.correcta_incorrecta="C O R R E C T A"
                         this.correctas++;
                         document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                        const sonido = new Audio('Audios/correcto.mp3')
+                        sonido.play();
 
                     } else if (this.meses<=12 && respuesta=="sin"){
                         //console.log("IncorrectaSin")
                         this.correcta_incorrecta="I N C O R R E C T A"
                         document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                        const sonido = new Audio('Audios/incorrecto.mp3')
+                        sonido.play();
             
 
 
@@ -523,6 +532,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                     // console.log("IncorrectaCon")
                         this.correcta_incorrecta="I N C O R R E C T A"
                         document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                        const sonido = new Audio('Audios/incorrecto.mp3')
+                        sonido.play();
                     }   
 
 
@@ -598,10 +609,14 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                                 this.correctas++
                                                 this.correcta_incorrecta="C O R R E C T O"
                                                 document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;"; 
+                                                const sonido = new Audio('Audios/correcto.mp3')
+                                                sonido.play();
                                                 
                                             }else{
                                                 this.correcta_incorrecta="I N C O R R E C T O"
                                                 document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                                const sonido = new Audio('Audios/incorrecto.mp3')
+                                                sonido.play();
                                             }
                                     }
                                     if(this.true_false==false){
@@ -609,10 +624,14 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                                 this.correctas++
                                                 this.correcta_incorrecta="C O R R E C T O"
                                                 document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;"; 
-                                                
+                                                const sonido = new Audio('Audios/correcto.mp3')
+                                                sonido.play();
+
                                             }else{
                                                 this.correcta_incorrecta="I N C O R R E C T O"
                                                 document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                                const sonido = new Audio('Audios/incorrecto.mp3')
+                                                sonido.play();
                                             }
                                     }
                                     console.log(this.nombre_actividad)
@@ -666,7 +685,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         correctas:0,
                         correcta_incorrecta:'',
                         true_false:null,
-                        iniciar:false
+                        iniciar:false,
+                        numero: 0
                         }
                     },
                     mounted(){
@@ -684,7 +704,9 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                             metodoIniciar(){
                                 document.getElementById("btn_iniciar").className +=" animate__animated animate__zoomOut"
                                // document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
-                               
+                               this.numero=Math.floor(Math.random() *(10-1))+1;
+                               console.log(this.numero)
+                               this.url_acumulador3D = '3D/acumulador'+this.numero+'.glb' 
                             setTimeout(()=>{
                                 this.iniciar=true
                                 this.cantidad_actividad=1
@@ -693,10 +715,93 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                               
                             },
                             bien_o_mal(respuesta){
-                                if(this.cantidad_actividad<10){this.cantidad_actividad++}
+                                console.log(this.numero)
+                                
+                                if(this.numero==1 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==2 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==3 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==4 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==5 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==6 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==7 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==8 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==9 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==10 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else {
+                                    this.correcta_incorrecta="I N C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/incorrecto.mp3')
+                                    sonido.play();
+                                }
+                                   
+                                
+
+                                
+
+                                console.log('Correctas'+this.correctas+'Numero:'+this.numero+'Respuesta:'+respuesta); 
+                                    axios.post('guardar_actividades.php',{
+                                        actividad: this.nombre_actividad,
+                                        puntos: this.correctas,
+                                        cantidad_activiti: this.cantidad_actividad
+                                    }).then(response=>{
+                                        if(response.data=='Fin Actividad'){
+                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                        }else{
+                                            if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                            console.log(response.data)
+                                            this.numero=Math.floor(Math.random() *(10-1))+1;
+                                            this.url_acumulador3D = '3D/acumulador'+this.numero+'.glb' 
+                                            console.log(this.numero)
+                                        }
+
+                                        
+                                    })
+                                    setTimeout( ()=>{
+                                        document.getElementById("correcta_incorrecta").style.opacity="0";
+                                    },2000)
                             }
                         }
-                }   
+                }                
                 var mountedApp = Vue.createApp(app).mount('#app');
         
         }

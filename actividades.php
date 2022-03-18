@@ -7,18 +7,19 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     $consulta = "SELECT * FROM Test WHERE Usuario = '$usuario'";
     $resultado=$conexion->query($consulta);
     while($datos=$resultado->fetch_array()){ 
-        if($datos['TestInicial'] !="" && $datos['RespuestasTI']!= "" && $datos['IntroVisto']!= ""){
+        if($datos['TestInicial'] !="" && $datos['RespuestasTI']!="" && $datos['IntroVisto']!= "" ){
             $respuesta="continuar";
                 $Prueba1=$datos['Prueba1'];
                 $Prueba2=$datos['Prueba2'];
                 $Prueba3=$datos['Prueba3'];
+                $Prueba4=$datos['Prueba4'];
         }else{
            $respuesta = "regresar";
         }  
     }
 $actividad = $_GET['actividad'];
 if($respuesta=="continuar"){
-    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3==""){
+    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4==""){
 
     
 ?>
@@ -152,6 +153,12 @@ if($respuesta=="continuar"){
     .indicacion_zoom_direccion{
         font-family: 'Rowdies', cursive;
     }
+    /* ACTIVIDAD 4*/
+    .voltaje_medidor{
+        margin-top:-50px; margin-left:-80px; font-size:40px; font-family: 'Rowdies', cursive;
+        font-size: 60px;
+    }
+    /*FIN ACTIVIDAD 4 */
     
 }
 /*SM*/	
@@ -195,6 +202,12 @@ if($respuesta=="continuar"){
         font-family: 'Rowdies', cursive;
         font-size: 40px;
     }
+    /*ACTIVIDAD 4 */
+    .medidor_voltaje{
+        height:600px;
+        width: 550px;
+    }
+    /*FIN ACTIVIDAD 4 */
 }
 /* Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
@@ -210,6 +223,8 @@ if($respuesta=="continuar"){
     .voltaje{font-size:80px;margin-top:-50px;margin-left:-90px;}
     .medidor{height:600px; width:350px;}
     /*FIN ACTIVIDAD 2 */
+
+ 
 
  }
 /* XX-Large devices (larger desktops, 1400px and up)*/
@@ -308,7 +323,7 @@ if($respuesta=="continuar"){
                                                 </div>
                                                 <div class="col-12 col-md-4 text-warning position-relative d-flex align-items-center justify-content-center ">
                                                     <img class="medidor animate__animated animate__zoomIn animate__delay-1s" src="Imagenes/medidor.png">
-                                                    <label class="voltaje position-absolute top-50 start-50 animate__animated animate__zoomIn animate__delay-2s">{{voltaje}}</label><!--style=" position: absolute; margin-top:12%; margin-left:-10%;"-->
+                                                    <label class="voltaje position-absolute top-50 start-50 animate__animated animate__zoomIn animate__delay-2s">{{voltaje}}</label>
                                                 </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
@@ -387,6 +402,37 @@ if($respuesta=="continuar"){
 
                     </div> 
                     <!---FIN Inpeccion Fisica-->
+                     <!---INICIO Medidor Voltaje y CCA-->
+                     <div v-else-if="nombre_actividad=='medidor'"  style="min-height: 80vh;">
+                              
+                            <div class="position-relative d-flex justify-content-center">
+                                    <img class="medidor_voltaje animate__animated animate__zoomIn animate__slower z-index-1 img-fluid" src="Imagenes/medidor_voltaje.png">
+                                    <label  id="voltaje_medidor" class="voltaje_medidor position-absolute top-50 start-50 z-index-2 animate__animated animate__zoomIn animate__delay-2s text-warning">{{voltaje}}</label>
+                            </div>
+                            <div class="d-flex-colum">
+                            
+                               
+                                <div class="d-flex justify-content-center"><label  class="cantidad_actividad animate__animated animate__zoomIn animate__delay-1s">VERIFICACIÓN: {{cantidad_actividad}}/10</label></div>
+                                <div  class="d-flex justify-content-center"><label  class="cantidad_actividad animate__animated animate__zoomIn animate__delay-1s">PUNTOS: {{correctas}}</label></div>    
+                            </div>
+                                        
+                            <div  class="d-flex  align-items-start justify-content-center ">
+                                <div class="div_botones w-100  d-flex mt-5">
+                                        <div class="col-6 text-center ">
+                                            <button id="boton1" @click="bien_o_mal('correcto')" class="pushablev animate__animated animate__zoomIn animate__delay-1s"><span class="frontv" >{{btn_verde}}</span></button>
+                                        </div>
+                                        
+                                        <div class="col-6 text-center">
+                                            <button id="boton2" @click="bien_o_mal('incorrecto')" class="pushablef animate__animated animate__zoomIn animate__delay-1s"><span class="frontf">{{btn_rojo}}</span></button>
+                                        </div>
+                                </div>    
+                            </div>
+                            <div class=" text-center" >
+                                        <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                            </div>
+
+                    </div> 
+                    <!---FIN Medidor Voltaje y CCA-->
             <div class="row " style="height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
@@ -572,7 +618,6 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
             }
         }
         var mountedApp = Vue.createApp(app).mount('#app');
-
         }else if (actividad == "sistema"){//ACTIVIDAD SISTEMA ELÉCTRICO--------------------------------------------------------------
             const app = {
                     data(){
@@ -668,7 +713,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         }
                 }   
                 var mountedApp = Vue.createApp(app).mount('#app');
-        }else if (actividad == "inspeccion"){//ACTIVIDAD SISTEMA ELÉCTRICO--------------------------------------------------------------
+        }else if (actividad == "inspeccion"){//ACTIVIDAD SISTEMA INSPECCION--------------------------------------------------------------
             const app = {
                     data(){
                         return{
@@ -680,12 +725,12 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         btn_verde:'',
                         btn_rojo:'',
                         voltaje:0,
-                        url_acumulador3D:'3D/acumulador0.glb',
                         cantidad_actividad:0,
                         correctas:0,
                         correcta_incorrecta:'',
                         true_false:null,
                         iniciar:false,
+                        url_acumulador3D: '3D/acumulador0.glb',
                         numero: 0
                         }
                     },
@@ -804,6 +849,93 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }                
                 var mountedApp = Vue.createApp(app).mount('#app');
         
+        }else if (actividad == "medidor"){//ACTIVIDAD SISTEMA MEDIDOR--------------------------------------------------------------
+            const app = {
+                data(){
+                    return{
+                        nombre_actividad:'',
+                        titulo_actividad:'', 
+                        texto_indicaciones:'',
+                        indicaciones_pie:'',
+                        btn_verde:'',
+                        btn_rojo:'',
+                        voltaje:0,
+                        url_acumulador3D:'3D/acumulador0.glb',
+                        cantidad_actividad:1,
+                        correctas:0,
+                        correcta_incorrecta:'',
+                        true_false:null,
+                        iniciar:false,
+                        numero: 0
+                        }
+                },
+                mounted(){
+                            var actividad = document.getElementById('actividad').value;
+                            this.nombre_actividad = actividad
+                            this.titulo_actividad = 'Estado de Carga'
+                            this.texto_indicaciones = 'Revise el siguiete diagnóstico y confirme si el resultado es adecuado.'
+                            this.btn_verde ='Adecuado'
+                            this.btn_rojo ='Recargar'
+                            this.indicaciones_pie='Ejemplo: Acumulador en buenas condiciones, presione sobre el acumulador y girelo. Iniciar si está listo.'
+                            var randon = (Math.random() * (1-0)+12 ).toFixed(2)
+                            this.voltaje = randon
+                },
+                methods:{
+                       bien_o_mal(respuesta){
+                       
+                        console.log(this.cantidad_actividad)
+                        document.getElementById("boton1").disabled ="true"
+                        document.getElementById("boton2").disabled ="true"
+                        document.getElementById("voltaje_medidor").style.opacity =0;
+
+                        if(this.voltaje >= 12.65 && respuesta=="correcto"){
+                            this.correctas++
+                            this.correcta_incorrecta="C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/correcto.mp3')
+                            sonido.play();
+                        }else if(this.voltaje < 12.65 && respuesta=="incorrecto"){
+                            this.correctas++
+                            this.correcta_incorrecta="C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/correcto.mp3')
+                            sonido.play();
+                        }else{
+                            this.correcta_incorrecta="I N C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/incorrecto.mp3')
+                            sonido.play();
+                        }
+                       
+                         axios.post('guardar_actividades.php',{
+                                actividad: this.nombre_actividad,
+                                puntos: this.correctas,
+                                cantidad_activiti: this.cantidad_actividad
+                            }).then(response =>{
+
+                                if(response.data=='Fin Actividad'){
+                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                }else{
+                                    
+                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                    var randon = (Math.random() * (1-0)+12).toFixed(2)
+                                    this.voltaje = randon;
+                                    setTimeout(function(){
+                                        document.getElementById("boton1").removeAttribute("disabled");
+                                        document.getElementById("boton2").removeAttribute("disabled");
+                                        document.getElementById("voltaje_medidor").style.opacity = 1;
+                                    },2000)
+                                       
+                                }
+                                
+                            })
+
+                           
+                       } 
+                }
+            }
+
+            var mountedApp = Vue.createApp(app).mount('#app');
         }
 
 </script>

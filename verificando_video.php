@@ -30,8 +30,11 @@ header("Content-Type: application/json");
                         $datos="Terminado Sistema";
                 break;
             case 'inspeccion':
-                $datos="Terminado Inspeccion";
+                        $datos="Terminado Inspeccion";
                 break;
+            case 'medidor':
+                    $datos="Terminado Medidor";
+            break;
             default:
                 # code...
                 break;

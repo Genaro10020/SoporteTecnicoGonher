@@ -333,6 +333,11 @@ const app = {
             if(this.prueba2!="" && this.prueba3!="Visto"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
             }
+        },
+        medidor(){
+            if(this.prueba3!="" && this.prueba4!="Visto"){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
+            }
         }
         
     },create(){

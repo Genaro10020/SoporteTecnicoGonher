@@ -35,6 +35,9 @@ header("Content-Type: application/json");
             case 'medidor':
                     $datos="Terminado Medidor";
             break;
+            case 'nivel_electrolito':
+                $datos="Terminado Electrolito";
+            break;
             default:
                 # code...
                 break;

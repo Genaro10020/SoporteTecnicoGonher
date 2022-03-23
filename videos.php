@@ -338,6 +338,11 @@ const app = {
             if(this.prueba3!="" && this.prueba4!="Visto"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
             }
+        },
+        niveles(){
+            if(this.prueba4!="" && this.prueba5!="Visto"){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
+            }
         }
         
     },create(){

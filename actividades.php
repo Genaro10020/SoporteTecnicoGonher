@@ -13,13 +13,14 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 $Prueba2=$datos['Prueba2'];
                 $Prueba3=$datos['Prueba3'];
                 $Prueba4=$datos['Prueba4'];
+                $Prueba5=$datos['Prueba5'];
         }else{
            $respuesta = "regresar";
         }  
     }
 $actividad = $_GET['actividad'];
 if($respuesta=="continuar"){
-    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4==""){
+    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4=="" || $actividad =="nivel_electrolito" && $Prueba5==""){
 
     
 ?>
@@ -433,6 +434,48 @@ if($respuesta=="continuar"){
 
                     </div> 
                     <!---FIN Medidor Voltaje y CCA-->
+                      <!---INICIO nivel de electrolito-->
+                      <div v-else-if="nombre_actividad=='nivel_electrolito'"  style="min-height: 80vh;">
+                                <div class="d-flex justify-content-center align-items-center ">
+                                    <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
+                                    <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
+                                    <div class=""><img src="Imagenes/scroll.png" width="80"></div>
+                                    <div class="indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador aplicar Zoom</div>
+                                </div>
+                            <div class="row d-flex justify-content-center  align-items-center">
+                                <div class="col-12 col-lg-7 d-flex  justify-content-center justify-content-lg-end">
+                                        <model-viewer camera-orbit="45deg 55deg 2.5m" id="modelo"  :src="url_acumulador3D" alt="A 3D model of a shishkebab" camera-controls></model-viewer></div>
+                                <div class="col-12 col-lg-5 flex-column">
+                                    <div class="d-flex justify-content-center justify-content-lg-start"><label  id="cantidad_actividad"  class="cantidad_actividad ">INSPECCIÓN: {{cantidad_actividad}}/10</label></div>
+                                    <div class="d-flex justify-content-center justify-content-lg-start"><label  id="cantidad_actividad"  class="cantidad_actividad ">PUNTOS: {{correctas}}</label></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                 <p  class="texto_indicaciones_pie fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{indicaciones_pie}}</p> 
+                                 
+                            </div>
+                            <div>
+                                 <div v-if="iniciar==false" class="col-12 text-center">
+                                    <button id="btn_iniciar" @click="metodoIniciar" class="pushablec"><span class="frontc" >{{btn_iniciar}}</span></button>
+                                 </div>
+                            </div>
+                            <div v-if="iniciar!=false" class="d-flex h-full  align-items-start justify-content-center">
+                                <div class="div_botones w-100  d-flex mt-5">
+                                        <div class="col-6 text-center ">
+                                            <button id="boton1" @click="bien_o_mal('sin')" class="pushablev animate__animated animate__zoomIn"><span class="frontv" >{{btn_verde}}</span></button>
+                                        </div>
+                                        
+                                        <div class="col-6 text-center">
+                                            <button id="boton2" @click="bien_o_mal('con')" class="pushablef animate__animated animate__zoomIn"><span class="frontf">{{btn_rojo}}</span></button>
+                                        </div>
+                                </div>    
+                            </div>
+                            <div class=" text-center" >
+                                        <label id="correcta_incorrecta" class="correcta_incorrecta">{{correcta_incorrecta}}</label>
+                            </div>
+
+                    </div> 
+                    <!---FIN Nivel de Electrolito-->
             <div class="row " style="height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
@@ -887,6 +930,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         document.getElementById("boton1").disabled ="true"
                         document.getElementById("boton2").disabled ="true"
                         document.getElementById("voltaje_medidor").style.opacity =0;
+                        document.getElementById("correcta_incorrecta").style.opacity = 1;
 
                         if(this.voltaje >= 12.65 && respuesta=="correcto"){
                             this.correctas++
@@ -924,6 +968,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         document.getElementById("boton1").removeAttribute("disabled");
                                         document.getElementById("boton2").removeAttribute("disabled");
                                         document.getElementById("voltaje_medidor").style.opacity = 1;
+                                        document.getElementById("correcta_incorrecta").style.opacity = 0;
                                     },2000)
                                        
                                 }
@@ -934,8 +979,143 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                        } 
                 }
             }
-
             var mountedApp = Vue.createApp(app).mount('#app');
+        }else if (actividad == "nivel_electrolito"){//ACTIVIDAD SISTEMA INSPECCION--------------------------------------------------------------
+
+
+            const app = {
+                    data(){
+                        return{
+                        nombre_actividad:'',
+                        titulo_actividad:'', 
+                        texto_indicaciones:'',
+                        indicaciones_pie:'',
+                        btn_iniciar:'',
+                        btn_verde:'',
+                        btn_rojo:'',
+                        voltaje:0,
+                        cantidad_actividad:0,
+                        correctas:0,
+                        correcta_incorrecta:'',
+                        true_false:null,
+                        iniciar:false,
+                        url_acumulador3D: '3D/nivel_electrolito0.glb',
+                        numero: 0
+                        }
+                    },
+                    mounted(){
+                            var actividad = document.getElementById('actividad').value;
+                            this.nombre_actividad = actividad
+                            this.titulo_actividad = 'Nivel Electrolitos'
+                            this.texto_indicaciones = 'Revise los niveles de electrolito.'
+                            this.btn_iniciar ='Iniciar'
+                            this.btn_verde ='Buen Nivel'
+                            this.btn_rojo ='Mal Nivel'
+                            this.indicaciones_pie='Ejemplo: Nivel de electrolito correcto.'
+                    },
+                    methods:{
+                            metodoIniciar(){
+                                document.getElementById("btn_iniciar").className +=" animate__animated animate__zoomOut"
+                               // document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
+                               this.numero=Math.floor(Math.random() *(10-1))+1;
+                               console.log(this.numero)
+                               this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
+                            setTimeout(()=>{
+                                this.iniciar=true
+                                this.cantidad_actividad=1
+                                this.indicaciones_pie="Gire el acumulador, para poder verificar correctamente los niveles de electrolito."
+                             },1000)
+                              
+                            },
+                            bien_o_mal(respuesta){
+                                console.log(this.numero)
+                                
+                                if(this.numero==1 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==2 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==3 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==4 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==5 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==6 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==7 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==8 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==9 && respuesta =='con'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else if(this.numero==10 && respuesta =='sin'){this.correctas++;
+                                    this.correcta_incorrecta="C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/correcto.mp3')
+                                    sonido.play();
+                                }else {
+                                    this.correcta_incorrecta="I N C O R R E C T O"
+                                    document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                                    const sonido = new Audio('Audios/incorrecto.mp3')
+                                    sonido.play();
+                                }
+                                   
+                                
+
+                                
+
+                                console.log('Correctas'+this.correctas+'Numero:'+this.numero+'Respuesta:'+respuesta); 
+                                    axios.post('guardar_actividades.php',{
+                                        actividad: this.nombre_actividad,
+                                        puntos: this.correctas,
+                                        cantidad_activiti: this.cantidad_actividad
+                                    }).then(response=>{
+                                        if(response.data=='Fin Actividad'){
+                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                        }else{
+                                            if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                            console.log(response.data)
+                                            this.numero=Math.floor(Math.random() *(10-1))+1;
+                                            this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
+                                            console.log(this.numero)
+                                        }
+
+                                        
+                                    })
+                                        setTimeout( ()=>{
+                                            document.getElementById("correcta_incorrecta").style.opacity="0";
+                                        },2000)
+                            }
+                        }
+                }                
+                var mountedApp = Vue.createApp(app).mount('#app');
         }
 
 </script>

@@ -60,6 +60,17 @@ if($resultado->num_rows >0){
                     }
                 }
          break;
+         case 'nivel_electrolito':
+            $actualizar = "UPDATE Test SET Prueba5='$puntos' WHERE Usuario = '$usuariotest'";
+            $conexion->query($actualizar);
+            if($actualizar==true){
+                    if($cantidad_activiti=="10"){
+                        $respuesta ="Fin Actividad";
+                    }else{
+                        $respuesta ="Actualizado".$puntos;
+                    }
+                }
+         break;
       default:
          
           break;

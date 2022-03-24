@@ -13,16 +13,25 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 $Prueba2=$datos['Prueba2'];
                 $Prueba3=$datos['Prueba3'];
                 $Prueba4=$datos['Prueba4'];
-                $Prueba5=$datos['Prueba5'];
+                $Prueba5=$datos['Prueba5'];//nivel
+                $Prueba6=$datos['Prueba6'];//coloracion
+                $Prueba7=$datos['Prueba7'];//densidad
         }else{
            $respuesta = "regresar";
         }  
     }
-$actividad = $_GET['actividad'];
-if($respuesta=="continuar"){
-    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4=="" || $actividad =="nivel_electrolito" && $Prueba5==""){
 
-    
+$actividad = $_GET['actividad'];
+if($Prueba5!="" && $Prueba6==""){
+    $actividad="coloracion_electrolito";
+}
+if($Prueba6!="" && $Prueba7==""){
+    $actividad="densidad_electrolito";
+}
+
+if($respuesta=="continuar"){
+    if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4=="" || 
+    $actividad =="nivel_electrolito" && $Prueba5=="" || $actividad =="coloracion_electrolito" && $Prueba6=="" || $actividad =="densidad_electrolito" && $Prueba7==""){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +64,6 @@ if($respuesta=="continuar"){
 
     
 </head>
-
 
 <style>
     
@@ -164,8 +172,6 @@ if($respuesta=="continuar"){
 }
 /*SM*/	
 @media (min-width: 576px) { 
-    
-
 }
 /* Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
@@ -435,7 +441,7 @@ if($respuesta=="continuar"){
                     </div> 
                     <!---FIN Medidor Voltaje y CCA-->
                       <!---INICIO nivel de electrolito-->
-                      <div v-else-if="nombre_actividad=='nivel_electrolito'"  style="min-height: 80vh;">
+                      <div v-else-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'"  style="min-height: 80vh;">
                                 <div class="d-flex justify-content-center align-items-center ">
                                     <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
                                     <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
@@ -980,7 +986,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }
             }
             var mountedApp = Vue.createApp(app).mount('#app');
-        }else if (actividad == "nivel_electrolito"){//ACTIVIDAD SISTEMA INSPECCION--------------------------------------------------------------
+        }else if (actividad == "nivel_electrolito" || actividad == "coloracion_electrolito" || actividad == "densidad_electrolito"){//ACTIVIDAD NIVELES DE ELECTROLITO--------------------------------------------------------------
 
 
             const app = {
@@ -999,19 +1005,42 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         correcta_incorrecta:'',
                         true_false:null,
                         iniciar:false,
-                        url_acumulador3D: '3D/nivel_electrolito0.glb',
+                        url_acumulador3D: '',
                         numero: 0
                         }
                     },
                     mounted(){
                             var actividad = document.getElementById('actividad').value;
                             this.nombre_actividad = actividad
-                            this.titulo_actividad = 'Nivel Electrolitos'
-                            this.texto_indicaciones = 'Revise los niveles de electrolito.'
-                            this.btn_iniciar ='Iniciar'
-                            this.btn_verde ='Buen Nivel'
-                            this.btn_rojo ='Mal Nivel'
-                            this.indicaciones_pie='Ejemplo: Nivel de electrolito correcto.'
+                            if(actividad=='nivel_electrolito'){
+                                this.url_acumulador3D = '3D/nivel_electrolito0.glb'
+                                this.titulo_actividad = 'Nivel Electrolito'
+                                this.texto_indicaciones = 'Revise los niveles de electrolito.'
+                                this.btn_iniciar ='Iniciar'
+                                this.btn_verde ='Buen Nivel'
+                                this.btn_rojo ='Mal Nivel'
+                                this.indicaciones_pie='Ejemplo: Nivel de electrolito correcto.'
+                            }
+                            if(actividad=='coloracion_electrolito'){
+                                this.url_acumulador3D = '3D/coloracion_electrolito0.glb'
+                                this.titulo_actividad = 'Coloración Electrolito'
+                                this.texto_indicaciones = 'Verifique coloración adecuada.'
+                                this.btn_iniciar ='Iniciar'
+                                this.btn_verde ='Correcta'
+                                this.btn_rojo ='Incorrecta'
+                                this.indicaciones_pie='Ejemplo: Coloración de electrolito cristalino adecuado.'
+                                
+                            }
+                            if(actividad=='densidad_electrolito'){
+                                this.titulo_actividad = 'Nivel Electrolito'
+
+                            }
+                            
+                           
+                            
+                           
+                           
+                            
                     },
                     methods:{
                             metodoIniciar(){
@@ -1019,12 +1048,27 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                // document.getElementById("acumulador").className += " animate__animated animate__bounceOutLeft"
                                this.numero=Math.floor(Math.random() *(10-1))+1;
                                console.log(this.numero)
-                               this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
-                            setTimeout(()=>{
-                                this.iniciar=true
-                                this.cantidad_actividad=1
-                                this.indicaciones_pie="Gire el acumulador, para poder verificar correctamente los niveles de electrolito."
-                             },1000)
+                               if(actividad=='nivel_electrolito'){
+                                    this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
+                                    setTimeout(()=>{
+                                        this.iniciar=true
+                                        this.cantidad_actividad=1
+                                        this.indicaciones_pie="Gire el acumulador, para poder verificar correctamente los niveles de electrolito."
+                                    },1000)
+                                }
+                                if(actividad=='coloracion_electrolito'){
+                                    this.url_acumulador3D = '3D/coloracion_electrolito'+this.numero+'.glb' 
+                                    setTimeout(()=>{
+                                        this.iniciar=true
+                                        this.cantidad_actividad=1
+                                        this.indicaciones_pie="Analice si el color del electrolito es cristalino."
+                                        },1000)
+                                }
+                                if(actividad=='densidad_electrolito'){
+                            
+                                }
+                               
+                            
                               
                             },
                             bien_o_mal(respuesta){
@@ -1087,10 +1131,6 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     sonido.play();
                                 }
                                    
-                                
-
-                                
-
                                 console.log('Correctas'+this.correctas+'Numero:'+this.numero+'Respuesta:'+respuesta); 
                                     axios.post('guardar_actividades.php',{
                                         actividad: this.nombre_actividad,
@@ -1098,13 +1138,39 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         cantidad_activiti: this.cantidad_actividad
                                     }).then(response=>{
                                         if(response.data=='Fin Actividad'){
-                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                                if(actividad=='nivel_electrolito'){
+                                                    window.location.href = "actividades.php?actividad=coloracion_electrolito"
+                                                }
+                                                if(actividad=='coloracion_electrolito'){
+                                                    window.location.href = "actividades.php?actividad=densidad_electrolito"
+                                                }
+                                                if(actividad=='densidad_electrolito'){
+                                            
+                                                }
+                                            
+                                           
                                         }else{
-                                            if(this.cantidad_actividad<10){this.cantidad_actividad++ }
-                                            console.log(response.data)
-                                            this.numero=Math.floor(Math.random() *(10-1))+1;
-                                            this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
-                                            console.log(this.numero)
+                                                console.log(response.data)
+                                                console.log(this.cantidad_actividad)
+                                                if(actividad=='nivel_electrolito'){
+                                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                                    this.numero=Math.floor(Math.random() *(10-1))+1;
+                                                    this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
+                                                    console.log(this.numero)
+                                                }
+                                                if(actividad=='coloracion_electrolito'){
+                                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                                
+                                                    this.numero=Math.floor(Math.random() *(10-1))+1;
+                                                    this.url_acumulador3D = '3D/coloracion_electrolito'+this.numero+'.glb' 
+                                                    console.log(this.numero)
+                                        
+                                                }
+                                                if(actividad=='densidad_electrolito'){
+                                            
+                                                }
+
+                                            
                                         }
 
                                         

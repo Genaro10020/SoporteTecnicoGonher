@@ -179,7 +179,7 @@ const app = {
        }else if(this.video_solicitado=="medidor"){
             this.titulo="MEDIDOR VOLTAJE Y CCA";
        }else if(this.video_solicitado=="nivel_electrolito"){
-            this.titulo="NIVEL DE ELECTROLITO";
+            this.titulo="NIVEL, COLORACIÓN Y DENSIDAD DE ELECTROLITO";
        }
        
         

@@ -133,17 +133,13 @@ if($respuesta=="continuar"){
                 <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label>
                 <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Niveles de Electrolito</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s lh-1" >Nivel, Coloración y densidad <br>de Electrolito</label>
                 <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Coloración de Electrolito</label>
-                <img  v-on:click="coloracion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="colo_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="colo_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Densidad de Electrolito</label>
-                <img  v-on:click="densidad" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="den_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="den_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
                 <img  v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label>
                 <img  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
-                <div class="col-12 col-md-4 col-md-8 col-xxl-6 text-center position-relative" style="min-height: 200px;">
+                <div class="col-12 col-md-4 col-md-6 offset-md-3 text-center position-relative " style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
                 </div>
@@ -191,6 +187,7 @@ const app = {
         if(response.data != ''){
             console.log(response.data)
             var iconos = document.getElementsByClassName("icono_play");
+            console.log(iconos)
                 if(response.data.IntroVisto!=""){
                     iconos[0].style.cursor='default'
                     this.intro="Visto"
@@ -218,7 +215,7 @@ const app = {
                     this.prueba4="Visto"
                        this.agregandoCSS(5)
                 }
-                if(response.data.Prueba5!=""){
+                if(response.data.Prueba5!="" && response.data.Prueba6!="" && response.data.Prueba7!=""){
                     iconos[5].style.cursor='default'
                     this.prueba5="Visto"
                        this.agregandoCSS(6)
@@ -233,11 +230,7 @@ const app = {
                     this.prueba7="Visto"
                        this.agregandoCSS(8)
                 }
-                if(response.data.Prueba8!=""){
-                    iconos[8].style.cursor='default'
-                    this.prueba8="Visto"
-                       this.agregandoCSS(9)
-                }
+
 
                 
         }else{
@@ -298,20 +291,8 @@ const app = {
                 }else{
                     icono[7].style.cursor='default'
                 }
-                if(num==8){
-                    icono[8].style.cursor='pointer'
-                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
-                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
-                }else{
-                    icono[8].style.cursor='default'
-                }
-                if(num==9){
-                    icono[9].style.cursor='pointer'
-                    this.dia_rutamarco= 'Imagenes/marcovideos.png'
-                    this.dia_rutaplay='Imagenes/icono_reproducir.png'
-                }else{
-                    icono[9].style.cursor='default'
-                }
+
+
         },
         introduccion(){
             if(this.intro!="Visto"){

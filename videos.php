@@ -220,12 +220,12 @@ const app = {
                     this.prueba5="Visto"
                        this.agregandoCSS(6)
                 }
-                if(response.data.Prueba6!=""){
+                if(response.data.Prueba8!=""){
                     iconos[6].style.cursor='default'
                     this.prueba6="Visto"
                        this.agregandoCSS(7)
                 }
-                if(response.data.Prueba7!=""){
+                if(response.data.Prueba9!=""){
                     iconos[7].style.cursor='default'
                     this.prueba7="Visto"
                        this.agregandoCSS(8)

@@ -1032,15 +1032,16 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                 
                             }
                             if(actividad=='densidad_electrolito'){
-                                this.titulo_actividad = 'Nivel Electrolito'
+                                this.url_acumulador3D = '3D/coloracion_electrolito0.glb'
+                                this.titulo_actividad = 'Densidad Electrolito'
+                                this.texto_indicaciones = 'Revise si la densidad esta dentro del rango.'
+                                this.btn_iniciar ='Iniciar'
+                                this.btn_verde ='Correcta'
+                                this.btn_rojo ='Incorrecta'
+                                this.indicaciones_pie='Ejemplo: Densidad correcta.'
 
                             }
-                            
-                           
-                            
-                           
-                           
-                            
+   
                     },
                     methods:{
                             metodoIniciar(){
@@ -1152,18 +1153,18 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         }else{
                                                 console.log(response.data)
                                                 console.log(this.cantidad_actividad)
+                                                if(this.cantidad_actividad<10){this.cantidad_actividad++}
                                                 if(actividad=='nivel_electrolito'){
-                                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                                    
                                                     this.numero=Math.floor(Math.random() *(10-1))+1;
                                                     this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
                                                     console.log(this.numero)
                                                 }
                                                 if(actividad=='coloracion_electrolito'){
-                                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
-                                                
+                                                    
                                                     this.numero=Math.floor(Math.random() *(10-1))+1;
                                                     this.url_acumulador3D = '3D/coloracion_electrolito'+this.numero+'.glb' 
-                                                    console.log(this.numero)
+                                                    console.log(this.numero+"CANTIDAD DE ACTIVIDAD"+this.cantidad_actividad)
                                         
                                                 }
                                                 if(actividad=='densidad_electrolito'){

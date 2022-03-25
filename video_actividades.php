@@ -5,7 +5,7 @@ $tipo=$_GET['tipo'];
 $video_solicitado=$_GET['video'];
 if($tipo=="capacitacion" || $tipo=="videos"){
 
-    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" || $video_solicitado=="sistema" || $video_solicitado=="inspeccion" || $video_solicitado=="medidor" || $video_solicitado=="nivel_electrolito"){
+    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" || $video_solicitado=="sistema" || $video_solicitado=="inspeccion" || $video_solicitado=="medidor" || $video_solicitado=="nivel_electrolito" || $video_solicitado=="prueba"){
 
     
 
@@ -73,11 +73,9 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 /*SM*/	
 @media (min-width: 576px) { 
 }
-
 /*MD Medium MD devices (tablets, 768px and up)*/
 @media (min-width: 768px) {  
 }
-
 /*LG Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
     .etiquetavideo{width:90%}
@@ -132,6 +130,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                                 <source v-if="video_solicitado=='inspeccion'" id="video" src="videos/Inspeccion_Fisica.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='medidor'" id="video" src="videos/Medidor_Voltaje.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='nivel_electrolito'" id="video" src="videos/Nivel_Electrolito.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='prueba'" id="video" src="videos/Prueba_Descarga.mp4" type="video/mp4">
                                         </video> 
                                         
                                     </div>
@@ -180,6 +179,8 @@ const app = {
             this.titulo="MEDIDOR VOLTAJE Y CCA";
        }else if(this.video_solicitado=="nivel_electrolito"){
             this.titulo="NIVEL, COLORACIÓN Y DENSIDAD DE ELECTROLITO";
+       }else if(this.video_solicitado=="prueba"){
+            this.titulo="Prueba de Descarga";
        }
        
         
@@ -203,7 +204,7 @@ const app = {
                             tipo_var:this.tipo_solicitud,
                             video_var:this.video_solicitado
                         }).then(response =>{
-                            console.log(response.data)
+                            console.log("respueta"+response.data+"tipo de solicitud"+this.tipo_solicitud)
                             if(response.data=="Terminado Intro" && this.tipo_solicitud=="capacitacion"){
                                 window.location.href = "videos.php?videos_capacitacion=capacitacion"
                             }else if(response.data=="Terminado Validacion" && this.tipo_solicitud=="capacitacion"){
@@ -216,6 +217,8 @@ const app = {
                                 window.location.href = "actividades.php?actividad=medidor"
                             }else if(response.data=="Terminado Electrolito" && this.tipo_solicitud=="capacitacion"){
                                 window.location.href = "actividades.php?actividad=nivel_electrolito"
+                            }else if(response.data=="Terminado Prueba" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = "actividades.php?actividad=prueba"
                             }
 
                         }).catch(function(error){

@@ -38,6 +38,9 @@ header("Content-Type: application/json");
             case 'nivel_electrolito':
                 $datos="Terminado Electrolito";
             break;
+            case 'prueba':
+                $datos="Terminado Prueba";
+            break;
             default:
                 # code...
                 break;

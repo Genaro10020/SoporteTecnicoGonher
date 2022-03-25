@@ -137,8 +137,8 @@ if($respuesta=="continuar"){
                 <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
                 <img  v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interátivo</label>
-                <img  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
+                <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
                 <div class="col-12 col-md-4 col-md-6 offset-md-3 text-center position-relative " style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
@@ -150,8 +150,6 @@ if($respuesta=="continuar"){
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                 </div>
             </div>
-	      
-       
 </body>
 <script>
 
@@ -170,10 +168,10 @@ const app = {
             prueba4:'',
             nive_rutamarco: 'Imagenes/marcovideos_disable.png', nive_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba5:'',
-            colo_rutamarco: 'Imagenes/marcovideos_disable.png', colo_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            /*colo_rutamarco: 'Imagenes/marcovideos_disable.png', colo_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba6:'',
             den_rutamarco: 'Imagenes/marcovideos_disable.png', den_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            prueba7:'',
+            prueba7:'',*/
             pru_rutamarco: 'Imagenes/marcovideos_disable.png', pru_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba8:'',
             dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
@@ -218,21 +216,20 @@ const app = {
                 if(response.data.Prueba5!="" && response.data.Prueba6!="" && response.data.Prueba7!=""){
                     iconos[5].style.cursor='default'
                     this.prueba5="Visto"
-                       this.agregandoCSS(6)
+                    this.prueba6="Visto"
+                    this.prueba7="Visto"
+                    this.agregandoCSS(6)
                 }
                 if(response.data.Prueba8!=""){
                     iconos[6].style.cursor='default'
-                    this.prueba6="Visto"
+                    this.prueba8="Visto"
                        this.agregandoCSS(7)
                 }
                 if(response.data.Prueba9!=""){
                     iconos[7].style.cursor='default'
-                    this.prueba7="Visto"
+                    this.prueba9="Visto"
                        this.agregandoCSS(8)
                 }
-
-
-                
         }else{
             window.location.href = 'menu_cliente.php'
         }
@@ -279,19 +276,18 @@ const app = {
                 }
                 if(num==6){
                     icono[6].style.cursor='pointer'
-                    this.colo_rutamarco= 'Imagenes/marcovideos.png'
-                    this.colo_rutaplay='Imagenes/icono_reproducir.png'
+                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
+                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
                 }else{
                     icono[6].style.cursor='default'
                 }
                 if(num==7){
                     icono[7].style.cursor='pointer'
-                    this.den_rutamarco= 'Imagenes/marcovideos.png'
-                    this.den_rutaplay='Imagenes/icono_reproducir.png'
+                    this.dia_rutamarco= 'Imagenes/marcovideos.png'
+                    this.dia_rutaplay='Imagenes/icono_reproducir.png'
                 }else{
                     icono[7].style.cursor='default'
                 }
-
 
         },
         introduccion(){
@@ -323,6 +319,16 @@ const app = {
         niveles(){
             if(this.prueba4!="" && this.prueba5!="Visto"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
+            }
+        },
+        prueba(){
+            if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.prueba8!="Visto"){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=prueba"
+            }
+        },
+        diagnostico(){
+            if(this.prueba8!="" && this.prueba9!="Visto"){
+                window.location.href = "actividades.php?actividad=diagnostico"
             }
         }
         

@@ -16,6 +16,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                 $Prueba5=$datos['Prueba5'];//nivel
                 $Prueba6=$datos['Prueba6'];//coloracion
                 $Prueba7=$datos['Prueba7'];//densidad
+                $Prueba8=$datos['Prueba8'];
+                $Prueba9=$datos['Prueba9'];
         }else{
            $respuesta = "regresar";
         }  
@@ -31,7 +33,7 @@ if($Prueba6!="" && $Prueba7==""){
 
 if($respuesta=="continuar"){
     if($actividad =="validacion" && $Prueba1=="" || $actividad =="sistema" && $Prueba2=="" || $actividad =="inspeccion" && $Prueba3=="" || $actividad =="medidor" && $Prueba4=="" || 
-    $actividad =="nivel_electrolito" && $Prueba5=="" || $actividad =="coloracion_electrolito" && $Prueba6=="" || $actividad =="densidad_electrolito" && $Prueba7==""){
+    $actividad =="nivel_electrolito" && $Prueba5=="" || $actividad =="coloracion_electrolito" && $Prueba6=="" || $actividad =="densidad_electrolito" && $Prueba7=="" || $actividad =="prueba" && $Prueba8=="" || $actividad =="diagnostico" && $Prueba9==""){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -382,7 +384,6 @@ if($respuesta=="continuar"){
                             </div>
                             <div class="">
                                  <p  class="texto_indicaciones_pie fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{indicaciones_pie}}</p> 
-                                 
                             </div>
                       
                               
@@ -441,8 +442,8 @@ if($respuesta=="continuar"){
                     </div> 
                     <!---FIN Medidor Voltaje y CCA-->
                       <!---INICIO nivel de electrolito-->
-                      <div v-else-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'"  style="min-height: 80vh;">
-                                <div class="d-flex justify-content-center align-items-center ">
+                      <div v-else-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito' || nombre_actividad=='densidad_electrolito' || nombre_actividad=='prueba'"  style="min-height: 80vh;">
+                                <div v-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'" class="d-flex justify-content-center align-items-center ">
                                     <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
                                     <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
                                     <div class=""><img src="Imagenes/scroll.png" width="80"></div>
@@ -450,7 +451,13 @@ if($respuesta=="continuar"){
                                 </div>
                             <div class="row d-flex justify-content-center  align-items-center">
                                 <div class="col-12 col-lg-7 d-flex  justify-content-center justify-content-lg-end">
-                                        <model-viewer camera-orbit="45deg 55deg 2.5m" id="modelo"  :src="url_acumulador3D" alt="A 3D model of a shishkebab" camera-controls></model-viewer></div>
+                                        <model-viewer v-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'" 
+                                        camera-orbit="45deg 55deg 2.5m" id="modelo"  :src="url_acumulador3D" alt="A 3D model of a shishkebab" camera-controls>
+                                        </model-viewer>
+                                        <img  v-if="nombre_actividad=='densidad_electrolito'" :src="url_acumulador3D" height="600" width="450">
+                                        <img  v-if="nombre_actividad=='prueba'" :src="url_acumulador3D" height="600" width="600">
+                                    </div>
+                                    
                                 <div class="col-12 col-lg-5 flex-column">
                                     <div class="d-flex justify-content-center justify-content-lg-start"><label  id="cantidad_actividad"  class="cantidad_actividad ">INSPECCIÓN: {{cantidad_actividad}}/10</label></div>
                                     <div class="d-flex justify-content-center justify-content-lg-start"><label  id="cantidad_actividad"  class="cantidad_actividad ">PUNTOS: {{correctas}}</label></div>
@@ -458,6 +465,7 @@ if($respuesta=="continuar"){
                             </div>
                             <div class="">
                                  <p  class="texto_indicaciones_pie fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{indicaciones_pie}}</p> 
+                                 
                                  
                             </div>
                             <div>
@@ -836,7 +844,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==6 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==6 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -846,7 +854,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==8 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==8 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -856,7 +864,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==10 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==10 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -897,7 +905,6 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         }
                 }                
                 var mountedApp = Vue.createApp(app).mount('#app');
-        
         }else if (actividad == "medidor"){//ACTIVIDAD SISTEMA MEDIDOR--------------------------------------------------------------
             const app = {
                 data(){
@@ -986,9 +993,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }
             }
             var mountedApp = Vue.createApp(app).mount('#app');
-        }else if (actividad == "nivel_electrolito" || actividad == "coloracion_electrolito" || actividad == "densidad_electrolito"){//ACTIVIDAD NIVELES DE ELECTROLITO--------------------------------------------------------------
-
-
+        }else if (actividad == "nivel_electrolito" || actividad == "coloracion_electrolito" || actividad == "densidad_electrolito" || actividad == "prueba"){//ACTIVIDAD NIVELES DE ELECTROLITO--------------------------------------------------------------
             const app = {
                     data(){
                         return{
@@ -1011,6 +1016,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                     },
                     mounted(){
                             var actividad = document.getElementById('actividad').value;
+                            
                             this.nombre_actividad = actividad
                             if(actividad=='nivel_electrolito'){
                                 this.url_acumulador3D = '3D/nivel_electrolito0.glb'
@@ -1019,7 +1025,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                 this.btn_iniciar ='Iniciar'
                                 this.btn_verde ='Buen Nivel'
                                 this.btn_rojo ='Mal Nivel'
-                                this.indicaciones_pie='Ejemplo: Nivel de electrolito correcto.'
+                                this.indicaciones_pie='Ejemplo: Nivel de electrolito adecuado.'
                             }
                             if(actividad=='coloracion_electrolito'){
                                 this.url_acumulador3D = '3D/coloracion_electrolito0.glb'
@@ -1028,19 +1034,27 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                 this.btn_iniciar ='Iniciar'
                                 this.btn_verde ='Correcta'
                                 this.btn_rojo ='Incorrecta'
-                                this.indicaciones_pie='Ejemplo: Coloración de electrolito cristalino adecuado.'
+                                this.indicaciones_pie='Ejemplo: La coloración de electrolito debe escristalino.'
                                 
                             }
                             if(actividad=='densidad_electrolito'){
-                                this.url_acumulador3D = '3D/coloracion_electrolito0.glb'
+                                this.url_acumulador3D = 'Imagenes/densidad_electrolito0.jpg'
                                 this.titulo_actividad = 'Densidad Electrolito'
                                 this.texto_indicaciones = 'Revise si la densidad esta dentro del rango.'
                                 this.btn_iniciar ='Iniciar'
                                 this.btn_verde ='Correcta'
                                 this.btn_rojo ='Incorrecta'
-                                this.indicaciones_pie='Ejemplo: Densidad correcta.'
-
+                                this.indicaciones_pie='Ejemplo: Densidad adecuada.'
+                            }if(actividad=='prueba'){
+                                this.url_acumulador3D = 'Imagenes/prueba_de_descarga0.jpg'
+                                this.titulo_actividad = 'Prueba de Descarga'
+                                this.texto_indicaciones = 'Revise el voltaje de descarga.'
+                                this.btn_iniciar ='Iniciar'
+                                this.btn_verde ='Correcta'
+                                this.btn_rojo ='Incorrecta'
+                                this.indicaciones_pie='Ejemplo: Prueba de descarga dentro de lo especificado.'
                             }
+   
    
                     },
                     methods:{
@@ -1066,15 +1080,24 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                         },1000)
                                 }
                                 if(actividad=='densidad_electrolito'){
-                            
+                                    this.url_acumulador3D = 'Imagenes/densidad_electrolito'+this.numero+'.jpg' 
+                                    setTimeout(()=>{
+                                        this.iniciar=true
+                                        this.cantidad_actividad=1
+                                        this.indicaciones_pie="Analice si el color del electrolito es cristalino."
+                                        },1000)
                                 }
-                               
-                            
-                              
+                                if(actividad=='prueba'){
+                                    this.url_acumulador3D = 'Imagenes/prueba_de_descarga'+this.numero+'.jpg' 
+                                    setTimeout(()=>{
+                                        this.iniciar=true
+                                        this.cantidad_actividad=1
+                                        this.indicaciones_pie="Verifique que el acumulador pase la prueba de descarga."
+                                        },1000)
+                                }
                             },
                             bien_o_mal(respuesta){
                                 console.log(this.numero)
-                                
                                 if(this.numero==1 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
@@ -1100,7 +1123,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==6 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==6 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -1110,7 +1133,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==8 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==8 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -1120,7 +1143,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
                                     sonido.play();
-                                }else if(this.numero==10 && respuesta =='sin'){this.correctas++;
+                                }else if(this.numero==10 && respuesta =='con'){this.correctas++;
                                     this.correcta_incorrecta="C O R R E C T O"
                                     document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
                                     const sonido = new Audio('Audios/correcto.mp3')
@@ -1146,35 +1169,32 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                                     window.location.href = "actividades.php?actividad=densidad_electrolito"
                                                 }
                                                 if(actividad=='densidad_electrolito'){
-                                            
+                                                    window.location.href="videos.php?videos_capacitacion=capacitacion"
                                                 }
-                                            
-                                           
+                                                if(actividad=='prueba'){
+                                                    window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                                }
                                         }else{
-                                                console.log(response.data)
-                                                console.log(this.cantidad_actividad)
-                                                if(this.cantidad_actividad<10){this.cantidad_actividad++}
+                                            console.log(response.data)
+                                            if(this.cantidad_actividad<10){this.cantidad_actividad++}
                                                 if(actividad=='nivel_electrolito'){
-                                                    
                                                     this.numero=Math.floor(Math.random() *(10-1))+1;
                                                     this.url_acumulador3D = '3D/nivel_electrolito'+this.numero+'.glb' 
-                                                    console.log(this.numero)
                                                 }
                                                 if(actividad=='coloracion_electrolito'){
-                                                    
                                                     this.numero=Math.floor(Math.random() *(10-1))+1;
                                                     this.url_acumulador3D = '3D/coloracion_electrolito'+this.numero+'.glb' 
-                                                    console.log(this.numero+"CANTIDAD DE ACTIVIDAD"+this.cantidad_actividad)
-                                        
                                                 }
                                                 if(actividad=='densidad_electrolito'){
-                                            
+                                                    this.numero=Math.floor(Math.random() *(10-1))+1;
+                                                    this.url_acumulador3D = 'Imagenes/densidad_electrolito'+this.numero+'.jpg' 
                                                 }
-
-                                            
+                                                if(actividad=='prueba'){
+                                                    this.numero=Math.floor(Math.random() *(10-1))+1;
+                                                    this.url_acumulador3D = 'Imagenes/prueba_de_descarga'+this.numero+'.jpg' 
+                                                }
+                                                console.log("Numero"+this.numero+"CANTIDAD DE ACTIVIDAD"+this.cantidad_actividad)
                                         }
-
-                                        
                                     })
                                         setTimeout( ()=>{
                                             document.getElementById("correcta_incorrecta").style.opacity="0";
@@ -1183,6 +1203,94 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         }
                 }                
                 var mountedApp = Vue.createApp(app).mount('#app');
+        }else if (actividad == "diagnostico"){
+            const app = {
+                data(){
+                    return{
+                        nombre_actividad:'',
+                        titulo_actividad:'', 
+                        texto_indicaciones:'',
+                        indicaciones_pie:'',
+                        btn_verde:'',
+                        btn_rojo:'',
+                        voltaje:0,
+                        url_acumulador3D:'3D/acumulador0.glb',
+                        cantidad_actividad:1,
+                        correctas:0,
+                        correcta_incorrecta:'',
+                        true_false:null,
+                        iniciar:false,
+                        numero: 0
+                        }
+                },
+                mounted(){
+                            var actividad = document.getElementById('actividad').value;
+                            this.nombre_actividad = actividad
+                            this.titulo_actividad = 'Secuencia del Diagnóstico'
+                            this.texto_indicaciones = 'Ordene la secuencia del diagnóstico.'
+                            this.btn_verde ='Adecuado'
+                            this.btn_rojo ='Recargar'
+                            this.indicaciones_pie='Ejemplo: Acumulador en buenas condiciones, presione sobre el acumulador y girelo. Iniciar si está listo.'
+                            var randon = (Math.random() * (1-0)+12 ).toFixed(2)
+                            this.voltaje = randon
+                },
+                methods:{
+                       bien_o_mal(respuesta){
+                       
+                        console.log(this.cantidad_actividad)
+                        document.getElementById("boton1").disabled ="true"
+                        document.getElementById("boton2").disabled ="true"
+                        document.getElementById("voltaje_medidor").style.opacity =0;
+                        document.getElementById("correcta_incorrecta").style.opacity = 1;
+
+                        if(this.voltaje >= 12.65 && respuesta=="correcto"){
+                            this.correctas++
+                            this.correcta_incorrecta="C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/correcto.mp3')
+                            sonido.play();
+                        }else if(this.voltaje < 12.65 && respuesta=="incorrecto"){
+                            this.correctas++
+                            this.correcta_incorrecta="C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/correcto.mp3')
+                            sonido.play();
+                        }else{
+                            this.correcta_incorrecta="I N C O R R E C T O"
+                            document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
+                            const sonido = new Audio('Audios/incorrecto.mp3')
+                            sonido.play();
+                        }
+                       
+                         axios.post('guardar_actividades.php',{
+                                actividad: this.nombre_actividad,
+                                puntos: this.correctas,
+                                cantidad_activiti: this.cantidad_actividad
+                            }).then(response =>{
+
+                                if(response.data=='Fin Actividad'){
+                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                }else{
+                                    
+                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
+                                    var randon = (Math.random() * (1-0)+12).toFixed(2)
+                                    this.voltaje = randon;
+                                    setTimeout(function(){
+                                        document.getElementById("boton1").removeAttribute("disabled");
+                                        document.getElementById("boton2").removeAttribute("disabled");
+                                        document.getElementById("voltaje_medidor").style.opacity = 1;
+                                        document.getElementById("correcta_incorrecta").style.opacity = 0;
+                                    },2000)
+                                       
+                                }
+                                
+                            })
+
+                           
+                       } 
+                }
+            }
+            var mountedApp = Vue.createApp(app).mount('#app');
         }
 
 </script>

@@ -15,8 +15,6 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 $video_o_capacitacion = $_GET['videos_capacitacion'];
 if($respuesta=="continuar"){
     if($video_o_capacitacion=="capacitacion"  || $video_o_capacitacion=="videos"){
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,25 +102,25 @@ if($respuesta=="continuar"){
 
 <body style="background: rgb(32,141,255); background: radial-gradient(circle, rgba(32,141,182,1) 0%, rgba(39,196,205,1) 0%, rgba(9,11,100,1) 90%, rgba(0,19,68,100) 100%);
  background-repeat: no-repeat; background-size: 100%;">
- <div class="container-fluid" >
+ <div  class="container-fluid" >
 
  <!--<div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
  <div class="d-none d-lg-none d-md-block bg-danger fw-bolder text-center ">ESTAS EN MD</div>
  <div class="d-none d-xl-none d-lg-block bg-dark text-danger  fw-bolder text-center ">ESTAS EN LG</div>
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
-
+    <div id="app">
 			<div class="row" style="height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
 					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
 				</div>
                 <div class="d-flex justify-content-center col-12">
-                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">CAPACITACIÓN</h1>
+                     <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">{{titulo}}</h1>
                 </div>
 			</div>
 
  
-			<div id="app" class="contenido row d-flex mt-5" style="min-height: 80vh;">
+			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
                 <img v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
@@ -131,14 +129,17 @@ if($respuesta=="continuar"){
                 <img  v-on:click="sistema" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="sis_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="sis_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Física</label>
                 <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor Voltaje y CCA</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor de Voltaje y CCA</label>
                 <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s lh-1" >Nivel, Coloración y densidad <br>de Electrolito</label>
                 <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Proceso de Recarga</label>
+                <img  v-on:click="recarga" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="reca_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="reca_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
-                <img  v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
-                <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
+                <img v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
+                <div  class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
+                <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img  class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
+              
                 <div class="col-12 col-md-4 col-md-6 offset-md-3 text-center position-relative " style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
@@ -151,16 +152,18 @@ if($respuesta=="continuar"){
                 </div>
             </div>
             <input id="video_o_capacitacion" type="hidden" value="<?php echo $video_o_capacitacion;?>">
-
+    </div>
             
             
 </body>
 <script>
- var video_o_capacitacion = document.getElementById("video_o_capacitacion").value;
+ 
        
 const app = {
 	data(){
 		return{
+            video_o_capacitacion:"",
+            titulo:'',
             intro_rutamarco: 'Imagenes/marcovideos.png', intro_rutaplay: 'Imagenes/icono_reproducir.png',
             intro: '',
             vali_rutamarco: 'Imagenes/marcovideos_disable.png', vali_rutaplay: 'Imagenes/icono_reproducir_disable.png',
@@ -173,10 +176,8 @@ const app = {
             prueba4:'',
             nive_rutamarco: 'Imagenes/marcovideos_disable.png', nive_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba5:'',
-            /*colo_rutamarco: 'Imagenes/marcovideos_disable.png', colo_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            prueba6:'',
-            den_rutamarco: 'Imagenes/marcovideos_disable.png', den_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            prueba7:'',*/
+            reca_rutamarco: 'Imagenes/marcovideos_disable.png', reca_rutaplay: 'Imagenes/icono_reproducir_disable.png',
+            video_recarga:'',
             pru_rutamarco: 'Imagenes/marcovideos_disable.png', pru_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba8:'',
             dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
@@ -184,9 +185,21 @@ const app = {
 		}
 	},
 	mounted(){
+        this.video_o_capacitacion = document.getElementById("video_o_capacitacion").value;
        
-     axios.post('datos_capacitacion.php',{
-        
+       if(this.video_o_capacitacion=="capacitacion"){
+           this.titulo='CAPACITACIÓN'
+        }
+       if(this.video_o_capacitacion=="videos"){
+           this.titulo='VIDEOS'
+          
+           
+        }
+
+
+       
+     
+        axios.post('datos_capacitacion.php',{
      }).then(response =>{
         if(response.data != ''){
             console.log(response.data)
@@ -228,18 +241,23 @@ const app = {
                     this.prueba7="Visto"
                     this.agregandoCSS(6)
                 }
-                if(response.data.Prueba8!=""){
+                if(response.data.Video_Recarga!=""){
                     iconos[6].style.cursor='default'
-                    this.prueba8="Visto"
+                    this.video_recarga="Visto"
                        this.agregandoCSS(7)
                 }
-                if(response.data.Prueba9!=""){
+                if(response.data.Prueba8!=""){
                     iconos[7].style.cursor='default'
-                    this.prueba9="Visto"
+                    this.prueba8="Visto"
                        this.agregandoCSS(8)
                 }
+                if(response.data.Prueba9!=""){
+                    iconos[8].style.cursor='default'
+                    this.prueba9="Visto"
+                       
+                }
 
-                if(video_o_capacitacion=="videos"){
+                if(this.video_o_capacitacion=="videos"){
                     this.agregandoCSS(1)
                     this.agregandoCSS(2)
                     this.agregandoCSS(3)
@@ -247,6 +265,7 @@ const app = {
                     this.agregandoCSS(5)
                     this.agregandoCSS(6)
                     this.agregandoCSS(7)
+                  
                     iconos[0].style.cursor='pointer'
                     iconos[1].style.cursor='pointer'
                     iconos[2].style.cursor='pointer'
@@ -255,6 +274,7 @@ const app = {
                     iconos[5].style.cursor='pointer'
                     iconos[6].style.cursor='pointer'
                     iconos[7].style.cursor='pointer'
+                   
                 }
 
 
@@ -304,58 +324,74 @@ const app = {
                 }
                 if(num==6){
                     icono[6].style.cursor='pointer'
-                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
-                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
+                    this.reca_rutamarco= 'Imagenes/marcovideos.png'
+                    this.reca_rutaplay='Imagenes/icono_reproducir.png'
                 }else{
                     icono[6].style.cursor='default'
                 }
                 if(num==7){
                     icono[7].style.cursor='pointer'
-                    this.dia_rutamarco= 'Imagenes/marcovideos.png'
-                    this.dia_rutaplay='Imagenes/icono_reproducir.png'
+                    this.pru_rutamarco= 'Imagenes/marcovideos.png'
+                    this.pru_rutaplay='Imagenes/icono_reproducir.png'
                 }else{
                     icono[7].style.cursor='default'
+                }
+                if(num==8){
+                   
+                    if(this.video_o_capacitacion!="videos"){
+                        icono[8].style.cursor='pointer'
+                        this.dia_rutamarco= 'Imagenes/marcovideos.png'
+                        this.dia_rutaplay='Imagenes/icono_reproducir.png'
+                    }
+                   
+                }else{
+                    icono[8].style.cursor='default'
                 }
 
         },
         introduccion(){
-            if(this.intro!="Visto" || video_o_capacitacion=="videos"){
+            if(this.intro!="Visto" || this.video_o_capacitacion=="videos"){
                 console.log(this.intro);
                 window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
             }
         },
         validacion(){
-            if(this.intro!="" && this.prueba1!="Visto" || video_o_capacitacion=="videos" ){
+            if(this.intro!="" && this.prueba1!="Visto" || this.video_o_capacitacion=="videos" ){
                     window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
             }
         },
         sistema(){
-            if(this.prueba1!="" && this.prueba2!="Visto" || video_o_capacitacion=="videos"){
+            if(this.prueba1!="" && this.prueba2!="Visto" || this.video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
             }
         },
         inspeccion(){
-            if(this.prueba2!="" && this.prueba3!="Visto" || video_o_capacitacion=="videos"){
+            if(this.prueba2!="" && this.prueba3!="Visto" || this.video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
             }
         },
         medidor(){
-            if(this.prueba3!="" && this.prueba4!="Visto" || video_o_capacitacion=="videos"){
+            if(this.prueba3!="" && this.prueba4!="Visto" || this.video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
             }
         },
         niveles(){
-            if(this.prueba4!="" && this.prueba5!="Visto" || video_o_capacitacion=="videos"){
+            if(this.prueba4!="" && this.prueba5!="Visto" || this.video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
             }
         },
+        recarga(){
+            if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.video_recarga!="Visto" || this.video_o_capacitacion=="videos"){
+                window.location.href="video_actividades.php?tipo=capacitacion&video=recarga"
+            }
+        },
         prueba(){
-            if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.prueba8!="Visto" || video_o_capacitacion=="videos"){
+            if(this.video_recarga!="" && this.prueba8!="Visto" || this.video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=prueba"
             }
         },
         diagnostico(){
-            if(this.prueba8!="" && this.prueba9!="Visto"){
+            if(this.prueba8!="" && this.prueba9!="Visto" && this.video_o_capacitacion=="capacitacion"){
                 window.location.href = "actividades.php?actividad=diagnostico"
             }
         }

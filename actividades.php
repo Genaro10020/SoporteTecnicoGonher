@@ -149,7 +149,6 @@ if($respuesta=="continuar"){
         font-size: 2em;
         font-family:'Rowdies', cursive;
         text-shadow: 1px 1px black;
-        
     }   
 
     /*ACTIVIDAD 2 SISTEMA ELECTRICO*/
@@ -589,14 +588,7 @@ if($respuesta=="continuar"){
                                                 Revisión del sistema eléctrico 
                                                 </div>      
                                     </div>
-                                        <div class="d-flex opciones col-12" data-id="3">
-                                                <div class="div_icono col-4 ">
-                                                    <img class="icono rounded-circle " width="90" height="90" src="Imagenes/acumulador.png" alt="">
-                                                </div>
-                                                <div class="col-8">
-                                                    Inpección Fisica
-                                                </div> 
-                                        </div>
+                                        
                                         <div class="d-flex opciones col-12" data-id="5">
                                                 <div class="div_icono col-4">
                                                     <img class="icono rounded-circle" width="90" height="90" src="Imagenes/densidad_electrolito3.jpg" alt="">
@@ -613,12 +605,21 @@ if($respuesta=="continuar"){
                                                     Revisión de póliza
                                                 </div> 
                                         </div>
-                                        <div class="d-flex opciones col-12" data-id="6">
+                                        <div class="d-flex opciones col-12" data-id="7">
                                                 <div class="div_icono col-4">
-                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/prueba_de_descarga2.jpg" alt="">
+                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/prueba_de_descarga1.jpg" alt="">
                                                 </div>
                                                 <div class="col-8">
                                                     Prueba de descarga
+                                                </div> 
+                                        </div>
+                                        
+                                        <div class="d-flex opciones col-12" data-id="3">
+                                                <div class="div_icono col-4 ">
+                                                    <img class="icono rounded-circle " width="90" height="90" src="Imagenes/acumulador.png" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Inpección Fisica
                                                 </div> 
                                         </div>
                                         <div class="d-flex opciones col-12" data-id="4">
@@ -628,6 +629,14 @@ if($respuesta=="continuar"){
                                                     <div class="col-8">
                                                         Toma de voltaje y CCA
                                                     </div> 
+                                        </div>
+                                        <div class="d-flex opciones col-12" data-id="6">
+                                                <div class="div_icono col-4">
+                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/prueba_de_descarga0.jpg" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Proceso de carga
+                                                </div> 
                                         </div>
                                         
                                     </div>
@@ -1402,7 +1411,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
             //guardando opciones
             set: (sortable)=>{
                 const orden = sortable.toArray();
-                var respuesta = orden[0]+orden[1]+orden[2]+orden[3]+orden[4]+orden[5];
+                var respuesta = orden[0]+orden[1]+orden[2]+orden[3]+orden[4]+orden[5]+orden[6];
                 console.log(respuesta);
                 var suma_puntos=0;
                 if(orden[0]==1){suma_puntos+=2;}
@@ -1411,9 +1420,10 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 if(orden[3]==4){suma_puntos+=2;}
                 if(orden[4]==5){suma_puntos+=2;}
                 if(orden[5]==6){suma_puntos+=2;}
-                var calificacion = suma_puntos-2;
+                if(orden[6]==7){suma_puntos+=2;}
+                var calificacion = suma_puntos-4;
                 if(calificacion<0){calificacion=0; }
-                
+                console.log(calificacion);
                 //console.log(respuesta);
                 document.getElementById('boton').style.display="block";
 

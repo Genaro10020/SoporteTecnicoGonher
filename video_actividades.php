@@ -5,7 +5,7 @@ $tipo=$_GET['tipo'];
 $video_solicitado=$_GET['video'];
 if($tipo=="capacitacion" || $tipo=="videos"){
 
-    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" || $video_solicitado=="sistema" || $video_solicitado=="inspeccion" || $video_solicitado=="medidor" || $video_solicitado=="nivel_electrolito" || $video_solicitado=="prueba"){
+    if($video_solicitado=="introduccion" || $video_solicitado=="validacion" || $video_solicitado=="sistema" || $video_solicitado=="inspeccion" || $video_solicitado=="medidor" || $video_solicitado=="nivel_electrolito" || $video_solicitado=="recarga" || $video_solicitado=="prueba"){
 
     
 
@@ -130,6 +130,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
                                                 <source v-if="video_solicitado=='inspeccion'" id="video" src="videos/Inspeccion_Fisica.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='medidor'" id="video" src="videos/Medidor_Voltaje.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='nivel_electrolito'" id="video" src="videos/Nivel_Electrolito.mp4" type="video/mp4">
+                                                <source v-if="video_solicitado=='recarga'" id="video" src="videos/Proceso_Recarga.mp4" type="video/mp4">
                                                 <source v-if="video_solicitado=='prueba'" id="video" src="videos/Prueba_Descarga.mp4" type="video/mp4">
                                         </video> 
                                         
@@ -179,12 +180,14 @@ const app = {
             this.titulo="MEDIDOR VOLTAJE Y CCA";
        }else if(this.video_solicitado=="nivel_electrolito"){
             this.titulo="NIVEL, COLORACIÓN Y DENSIDAD DE ELECTROLITO";
+       }else if(this.video_solicitado=="recarga"){
+            this.titulo="Proceso de Recarga";
        }else if(this.video_solicitado=="prueba"){
             this.titulo="Prueba de Descarga";
        }
        
         
-	},
+	},  
     methods:{
         reproducir(){
             
@@ -219,6 +222,8 @@ const app = {
                                 window.location.href = "actividades.php?actividad=nivel_electrolito"
                             }else if(response.data=="Terminado Prueba" && this.tipo_solicitud=="capacitacion"){
                                 window.location.href = "actividades.php?actividad=prueba"
+                            }else if(response.data=="Terminado Recarga" && this.tipo_solicitud=="capacitacion"){
+                                window.location.href = "videos.php?videos_capacitacion=capacitacion"
                             }
 
                         }).catch(function(error){

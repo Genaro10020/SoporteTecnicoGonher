@@ -14,7 +14,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     }
 $video_o_capacitacion = $_GET['videos_capacitacion'];
 if($respuesta=="continuar"){
-    if($video_o_capacitacion=="capacitacion"){
+    if($video_o_capacitacion=="capacitacion"  || $video_o_capacitacion=="videos"){
 
     
 ?>
@@ -150,9 +150,14 @@ if($respuesta=="continuar"){
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
                 </div>
             </div>
+            <input id="video_o_capacitacion" type="hidden" value="<?php echo $video_o_capacitacion;?>">
+
+            
+            
 </body>
 <script>
-
+ var video_o_capacitacion = document.getElementById("video_o_capacitacion").value;
+       
 const app = {
 	data(){
 		return{
@@ -179,14 +184,17 @@ const app = {
 		}
 	},
 	mounted(){
+       
      axios.post('datos_capacitacion.php',{
         
      }).then(response =>{
         if(response.data != ''){
             console.log(response.data)
             var iconos = document.getElementsByClassName("icono_play");
-            console.log(iconos)
-                if(response.data.IntroVisto!=""){
+          
+            
+           // console.log(iconos)
+            if(response.data.IntroVisto!="" ){
                     iconos[0].style.cursor='default'
                     this.intro="Visto"
                        this.agregandoCSS(1)
@@ -230,6 +238,26 @@ const app = {
                     this.prueba9="Visto"
                        this.agregandoCSS(8)
                 }
+
+                if(video_o_capacitacion=="videos"){
+                    this.agregandoCSS(1)
+                    this.agregandoCSS(2)
+                    this.agregandoCSS(3)
+                    this.agregandoCSS(4)
+                    this.agregandoCSS(5)
+                    this.agregandoCSS(6)
+                    this.agregandoCSS(7)
+                    iconos[0].style.cursor='pointer'
+                    iconos[1].style.cursor='pointer'
+                    iconos[2].style.cursor='pointer'
+                    iconos[3].style.cursor='pointer'
+                    iconos[4].style.cursor='pointer'
+                    iconos[5].style.cursor='pointer'
+                    iconos[6].style.cursor='pointer'
+                    iconos[7].style.cursor='pointer'
+                }
+
+
         }else{
             window.location.href = 'menu_cliente.php'
         }
@@ -291,38 +319,38 @@ const app = {
 
         },
         introduccion(){
-            if(this.intro!="Visto"){
+            if(this.intro!="Visto" || video_o_capacitacion=="videos"){
                 console.log(this.intro);
                 window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
             }
         },
         validacion(){
-            if(this.intro!="" && this.prueba1!="Visto"){
+            if(this.intro!="" && this.prueba1!="Visto" || video_o_capacitacion=="videos" ){
                     window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
             }
         },
         sistema(){
-            if(this.prueba1!="" && this.prueba2!="Visto"){
+            if(this.prueba1!="" && this.prueba2!="Visto" || video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
             }
         },
         inspeccion(){
-            if(this.prueba2!="" && this.prueba3!="Visto"){
+            if(this.prueba2!="" && this.prueba3!="Visto" || video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
             }
         },
         medidor(){
-            if(this.prueba3!="" && this.prueba4!="Visto"){
+            if(this.prueba3!="" && this.prueba4!="Visto" || video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
             }
         },
         niveles(){
-            if(this.prueba4!="" && this.prueba5!="Visto"){
+            if(this.prueba4!="" && this.prueba5!="Visto" || video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
             }
         },
         prueba(){
-            if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.prueba8!="Visto"){
+            if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.prueba8!="Visto" || video_o_capacitacion=="videos"){
                 window.location.href="video_actividades.php?tipo=capacitacion&video=prueba"
             }
         },

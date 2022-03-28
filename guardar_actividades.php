@@ -104,6 +104,10 @@ if($resultado->num_rows >0){
                     }
                 }
          break;
+         case 'diagnostico':
+            $actualizar = "UPDATE Test SET Prueba9='$puntos' WHERE Usuario = '$usuariotest'";
+            $conexion->query($actualizar);
+         break;
       default:
          
           break;

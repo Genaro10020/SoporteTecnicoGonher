@@ -53,6 +53,8 @@ if($respuesta=="continuar"){
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet"><!--TITULOS-->
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"><!--OPCIONES--> 
     <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet"> <!--PREGUNTAS-->
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <!--ANIMATE-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!--VUE 3-->
@@ -63,6 +65,9 @@ if($respuesta=="continuar"){
     <script type="module" 
     src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+   
+    
 
     
 </head>
@@ -170,7 +175,80 @@ if($respuesta=="continuar"){
         font-size: 60px;
     }
     /*FIN ACTIVIDAD 4 */
-    
+    /*DIAGNOSTICO INTERACTIVO*/
+    .contenedor-lista {
+	background: #dfbb07;
+	box-shadow: 0px 0px 20px rgba(149, 153, 159, .16);
+	border-radius: 10px;
+    padding:20px;
+    }
+
+
+    .lista .opciones {
+    color:#124d77;
+    margin:10px;
+    font-size:20px; font-family: 'Rowdies', cursive;
+	background:white;
+	display: grid;
+	grid-template-columns: auto 1fr 1fr 1fr;
+	align-items: center;
+	padding: 2px;
+	border-radius: 10px;
+	margin-bottom: 5px;
+    height: 100px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor:move;
+    }
+
+    .lista .opciones.seleccionado {
+        background:greenyellow;
+        transform: scale(1) rotate(-1deg);
+        box-shadow: 2px 2px 2px 1px rgba(blue);
+    }
+    .lista .opciones.fantasma {
+            border: 2px solid #000;
+    }
+    .lista .opciones.arrastrar {
+            opacity:0;
+    }
+    .lista:hover .opciones:hover{
+        background:#e2fff9;
+        transform: scale(1) rotate(-1deg);
+        box-shadow: 2px 2px 2px 1px rgba(blue);
+    }
+    .div_icono{
+        min-width: 100px;
+    }
+    .icono{
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        background:#F3F5FA;
+    }
+    .miboton {
+        
+        height:50px;
+        text-align: center;
+        width:200px;
+        font-family: 'Rowdies', cursive;
+        background: rgb(0,97,135);
+        background: linear-gradient(0deg, rgba(0,97,135,1) 0%, rgba(4,65,106,1) 32%, rgba(0,26,71,1) 89%); 
+        border-radius:6px;
+        border:2px solid #124d77;
+
+        cursor:pointer;
+        color:#ffffff;
+        font-size:20px;
+        padding:7px 14px;
+        text-decoration:none;
+        text-shadow:-1px 2px 0px black;
+    }
+    .miboton:hover {
+        background: rgb(23,0,94);
+    background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
+    }
+
+
+    /*FIN DIAGNOSTICO INTERACTIVO*/
 }
 /*SM*/	
 @media (min-width: 576px) { 
@@ -273,7 +351,7 @@ if($respuesta=="continuar"){
                     <div class="d-flex justify-content-center col-12">
                         <h1 class=" titulos animate__animated animate__pulse text-light">ACTIVIDAD</h1>
                     </div>
-                    <div class="d-flex justify-content-center col-12">
+                    <div class="d-flex justify-content-center col-12 text-center">
                         <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
                     <div v-if="nombre_actividad=='validacion'" class="d-flex justify-content-center col-12">
@@ -366,10 +444,14 @@ if($respuesta=="continuar"){
                     <!---INICIO Inpeccion Fisica-->
                     <div v-else-if="nombre_actividad=='inspeccion'"  style="min-height: 80vh;">
                                 <div class="d-flex justify-content-center align-items-center ">
-                                    <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
-                                    <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
-                                    <div class=""><img src="Imagenes/scroll.png" width="80"></div>
-                                    <div class="indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador aplicar Zoom</div>
+                                        <div class="d-none d-sm-block"><img src="Imagenes/mouse_girar.png" width="80"></div>
+                                        <div class="d-none d-sm-block indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
+                                        <div class="d-none d-sm-block"><img src="Imagenes/scroll.png" width="80"></div>
+                                        <div class="d-none d-sm-block indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador para aplicar Zoom</div>
+                                        <div class="d-block d-sm-none"><img src="Imagenes/movil_zoom.png" width="80"></div>
+                                        <div class="d-block d-sm-none indicacion_zoom_direccion text-light ">Coloque sus dedos sobre el acumulador y abrir o cerrar según zoom</div>
+                                        <div class="d-block d-sm-none"><img src="Imagenes/movil_laterales.png" width="80"></div>
+                                        <div class="d-block d-sm-none indicacion_zoom_direccion text-light">Deslice a la izquierda o derecha para girar.</div>
                                 </div>
                
                                     
@@ -444,10 +526,14 @@ if($respuesta=="continuar"){
                       <!---INICIO nivel de electrolito-->
                       <div v-else-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito' || nombre_actividad=='densidad_electrolito' || nombre_actividad=='prueba'"  style="min-height: 80vh;">
                                 <div v-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'" class="d-flex justify-content-center align-items-center ">
-                                    <div class=""><img src="Imagenes/mouse_girar.png" width="80"></div>
-                                    <div class="indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
-                                    <div class=""><img src="Imagenes/scroll.png" width="80"></div>
-                                    <div class="indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador aplicar Zoom</div>
+                                        <div class="d-none d-sm-block"><img src="Imagenes/mouse_girar.png" width="80"></div>
+                                        <div class="d-none d-sm-block indicacion_zoom_direccion text-light ">Click sobre el Acumulador</div>
+                                        <div class="d-none d-sm-block"><img src="Imagenes/scroll.png" width="80"></div>
+                                        <div class="d-none d-sm-block indicacion_zoom_direccion text-light">Coloca el mouse sobre el acumulador para aplicar Zoom</div>
+                                        <div class="d-block d-sm-none"><img src="Imagenes/movil_zoom.png" width="80"></div>
+                                        <div class="d-block d-sm-none indicacion_zoom_direccion text-light ">Coloque sus dedos sobre el acumulador y abrir o cerrar según zoom</div>
+                                        <div class="d-block d-sm-none"><img src="Imagenes/movil_laterales.png" width="80"></div>
+                                        <div class="d-block d-sm-none indicacion_zoom_direccion text-light">Deslice a la izquierda o derecha para girar.</div>
                                 </div>
                             <div class="row d-flex justify-content-center  align-items-center">
                                 <div class="col-12 col-lg-7 d-flex  justify-content-center justify-content-lg-end">
@@ -490,6 +576,72 @@ if($respuesta=="continuar"){
 
                     </div> 
                     <!---FIN Nivel de Electrolito-->
+                     <!---INICIO Diagnostico Interactivo-->
+                     <div v-else-if="nombre_actividad=='diagnostico'"  style="min-height: 80vh;">
+                            <div class="row">
+                                <div class="col-12 col-md-8 contenedor-lista">
+                                    <div class="lista" id="lista">
+                                        <div class="d-flex opciones col-12" data-id="2">
+                                                <div class="div_icono col-4">
+                                                <img class="icono rounded-circle" width="90" height="90" src="Imagenes/diagrama_sistema_electrico.png" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                Revisión del sistema eléctrico 
+                                                </div>      
+                                    </div>
+                                        <div class="d-flex opciones col-12" data-id="3">
+                                                <div class="div_icono col-4 ">
+                                                    <img class="icono rounded-circle " width="90" height="90" src="Imagenes/acumulador.png" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Inpección Fisica
+                                                </div> 
+                                        </div>
+                                        <div class="d-flex opciones col-12" data-id="5">
+                                                <div class="div_icono col-4">
+                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/densidad_electrolito3.jpg" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Niveles, coloración y densidad de electrolito
+                                                </div> 
+                                        </div>
+                                        <div class="d-flex opciones col-12" data-id="1">
+                                                <div class="div_icono col-4">
+                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/etiqueta_poliza.jpg" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Revisión de póliza
+                                                </div> 
+                                        </div>
+                                        <div class="d-flex opciones col-12" data-id="6">
+                                                <div class="div_icono col-4">
+                                                    <img class="icono rounded-circle" width="90" height="90" src="Imagenes/prueba_de_descarga2.jpg" alt="">
+                                                </div>
+                                                <div class="col-8">
+                                                    Prueba de descarga
+                                                </div> 
+                                        </div>
+                                        <div class="d-flex opciones col-12" data-id="4">
+                                                    <div class="div_icono col-4">
+                                                        <img class="icono rounded-circle" width="90" height="90" src="Imagenes/medidor_voltaje.png" alt="">
+                                                    </div>
+                                                    <div class="col-8">
+                                                        Toma de voltaje y CCA
+                                                    </div> 
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                    <div id="boton" class="col-12 text-center miboton  animate__animated animate__pulse" onclick="ya_ordenado('<?php echo $actividad; ?>')" style="display:none;">Ya lo ordene.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-4 mt-5">
+                                        <img src="Imagenes/gif_rag_drop.gif" class="img-fluid"  alt=""></img>  
+                                </div>
+                            </div>
+                    </div> 
+                    <!---FIN Medidor diagnostico interactivo-->
             <div class="row " style="height: 10vh;">	
                 <div class="col-12 text-light d-flex ">
                  <p class="font-monospace text-warning">Soporte Técnico (Curso de capacitación)</p>
@@ -502,6 +654,7 @@ if($respuesta=="continuar"){
 </body>
 </html>
 <script>
+
 
 var actividad = document.getElementById('actividad').value;
 if (actividad == "validacion"){//ACTIVIDAD VALIDACION
@@ -1204,6 +1357,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }                
                 var mountedApp = Vue.createApp(app).mount('#app');
         }else if (actividad == "diagnostico"){
+
+           
             const app = {
                 data(){
                     return{
@@ -1211,87 +1366,73 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                         titulo_actividad:'', 
                         texto_indicaciones:'',
                         indicaciones_pie:'',
-                        btn_verde:'',
-                        btn_rojo:'',
-                        voltaje:0,
-                        url_acumulador3D:'3D/acumulador0.glb',
-                        cantidad_actividad:1,
-                        correctas:0,
-                        correcta_incorrecta:'',
-                        true_false:null,
-                        iniciar:false,
-                        numero: 0
                         }
                 },
                 mounted(){
                             var actividad = document.getElementById('actividad').value;
                             this.nombre_actividad = actividad
                             this.titulo_actividad = 'Secuencia del Diagnóstico'
-                            this.texto_indicaciones = 'Ordene la secuencia del diagnóstico.'
-                            this.btn_verde ='Adecuado'
-                            this.btn_rojo ='Recargar'
-                            this.indicaciones_pie='Ejemplo: Acumulador en buenas condiciones, presione sobre el acumulador y girelo. Iniciar si está listo.'
-                            var randon = (Math.random() * (1-0)+12 ).toFixed(2)
-                            this.voltaje = randon
+                            this.texto_indicaciones = 'Ordene la secuencia de diagnóstico.'
                 },
                 methods:{
-                       bien_o_mal(respuesta){
-                       
-                        console.log(this.cantidad_actividad)
-                        document.getElementById("boton1").disabled ="true"
-                        document.getElementById("boton2").disabled ="true"
-                        document.getElementById("voltaje_medidor").style.opacity =0;
-                        document.getElementById("correcta_incorrecta").style.opacity = 1;
-
-                        if(this.voltaje >= 12.65 && respuesta=="correcto"){
-                            this.correctas++
-                            this.correcta_incorrecta="C O R R E C T O"
-                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
-                            const sonido = new Audio('Audios/correcto.mp3')
-                            sonido.play();
-                        }else if(this.voltaje < 12.65 && respuesta=="incorrecto"){
-                            this.correctas++
-                            this.correcta_incorrecta="C O R R E C T O"
-                            document.getElementById("correcta_incorrecta").style.cssText = "color:#26d73e; text-shadow: 2px 2px black;";
-                            const sonido = new Audio('Audios/correcto.mp3')
-                            sonido.play();
-                        }else{
-                            this.correcta_incorrecta="I N C O R R E C T O"
-                            document.getElementById("correcta_incorrecta").style.cssText = "color:#d64828; text-shadow: 2px 2px black;";
-                            const sonido = new Audio('Audios/incorrecto.mp3')
-                            sonido.play();
-                        }
-                       
-                         axios.post('guardar_actividades.php',{
-                                actividad: this.nombre_actividad,
-                                puntos: this.correctas,
-                                cantidad_activiti: this.cantidad_actividad
-                            }).then(response =>{
-
-                                if(response.data=='Fin Actividad'){
-                                            window.location.href="videos.php?videos_capacitacion=capacitacion"
-                                }else{
-                                    
-                                    if(this.cantidad_actividad<10){this.cantidad_actividad++ }
-                                    var randon = (Math.random() * (1-0)+12).toFixed(2)
-                                    this.voltaje = randon;
-                                    setTimeout(function(){
-                                        document.getElementById("boton1").removeAttribute("disabled");
-                                        document.getElementById("boton2").removeAttribute("disabled");
-                                        document.getElementById("voltaje_medidor").style.opacity = 1;
-                                        document.getElementById("correcta_incorrecta").style.opacity = 0;
-                                    },2000)
-                                       
-                                }
-                                
-                            })
-
-                           
-                       } 
+    
                 }
             }
             var mountedApp = Vue.createApp(app).mount('#app');
         }
+  
+</script>
+
+<script>
+    var actividad = document.getElementById('actividad').value;
+    var lista = document.getElementById('lista');
+    Sortable.create(lista, {
+        
+        animation:150,
+        chosenClass: 'seleccionado',
+        ghostClass: 'fantasma',
+        dragClass: 'arrastrar',
+        onEnd: () =>{
+                console.log('soltado');
+        },
+        group: "lista-opciones",
+        store: {
+
+           
+            //guardando opciones
+            set: (sortable)=>{
+                const orden = sortable.toArray();
+                var respuesta = orden[0]+orden[1]+orden[2]+orden[3]+orden[4]+orden[5];
+                console.log(respuesta);
+                var suma_puntos=0;
+                if(orden[0]==1){suma_puntos+=2;}
+                if(orden[1]==2){suma_puntos+=2;}
+                if(orden[2]==3){suma_puntos+=2;}
+                if(orden[3]==4){suma_puntos+=2;}
+                if(orden[4]==5){suma_puntos+=2;}
+                if(orden[5]==6){suma_puntos+=2;}
+                var calificacion = suma_puntos-2;
+                if(calificacion<0){calificacion=0; }
+                
+                //console.log(respuesta);
+                document.getElementById('boton').style.display="block";
+
+                        axios.post('guardar_actividades.php',{
+                                        actividad: actividad,
+                                        puntos: calificacion
+
+                                    }).then(response=>{
+                                        console.log(response.data);
+                                    })
+            }
+
+        }
+    });
+
+    function ya_ordenado(){
+        window.location.href="videos.php?videos_capacitacion=capacitacion"
+    }
+
 
 </script>
 

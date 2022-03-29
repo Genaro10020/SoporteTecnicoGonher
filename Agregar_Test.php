@@ -35,7 +35,8 @@ $sumando=date("Y-m-d",strtotime($currentDateTime."+ 15 days"));
                                             url : 'AgregarTest_Botones.php',
                                             data : { "Boton" : boton, "fechaInicio": fecha_inicial,"fechaFinal": fecha_final,"Usuario":seleccion},
                                             type : 'post',
-                                            success : function(resultado) {;
+                                            success : function(resultado) {
+                                                console.log(resultado);
                                                 if(resultado=="correcto"){
                                                     $("#mensaje").html("Usuario agregado con éxito");
                                                     llamandotabla();

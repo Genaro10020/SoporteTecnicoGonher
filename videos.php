@@ -112,7 +112,8 @@ if($respuesta=="continuar"){
     <div id="app">
 			<div class="row" style="height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
-					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
+                     
+					<a href="menu_cliente.php"><img src="Imagenes/icono_home.png" style="width:90px; background:white; border-radius: 0px 0px 50px 0px; padding:5px; cursor:pointer" ></a>
 				</div>
                 <div class="d-flex justify-content-center col-12">
                      <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">{{titulo}}</h1>
@@ -352,42 +353,84 @@ const app = {
         introduccion(){
             if(this.intro!="Visto" || this.video_o_capacitacion=="videos"){
                 console.log(this.intro);
-                window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
+
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=introduccion"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=introduccion"
+                }
+               
             }
         },
         validacion(){
             if(this.intro!="" && this.prueba1!="Visto" || this.video_o_capacitacion=="videos" ){
+
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=validacion"
+                }else{
                     window.location.href="video_actividades.php?tipo=capacitacion&video=validacion"
+                }
+
             }
         },
         sistema(){
             if(this.prueba1!="" && this.prueba2!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
+
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=sistema"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=sistema"
+                }
+                
             }
         },
         inspeccion(){
             if(this.prueba2!="" && this.prueba3!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=inspeccion"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=inspeccion"
+                }
             }
         },
         medidor(){
             if(this.prueba3!="" && this.prueba4!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=medidor"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=medidor"
+                }
+               
             }
         },
         niveles(){
             if(this.prueba4!="" && this.prueba5!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=nivel_electrolito"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=nivel_electrolito"
+                }
+               
             }
         },
         recarga(){
             if(this.prueba5!="" && this.prueba6!="" && this.prueba7!="" && this.video_recarga!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=recarga"
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=recarga"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=recarga"
+                }
+               
             }
         },
         prueba(){
             if(this.video_recarga!="" && this.prueba8!="Visto" || this.video_o_capacitacion=="videos"){
-                window.location.href="video_actividades.php?tipo=capacitacion&video=prueba"
+                if(this.video_o_capacitacion=="videos"){
+                    window.location.href="video_actividades.php?tipo=videos&video=prueba"
+                }else{
+                    window.location.href="video_actividades.php?tipo=capacitacion&video=prueba"
+                }
+               
             }
         },
         diagnostico(){

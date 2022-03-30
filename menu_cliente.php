@@ -183,7 +183,8 @@ background-size: cover;" >
 
 			<div class="row" style="height: 5vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
-					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
+					<!--<div style="width:130px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" ><b>Capacitación<b></div>-->
+					<a href="index.php"><img src="Imagenes/icono_salir.png" style="width:75px; height:65px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" ></a>
 				</div>
 			</div>
 <!-- <div class="d-none d-md-none d-sm-block bg-secondary fw-bolder text-center ">ESTAS EN SM</div>
@@ -376,7 +377,12 @@ const app = {
 	methods:{
 		lanzarpdf(){
 			if(this.url_constancia!=""){
-				window.location.href ="constanciaPDF.php";
+				
+				setTimeout(()=>{
+					//window.location.href ="constanciaPDF_View.php?usuario="+this.usuario;
+					//window.location.href ="constanciaPDF_View.php";
+					window.location.href ="constanciaPDF.php?usuario="+this.usuario;
+				},2000)
 			}
 		}
 	}

@@ -174,6 +174,11 @@ if($respuesta=="continuar"){
         font-size: 60px;
     }
     /*FIN ACTIVIDAD 4 */
+    /*COLOR ELECTROLITO*/
+    .cintilla_coloracion{
+        width:80vw;
+    }
+    /**/
     /*DIAGNOSTICO INTERACTIVO*/
     .contenedor-lista {
 	background: #dfbb07;
@@ -298,7 +303,7 @@ if($respuesta=="continuar"){
 /* Large LG devices (desktops, 992px and up)*/
 @media (min-width: 992px) { 
 
-
+   
 
  }
 /* X-Large devices (large desktops, 1200px and up)*/
@@ -310,7 +315,9 @@ if($respuesta=="continuar"){
     .medidor{height:600px; width:350px;}
     /*FIN ACTIVIDAD 2 */
 
- 
+    .cintilla_coloracion{
+        width:50vw;
+    }
 
  }
 /* XX-Large devices (larger desktops, 1400px and up)*/
@@ -345,7 +352,7 @@ if($respuesta=="continuar"){
 
             <div class="row" style="min-height: 10vh;">
                     <div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
-                        <img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
+                        <!--<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >-->
                     </div>
                     <div class="d-flex justify-content-center col-12">
                         <h1 class=" titulos animate__animated animate__pulse text-light">ACTIVIDAD</h1>
@@ -522,7 +529,7 @@ if($respuesta=="continuar"){
 
                     </div> 
                     <!---FIN Medidor Voltaje y CCA-->
-                      <!---INICIO nivel de electrolito-->
+                      <!---INICIO nivel de electrolito, INICIO coloracion de electrolito, INICIO densidad de electrolito-->
                       <div v-else-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito' || nombre_actividad=='densidad_electrolito' || nombre_actividad=='prueba'"  style="min-height: 80vh;">
                                 <div v-if="nombre_actividad=='nivel_electrolito' || nombre_actividad=='coloracion_electrolito'" class="d-flex justify-content-center align-items-center ">
                                         <div class="d-none d-sm-block"><img src="Imagenes/mouse_girar.png" width="80"></div>
@@ -533,6 +540,9 @@ if($respuesta=="continuar"){
                                         <div class="d-block d-sm-none indicacion_zoom_direccion text-light ">Coloque sus dedos sobre el acumulador y abrir o cerrar según zoom</div>
                                         <div class="d-block d-sm-none"><img src="Imagenes/movil_laterales.png" width="80"></div>
                                         <div class="d-block d-sm-none indicacion_zoom_direccion text-light">Deslice a la izquierda o derecha para girar.</div>
+                                </div>
+                                <div v-if="nombre_actividad=='coloracion_electrolito'" class="text-center">
+                                        <img class="cintilla_coloracion" src="Imagenes/cintilla_coloracion.png"/>
                                 </div>
                             <div class="row d-flex justify-content-center  align-items-center">
                                 <div class="col-12 col-lg-7 d-flex  justify-content-center justify-content-lg-end">

@@ -2,16 +2,17 @@
 <?php 
 include "conexionGhoner.php";
 session_start();
-if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
-	$usuariotest=$_SESSION["usuario"];
+/*if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
+	$usuariotest=$_SESSION["usuario"];*/
 
-	
-	$query = "SELECT * FROM UsuariosServicio WHERE Usuario = '$usuariotest'";
+	$usuario=$_GET['usuario'];
+	$query = "SELECT * FROM UsuariosServicio WHERE Usuario = '$usuario'";
 	$resultado=mysqli_query($conexion,$query);
 	while($datos=mysqli_fetch_array($resultado)){
 		$nombre_usuario=$datos['Nombre'];
-		 $nombre_usuario= mb_strtoupper($nombre_usuario,'utf-8');
+		// $nombre_usuario= mb_strtoupper($nombre_usuario,'utf-8');
 	}
+	//$nombre_usuario="Genaro Villanueva Pérez";
 	date_default_timezone_set('UTC');
     date_default_timezone_set("America/Mexico_City");
 	$hoy = date("d-m-Y");  
@@ -55,9 +56,9 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	$pdf->setFont('Arial','',16);
 	$pdf->setTextColor(0,0,0);
 	$pdf->Cell(0,110,utf8_decode("Integrado por 10 módulos de aprendizaje realizados el ".$reacomodando),0,0,'C');
-	$pdf->Ln(90);
-	$pdf->Cell(114,20,'',0,'C',0);$pdf->Cell(50,0,'',1,'C',1);
-	$pdf->Ln(5);
+	$pdf->Ln(92);
+	$pdf->Cell(0,5,'_____________________________',0,0,'C');
+	$pdf->Ln(10);
 	$pdf->setFont('Times','',12);
 	$pdf->setTextColor(0,0,0);
 	$pdf->Cell(0,1,'Jefe de Servicio',0,0,'C');
@@ -67,55 +68,21 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
 	$pdf->setFont('Arial','',16);
 	$pdf->setTextColor(0,0,0);
 	$pdf->Cell(0,1,utf8_decode("A ".$reacomodando),0,0,'C');
-	$pdf->Image('Imagenes/f.png',142,142,10);
+	$pdf->Image('Imagenes/f.png',142,147,10);
 
-	/*$pdf->Image('img/misventas.png',5,5,30);//posicion X,posicion Y, tamaño
-			$pdf->setFont('Arial','b',20);//tres parametros 
-			$pdf->Cell(30);
-			$pdf->Cell(120,10,'TICKET',0,0,'C');
-			$pdf->Ln(20);
-
-			$pdf->setFont('Arial','b',10);//tres parametros tipo, estilo B,I,S,B
-			$pdf->Cell(100,6,$_GET['numero'],0,0,'C');
-			$pdf->Ln(20);
-	$pdf->setFillColor(255,255,255);//tres parametros 
-	$pdf->SetX(25);//Alineacion de las celdas
-		$pdf->Cell(20,6,'Cantidad',1,0,'C',1);
-		$pdf->Cell(70,6,'Descripcion',1,0,'C',1);
-		$pdf->Cell(20,6,'Precio',1,0,'C',1);
-		$pdf->Cell(20,6,'Subtotal',1,1,'C',1);
-		$pdf->setFont('Arial','i',6);//tres 
-	while($row=mysqli_fetch_array($resultado)){
-			$pdf->SetX(25);//Alineacion de las celdas
-			$pdf->Cell(20,6,$row['cantidad'],1,0,'C',1);//largo, alto, texto,borde de celda, salto ln, alineacion.
-			$pdf->Cell(70,6,$row['descripcion'],1,0,'C',1);
-			$pdf->Cell(20,6,'$'.$row['precio'],1,0,'C',1);
-			$pdf->Cell(20,6,'$'.$row['total'],1,0,'C',1);
-			$pdf->Ln();
-			$totalapagar=$row['totalapagar'];
-		}
-	$pdf->setFillColor(235,235,235);//tres parametros 
-	$pdf->SetX(25);//Alineacion de las celdas
-		$pdf->setFont('Arial','b',10);//tres parametros tipo, estilo B,I,S,B
-	$pdf->Cell(130,6,'TOTAL    $'.$totalapagar.'            ',1,0,'R',1);
-			$pdf->SetY(260);
-			$pdf->setFont('Arial','I',8);// 
-			$pdf->Cell(0,10,'Pagina ',$pdf->PageNo().'/{nb}',0,1,'C');*/
 	//$pdf->Output();
-	$pdf->Output('F', 'constancia/'.mb_strtoupper($nombre_usuario,'utf-8').'.pdf');//descarga servidor
-	$pdf->Output('D', 'constancia_'.mb_strtoupper($nombre_usuario,'utf-8').'.pdf');//descaga cliente
-	$pdf->Output('I', '');//muestra.
-
-
-
-
-	
-	
-
-}//fin SESSION
+	//$pdf->Output('F', 'constancia/'.mb_strtoupper($nombre_usuario,'utf-8').'.pdf');//descarga servidor
+	$pdf->Output('F', 'constancia/'.$nombre_usuario.'.pdf');//descarga servidor
+	//$pdf->Output('D', 'constancia/'.mb_strtoupper($nombre_usuario,'utf-8').'.pdf');//descaga cliente
+	//$pdf->Output('I', '');//muestra.
+//include 'contanciaPDF_View.php';
+//header('Location: constanciaPDF_View.php?nombre='.$nombre_usuario);
+/*}*///fin SESSION
 
  ?>
 <script type="text/javascript">	
+window.location.replace("constanciaPDF_View.php?nombre=<?php echo $nombre_usuario?>");
+//window.location.href ="constanciaPDF_view.php";
 //alert("asdasd");
 //var w = window.open(pdf);
 //w.print();

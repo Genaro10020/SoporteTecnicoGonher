@@ -39,7 +39,10 @@ header("Content-Type: application/json");
                 $datos="Terminado Electrolito";
             break;
             case 'recarga':
-                $datos="Terminado Recarga";
+                $actualizando = "UPDATE Test SET Video_Recarga='1'  WHERE Usuario = '$usuariotest'";
+                if($conexion->query($actualizando)){
+                    $datos="Terminado Recarga";
+                }
             break;
             case 'prueba':
                 $datos="Terminado Prueba";
@@ -49,8 +52,8 @@ header("Content-Type: application/json");
                 break;
         }
 
-    }elseif($tipo=="video"){
-
+    }elseif($tipo=="videos"){
+        $datos="Terminado Videos";
     }else{
         header("Location: menu_cliente.php");
     }

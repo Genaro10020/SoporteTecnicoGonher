@@ -107,7 +107,8 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
 			<div class="row" style="min-height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
-					<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >
+                     <a href="index.php"><img src="Imagenes/icono_salir.png" style="width:75px; height:65px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" ></a>
+					<!--<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >-->
 				</div>
                 <div class="d-flex justify-content-center col-12">
                      <h1 class="titulos animate__animated animate__flash  text-light">{{titulo}}</h1>
@@ -208,22 +209,29 @@ const app = {
                             video_var:this.video_solicitado
                         }).then(response =>{
                             console.log("respueta"+response.data+"tipo de solicitud"+this.tipo_solicitud)
-                            if(response.data=="Terminado Intro" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "videos.php?videos_capacitacion=capacitacion"
-                            }else if(response.data=="Terminado Validacion" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=validacion"
-                            }else if(response.data=="Terminado Sistema" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=sistema"
-                            }else if(response.data=="Terminado Inspeccion" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=inspeccion"
-                            }else if(response.data=="Terminado Medidor" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=medidor"
-                            }else if(response.data=="Terminado Electrolito" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=nivel_electrolito"
-                            }else if(response.data=="Terminado Prueba" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "actividades.php?actividad=prueba"
-                            }else if(response.data=="Terminado Recarga" && this.tipo_solicitud=="capacitacion"){
-                                window.location.href = "videos.php?videos_capacitacion=capacitacion"
+
+                            if(this.tipo_solicitud=="videos"){
+                                window.location.href = "videos.php?videos_capacitacion=videos"
+                            }else{
+
+                                        if(response.data=="Terminado Intro" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "videos.php?videos_capacitacion=capacitacion"
+                                        }else if(response.data=="Terminado Validacion" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=validacion"
+                                        }else if(response.data=="Terminado Sistema" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=sistema"
+                                        }else if(response.data=="Terminado Inspeccion" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=inspeccion"
+                                        }else if(response.data=="Terminado Medidor" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=medidor"
+                                        }else if(response.data=="Terminado Electrolito" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=nivel_electrolito"
+                                        }else if(response.data=="Terminado Prueba" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "actividades.php?actividad=prueba"
+                                        }else if(response.data=="Terminado Recarga" && this.tipo_solicitud=="capacitacion"){
+                                            window.location.href = "videos.php?videos_capacitacion=capacitacion"
+                                        }
+
                             }
 
                         }).catch(function(error){

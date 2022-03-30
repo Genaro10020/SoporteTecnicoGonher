@@ -288,10 +288,7 @@ background-size: cover;" >
 								<div class="col-12 d-flex justify-content-center">
 									<img class="contorno_perilla" src="Imagenes/circulo.png" height="300px">
 									<img class="perilla_gira" src="Imagenes/perilla_gira.png" >
-									
 									<h1 class="titulos animate__animated animate__pulse  text-light position-absolute">MENÚ</h1>
-						
-									
 								</div>
 							</div>
 						</div>
@@ -299,10 +296,8 @@ background-size: cover;" >
 		
 					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3 d-flex align-items-end"><!--Certificado-->
 							<div class="col-12 justify-content-end d-flex">
-							
-							<img class="icono_certificado"  src="Imagenes/icono_certificado.png"/>
-							<img class="contorno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
-							
+								<img @click="lanzarpdf"  id="constancia" class="icono_certificado"  src="Imagenes/icono_constancia.png"/>
+								<img class="contorno_certificado"  src="Imagenes/certificado_contorno.png" height="300px"/>
 							</div>
 					</div>
 				</div>
@@ -333,7 +328,8 @@ const app = {
 			info: null,
 			url_capacitacion: '',
 			title_capacitacion: '',
-			url_testFinal: ''
+			url_testFinal: '',
+			url_constancia:''
 		}
 	},
 	mounted(){
@@ -357,10 +353,20 @@ const app = {
 
 					this.test_final=response.data.Prueba9
 					if(this.test_final==""){
-						console.log("no se a realizado la prueba 9")
+						//console.log("no se a realizado la prueba 9")
 					}else{
 						document.getElementById("testFinalActivo").style.visibility="visible"
 						this.url_testFinal ="test_final.php"
+					}
+					
+					if(response.data.TestFinal!="" && response.data.RespuestasTF!=""){
+						document.getElementById("constancia").style.cssText = "filter: grayscale(0)";
+						document.getElementById("constancia").style.cursor="pointer";
+						this.url_constancia ="constanciaPDF.php"
+						//document.getElementById("constancia").style.visibility="visible"
+					}else{
+						//document.getElementById("constancia").style.visibility="hidden"
+						document.getElementById("constancia").style.cssText = "filter: grayscale(1)";
 					}
 
 				}).catch(function (error){
@@ -368,7 +374,11 @@ const app = {
 					});
 	},
 	methods:{
-
+		lanzarpdf(){
+			if(this.url_constancia!=""){
+				window.location.href ="constanciaPDF.php";
+			}
+		}
 	}
 }
 

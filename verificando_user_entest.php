@@ -14,16 +14,19 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     
     if(mysqli_num_rows($resultado)>0){
         while($datos=$resultado->fetch_array()){
-           $separando = explode("-",$datos['FechaFinalizado']);
-           $reacomodando=$separando[2]."-".$separando[1]."-".$separando[0];
-           $fechaEntrada =date("d-m-Y", strtotime( $reacomodando)); 
-            if($fechaActual > $fechaEntrada ){
-                session_destroy();
-                echo "Fecha Caducada";
-            }else{
-                echo "Si";
-            }
-           
+
+            $separando = explode("-",$datos['FechaFinalizado']);
+            $reacomodando=$separando[2]."-".$separando[1]."-".$separando[0];
+
+            $fecha_actual = strtotime(date("d-m-Y"));
+            $fecha_entrada = strtotime($reacomodando);
+	
+                if($fecha_actual > $fecha_entrada){
+                    session_destroy();
+                    echo "Fecha Caducada";
+                }else{
+                    echo "Si";
+                }
         }
 
        

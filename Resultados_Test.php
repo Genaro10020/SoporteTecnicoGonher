@@ -72,6 +72,7 @@ table {
                                 <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Usuario</th>
+                                <th scope="col">TI</th>
                                 <th scope="col">P1</th>
                                 <th scope="col">P2</th>
                                 <th scope="col">P3</th>
@@ -81,6 +82,7 @@ table {
                                 <th scope="col">P7</th>
                                 <th scope="col">P8</th>
                                 <th scope="col">P9</th>
+                                <th scope="col">TF</th>
                                 <th scope="col">Resultado</th>
                                 </tr>
                             </thead >
@@ -91,13 +93,13 @@ table {
                                                 $ejecutarF4=mysqli_query($conexion,$consultaF4) or die (mysqli_error($conexion));
                                                 foreach($ejecutarF4 as $opciones)
                                                     {  
-                                                $suma= $opciones['Prueba1'] + $opciones['Prueba2'] + $opciones['Prueba3'] + $opciones['Prueba4'] +
-                                                $opciones['Prueba5'] + $opciones['Prueba6'] + $opciones['Prueba7'] + $opciones['Prueba8'] + $opciones['Prueba9'];
-                                                $resultado=$suma/9;
-                                                        ?>
+                                                $suma= (int)$opciones['TestInicial'] + (int)$opciones['Prueba1'] + (int)$opciones['Prueba2'] + (int)$opciones['Prueba3'] + (int)$opciones['Prueba4'] +
+                                                (int)$opciones['Prueba5'] + (int)$opciones['Prueba6'] + (int)$opciones['Prueba7'] + (int)$opciones['Prueba8'] + (int)$opciones['Prueba9'] + (int)$opciones['TestFinal'];
+                                                $resultado=$suma/11;?>
                                                 <tr id="lineatabla">
                                                     <td><?php echo $cantidad; ?></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Usuario']; ?></div></td>
+                                                    <td><div class="Planta2"><?php   echo $opciones['TestInicial'];?></div></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba1'];?></div></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba2'];?></div></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba3'];?></div></td>
@@ -107,6 +109,7 @@ table {
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba7'];?></div></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba8'];?></div></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Prueba9'];?></div></td>
+                                                    <td><div class="Planta2"><?php   echo $opciones['TestFinal'];?></div></td>
                                                     <td><div class="Planta2"><h5 class="text-primary"><b><?php  echo number_format($resultado, 1);?></b></h5></div></td>
                                                 </tr>
                                                 <?php $cantidad++; } 

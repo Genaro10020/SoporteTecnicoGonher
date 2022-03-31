@@ -106,10 +106,9 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
 
 			<div class="row" style="min-height: 10vh;">
-				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
-                     <a href="index.php"><img src="Imagenes/icono_salir.png" style="width:75px; height:65px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" ></a>
-					<!--<img src="Imagenes/logoenerya.png" style="width:100px; background:white; border-radius: 0px 0px 50px 0px; padding:5px;" >-->
-				</div>
+            <div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
+                     <a href="menu_cliente.php"><img src="Imagenes/icono_home.png" style="width:90px; background:white; border-radius: 0px 0px 50px 0px; padding:5px; cursor:pointer" ></a>
+                 </div>
                 <div class="d-flex justify-content-center col-12">
                      <h1 class="titulos animate__animated animate__flash  text-light">{{titulo}}</h1>
                 </div>

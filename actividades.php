@@ -361,7 +361,7 @@ if($respuesta=="continuar"){
                         <h1 class="titulos animate__animated animate__pulse text-light">{{titulo_actividad}}</h1>
                     </div>
                     <div v-if="nombre_actividad=='validacion'" class="d-flex justify-content-center col-12">
-                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower  animate__repeat-2"> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}<br>formato de fecha DIA/MES/AÑO</p> 
+                        <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower  animate__repeat-2"> {{texto_indicaciones}} &nbsp;{{fecha_hoy}}&nbsp; (Dia/Mes/Año)</p> 
                     </div> 
                     <div v-if="nombre_actividad!='validacion'" class="d-flex justify-content-center col-12">
                         <p class="texto_indicaciones fs-5 text-center animate__animated animate__bounceIn animate__slower animate__repeat-2">{{texto_indicaciones}} </p> 
@@ -707,7 +707,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                     this.fecha_hoy=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()
                     this.nombre_actividad = actividad
                     this.titulo_actividad = 'Validación de Póliza'
-                    this.texto_indicaciones = 'Verifica que los acumuladores estén dentro del periodo de garantía, tome en cuenta fecha actual es: '
+                    this.texto_indicaciones = 'Verifica que los acumuladores estén dentro del periodo de garantía (12 Meses), tome en cuenta fecha actual es: '
                     this.btn_rojo = "Sin Garantía"
                     this.btn_verde = "Con Garantía"
                 }

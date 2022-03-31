@@ -48,6 +48,26 @@ if($respuesta=="continuar"){
 
 /*Pequenia*/
 @media (min-width: 0px) { 
+    .miboton {
+    height:50px;
+    text-align: center;
+    width:200px;
+    font-family: 'Rowdies', cursive;
+    background: rgb(0,97,135);
+    background: linear-gradient(0deg, rgba(0,97,135,1) 0%, rgba(4,65,106,1) 32%, rgba(0,26,71,1) 89%); 
+	border-radius:6px;
+	border:2px solid #124d77;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:20px;
+	padding:7px 14px;
+	text-decoration:none;
+	text-shadow:-1px 2px 0px black;
+    }
+    .miboton:hover {
+        background: rgb(23,0,94);
+    background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgba(0,22,99,1) 58%, rgba(0,12,23,1) 98%);
+    }
     
     .formulario{height:600px}
     .marcovideo{height:230px; z-index:0;}
@@ -119,8 +139,10 @@ if($respuesta=="continuar"){
                      <h1 class="titulos animate__animated animate__pulse animate__delay-2s text-light">{{titulo}}</h1>
                 </div>
 			</div>
+                    <div v-if="video_o_capacitacion=='videos'" class="col-12 justi">
+                        <p class="texto_indicaciones text-center mt-4"> Visualiza los videos las veces que sean necesarias. </p>
+                    </div>
 
- 
 			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
                 <img v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
@@ -140,8 +162,12 @@ if($respuesta=="continuar"){
                 <img v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
                 <div  class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
                 <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img  class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
-              
-                <div class="col-12 col-md-4 col-md-6 offset-md-3 text-center position-relative " style="min-height: 200px;">
+                <div v-if="btn==true && video_o_capacitacion=='capacitacion'" class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-5">
+                                    <div id="boton" @click="ir_menu" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Ir al menú..</div>
+                    </div>
+                </div>
+                <div v-if="video_o_capacitacion=='capacitacion'" class="col-12 col-md-4 col-md-6 offset-md-3 text-center position-relative " style="min-height: 200px;">
                         <p class="texto_indicaciones  position-absolute top-0 start-50 translate-middle-x lh-sm mt-4 mt-sm-4 mt-lg-5 "> INDICACIONES <br><br> Visualiza los videos y realiza las actividades, únicamente podrás realizarlas por una ocasión cada actividad. </p>
                     <img class="contorno_comentario position-absolute top-0 start-50 translate-middle-x" src="Imagenes/borde_comentario.png" alt="">
                 </div>
@@ -182,7 +208,8 @@ const app = {
             pru_rutamarco: 'Imagenes/marcovideos_disable.png', pru_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba8:'',
             dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
-            prueba9:''
+            prueba9:'',
+            btn: false
 		}
 	},
 	mounted(){
@@ -255,6 +282,7 @@ const app = {
                 if(response.data.Prueba9!=""){
                     iconos[8].style.cursor='default'
                     this.prueba9="Visto"
+                    this.btn=true
                        
                 }
 
@@ -437,6 +465,9 @@ const app = {
             if(this.prueba8!="" && this.prueba9!="Visto" && this.video_o_capacitacion=="capacitacion"){
                 window.location.href = "actividades.php?actividad=diagnostico"
             }
+        },
+        ir_menu(){
+            window.location.href = "menu_cliente.php";
         }
         
     },create(){

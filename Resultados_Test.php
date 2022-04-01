@@ -96,6 +96,10 @@ table {
                                                 $suma= (int)$opciones['TestInicial'] + (int)$opciones['Prueba1'] + (int)$opciones['Prueba2'] + (int)$opciones['Prueba3'] + (int)$opciones['Prueba4'] +
                                                 (int)$opciones['Prueba5'] + (int)$opciones['Prueba6'] + (int)$opciones['Prueba7'] + (int)$opciones['Prueba8'] + (int)$opciones['Prueba9'] + (int)$opciones['TestFinal'];
                                                 $resultado=$suma/11;?>
+                                                <tr>
+                                                    <td colspan="13"><div class="Planta2">Comentario: <?php   echo $opciones['Comentarios']; ?></div></td>
+                                                    <td><div class="Planta2">Estrellas: <?php   echo $opciones['Estrellas']; ?></div></td>
+                                                <tr>
                                                 <tr id="lineatabla">
                                                     <td><?php echo $cantidad; ?></td>
                                                     <td><div class="Planta2"><?php   echo $opciones['Usuario']; ?></div></td>
@@ -112,6 +116,7 @@ table {
                                                     <td><div class="Planta2"><?php   echo $opciones['TestFinal'];?></div></td>
                                                     <td><div class="Planta2"><h5 class="text-primary"><b><?php  echo number_format($resultado, 1);?></b></h5></div></td>
                                                 </tr>
+                                                
                                                 <?php $cantidad++; } 
 
                                         ?>

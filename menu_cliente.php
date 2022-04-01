@@ -286,13 +286,33 @@ background-size: cover;" >
 
 						<div class="col-12 mt-3 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xl-1 col-xxl-4  d-flex align-items-center justify-content-center justify-content-md-start"><!--perrilla-->
 							<div class="row  ms-xxl-1">
-								<div class="col-12 d-flex justify-content-center">
+								<div class="col-12 d-flex justify-content-center p-xxl-5">
 									<img class="contorno_perilla" src="Imagenes/circulo.png" height="300px">
 									<img class="perilla_gira" src="Imagenes/perilla_gira.png" >
 									<h1 class="titulos animate__animated animate__pulse  text-light position-absolute">MENÚ</h1>
 								</div>
-							</div>
+								<div v-if="opinion==true">
+										<div class="col-12 d-flex justify-content-center mt-xxl-4">
+												<button  class="btn fs-4"  v-for="numero in numeros" @click="calificando"  @mouseover="entrellas(numero)" @mouseout="estrellas_vaciar" :id="'radio'+numero" type="radio" name="estrellas" :value="numero">★</button>	
+												<label class="mt-1" style="color:#81ecf0; text-shadow: 1px 1px black;">&nbsp;&nbsp;<b>{{total_estrellas}}</b></label>
+										</div>
+											<div class=" col-12 d-flex justify-content-center mt-xxl-3">
+												<textarea v-model="texto_comentario" class="form-control" placeholder="Deja tu comentario" style="height: 100px; width: 320px; max-height:100px;">{{texto_comentario}}</textarea>
+											</div>
+											<div class=" col-12 d-flex justify-content-center mt-xxl-1">
+												<button @click="enviar_comentario" type="button" class="btn btn-light shadow-lg"><b>Enviar</b></button>
+											</div>
+											<div class=" col-12 d-flex justify-content-center mt-xxl-1">
+												<label id="mensaje_guardado" style="color:#4de6d3; font-size: 20px; font-weight:bold; text-shadow: 1px 1px black;">{{guardado}}</label>
+											</div>
+											
+										</div>
+								</div>
+							
 						</div>
+
+						
+					
 						
 		
 					<div class="col-12  col-sm-12 col-md-2 col-lg-2 col-xl-3 col-xxl-3 d-flex align-items-end"><!--Certificado-->
@@ -330,13 +350,16 @@ const app = {
 			url_capacitacion: '',
 			title_capacitacion: '',
 			url_testFinal: '',
-			url_constancia:''
+			url_constancia:'',
+			numeros: ['1','2','3','4','5'],
+			clickestrellas:false,
+			total_estrellas:0,
+			opinion:false,
+			texto_comentario:'',
+			guardado:''
 		}
 	},
 	mounted(){
-		
-
-
 				this.usuario=document.getElementById("user").value;
 				//console.log(this.usuario)
 				 axios.post('dato_menu_cliente.php', {
@@ -352,6 +375,8 @@ const app = {
 						this.url_capacitacion = "videos.php?videos_capacitacion=capacitacion"
 					}
 
+				
+
 					this.test_final=response.data.Prueba9
 					if(this.test_final==""){
 						//console.log("no se a realizado la prueba 9")
@@ -361,6 +386,7 @@ const app = {
 					}
 					
 					if(response.data.TestFinal!="" && response.data.RespuestasTF!=""){
+						this.opinion=true
 						document.getElementById("constancia").style.cssText = "filter: grayscale(0)";
 						document.getElementById("constancia").style.cursor="pointer";
 						this.url_constancia ="constanciaPDF.php"
@@ -375,6 +401,67 @@ const app = {
 					});
 	},
 	methods:{
+		entrellas(numero){
+			this.clickestrellas=false
+			this.total_estrellas=numero
+				if(numero==1){
+						document.getElementById("radio1").style.color="yellow";
+				}else if(numero==2){
+					document.getElementById("radio1").style.color="yellow";
+					document.getElementById("radio2").style.color="yellow";
+				}else if(numero==3){
+					document.getElementById("radio1").style.color="yellow";
+					document.getElementById("radio2").style.color="yellow";
+					document.getElementById("radio3").style.color="yellow";
+					
+				}else if(numero==4){
+					document.getElementById("radio1").style.color="yellow";
+					document.getElementById("radio2").style.color="yellow";
+					document.getElementById("radio3").style.color="yellow";
+					document.getElementById("radio4").style.color="yellow";
+					
+				}else if(numero==5){
+					document.getElementById("radio1").style.color="yellow";
+					document.getElementById("radio2").style.color="yellow";
+					document.getElementById("radio3").style.color="yellow";
+					document.getElementById("radio4").style.color="yellow";
+					document.getElementById("radio5").style.color="yellow";
+				}
+		},
+		estrellas_vaciar(){
+				if(this.clickestrellas==false){
+					this.total_estrellas=0
+						document.getElementById("radio1").style.color="black";
+						document.getElementById("radio2").style.color="black";
+						document.getElementById("radio3").style.color="black";
+						document.getElementById("radio4").style.color="black";
+						document.getElementById("radio5").style.color="black";
+				}	
+		},
+		calificando(){
+			this.clickestrellas=true;
+		},
+		enviar_comentario(){
+				//console.log(this.texto_comentario)
+				axios.post('guardar_comentario.php', {
+						comentario: this.texto_comentario,
+						estrellas:this.total_estrellas
+					}).then(response => {
+						
+						if(response.data=="Comentario enviado.."){
+								this.guardado=response.data;
+									document.getElementById("mensaje_guardado").style.opacity="1"
+								setTimeout(()=>{
+									document.getElementById("mensaje_guardado").style.opacity="0"
+								},2000)
+						}else{
+							this.guardado="Erro al enviar comentario."
+						}
+
+					}).catch(function (error){
+						console.log(error)
+					});
+		},
 		lanzarpdf(){
 			if(this.url_constancia!=""){
 				

@@ -430,7 +430,7 @@ table {
                             <div class="input-group-prepend" style="min-width: 120px;">
                                 <div class="input-group-text">Teléfono:</div>
                             </div>
-                            <input id="telefono" class="form-control" type="text" name="Telefono" required>
+                            <input id="telefono" class="form-control" type="text" maxlength="10" name="Telefono" required>
                         </div>
 
                         <div class="input-group mb-2">

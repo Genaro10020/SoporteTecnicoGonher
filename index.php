@@ -2,6 +2,11 @@
 error_reporting(E_ALL & ~E_NOTICE | E_STRICT);
 session_start();
 session_destroy();
+/*session_start();
+$hora = date('H:i');
+$session_id = session_id();
+$token = hash('sha256', $hora.$session_id);
+$_SESSION['token'] = $token;*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,7 +180,7 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                 </div>
                         </div>
                 
-
+    
         </div><!--fin cuerpo-->
 
         <script>
@@ -210,49 +215,50 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                             }
                         }, 
                         async iniciarSession(){
-
+                            
                             axios.post('verificando.php', {
                                     usu: this.user,
-                                    pass: this.password
+                                    pass: this.password,
                                 })
                                 .then(function (response) {
                                     //console.log(response.data)
                                     if(response.data==null){ 
                                         alert("Verifique usuario y su contraseña.")
                                     }else{
-                                                if(response.data.tipo=="Administrador"){
-                                                    window.location.href = 'menu.php'
-                                                    document.getElementById("inputuser").value = ""
-                                                    document.getElementById("inputpass").value = ""
-                                                }else{
-                                                    if(response.data.tipo=="Usuario"){
-                                                        axios({ //verificando si existe en test.
-                                                            method:'POST',
-                                                            url:'verificando_user_entest.php',
-                                                            data:{
-                                                                usuario_test: response.data.Usuario
-                                                            }
-                                                        }).then(function(responsedos){
-                                                            console.log(responsedos.data)
-
-                                                            if(responsedos.data=="Si"){
-                                                                window.location.href = 'menu_cliente.php'
+                                        console.log(response.data)
+                                                if(response.data[1].tipo=="Administrador"){
+                                                                window.location.href = 'menu.php'
                                                                 document.getElementById("inputuser").value = ""
                                                                 document.getElementById("inputpass").value = ""
-                                                            }
-                                                            if(responsedos.data=="No existe"){ alert("No esta dado de Alta para la capacitación.")}
-                                                            if(responsedos.data=="Fecha Caducada"){ alert("Capacitación Caducada, verifique su fecha limite.")}
+                                                }else if(response.data[0]=="IP No Coincide"){
+                                                                alert("EJECUTE LA CAPACITACIÓN DESDE EL LUGAR Y DISPOSITIVO UTILIZADO POR PRIMERA VEZ")
+                                                }else if (response.data[1].tipo=="Usuario"){
+                                                                axios({ //verificando si existe en test.
+                                                                        method:'POST',
+                                                                        url:'verificando_user_entest.php',
+                                                                        data:{
+                                                                            usuario_test: response.data[1].Usuario
+                                                                        }
+                                                                    }).then(function(responsedos){
+                                                                        console.log(responsedos.data)
+
+                                                                        if(responsedos.data=="Si"){
+                                                                            window.location.href = 'menu_cliente.php'
+                                                                            document.getElementById("inputuser").value = ""
+                                                                            document.getElementById("inputpass").value = ""
+                                                                        }
+                                                                        if(responsedos.data=="No existe"){ alert("No esta dado de Alta para la capacitación.")}
+                                                                        if(responsedos.data=="Fecha Caducada"){ alert("Capacitación Caducada, verifique su fecha limite.")}
 
 
-                                                        }).catch(function (error) {
-                                                            console.log(error);
-                                                        });
-                                                        
-                                                        
+                                                                    }).catch(function (error) {
+                                                                        console.log(error);
+                                                                    });
                                                     }else{
                                                         alert("CREDENCIALES INCORRECTAS")
+                                                       
                                                     }
-                                                }
+                                                
                                         }
                                 })
                                 .catch(function (error) {

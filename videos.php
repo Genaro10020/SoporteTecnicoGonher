@@ -130,7 +130,7 @@ if($respuesta=="continuar"){
  <div class="d-none d-xxl-none d-xl-block bg-warning fw-bolder text-center ">ESTAS EN XL</div>
  <div class="d-none d-xxl-block bg-primary fw-bolder text-center ">ESTAS EN XXL</div>-->
     <div id="app">
-			<div class="row" style="height: 10vh;">
+			<div class="row" style="min-height: 10vh;">
 				<div class=" col-4 col-sm-3 col-md-3 col-lg-1 p-0 ">
                      
 					<a href="menu_cliente.php"><img src="Imagenes/icono_home.png" style="width:90px; background:white; border-radius: 0px 0px 50px 0px; padding:5px; cursor:pointer" ></a>
@@ -144,23 +144,43 @@ if($respuesta=="continuar"){
                     </div>
 
 			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
+               
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion'" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">{{puntos_IntroVisto}}</label>
+                    <label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
                 <img v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba1!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba1}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
                 <img  v-on:click="validacion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="vali_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="vali_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctrico</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba2!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba2}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctrico</label>
                 <img  v-on:click="sistema" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="sis_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="sis_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Física</label>
-                <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor de Voltaje y CCA</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba3!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba3}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Física</label>
+                <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt="">
+                <img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba4!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba4}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor de Voltaje y CCA</label>
                 <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s lh-1" >Nivel, Coloración y densidad <br>de Electrolito</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba5!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba5}}, {{puntos_Prueba6}}, {{puntos_Prueba7}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s lh-1" >Nivel, Coloración y densidad <br>de Electrolito</label>
                 <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Proceso de Recarga</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Video_Recarga!='' " class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">{{puntos_Video_Recarga}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Proceso de Recarga</label>
                 <img  v-on:click="recarga" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="reca_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="reca_rutamarco" alt=""></div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
+                <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba8!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba8}}</label>
+                    <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
                 <img v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
-                <div  class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center"><label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
+                <div  class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba9!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba9}}</label>
+                    <label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
                 <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img  class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
                 <div v-if="btn==true && video_o_capacitacion=='capacitacion'" class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
                     <div class="d-flex justify-content-center mt-5">
@@ -209,7 +229,19 @@ const app = {
             prueba8:'',
             dia_rutamarco: 'Imagenes/marcovideos_disable.png', dia_rutaplay: 'Imagenes/icono_reproducir_disable.png',
             prueba9:'',
-            btn: false
+            btn: false,
+            puntos_IntroVisto:'',
+            puntos_Prueba1:'',
+            puntos_Prueba2:'',
+            puntos_Prueba3:'',
+            puntos_Prueba4:'',
+            puntos_Prueba5:'',
+            puntos_Prueba6:'',
+            puntos_Prueba7:'',
+            puntos_Video_Recarga:'',
+            puntos_Prueba8:'',
+            puntos_Prueba9:'',
+
 		}
 	},
 	mounted(){
@@ -236,28 +268,36 @@ const app = {
             
            // console.log(iconos)
             if(response.data.IntroVisto!="" ){
+                    this.puntos_IntroVisto="Visto."
                     iconos[0].style.cursor='default'
                     this.intro="Visto"
-                       this.agregandoCSS(1)
+                    this.agregandoCSS(1)
                 }else{
                     iconos[0].style.cursor='pointer'
                 }
                 if(response.data.Prueba1!=""){
+                    this.puntos_Prueba1=response.data.Prueba1
                     iconos[1].style.cursor='default'
                     this.prueba1="Visto"
                        this.agregandoCSS(2)
                 }
                 if(response.data.Prueba2!=""){
+                    this.puntos_Prueba2=response.data.Prueba2
                     iconos[2].style.cursor='default'
                     this.prueba2="Visto"
                        this.agregandoCSS(3)
                 }
                 if(response.data.Prueba3!=""){
+                    this.puntos_Prueba3=response.data.Prueba3
                     iconos[2].style.cursor='default'
                     this.prueba3="Visto"
                        this.agregandoCSS(4)
                 }
                 if(response.data.Prueba4!=""){
+                    this.puntos_Prueba4=response.data.Prueba4
+                        if(response.data.Prueba5!=""){this.puntos_Prueba5=response.data.Prueba5}
+                        if(response.data.Prueba6!=""){this.puntos_Prueba6=response.data.Prueba6}
+                        if(response.data.Prueba7!=""){this.puntos_Prueba7=response.data.Prueba7}
                     iconos[4].style.cursor='default'
                     this.prueba4="Visto"
                        this.agregandoCSS(5)
@@ -270,16 +310,19 @@ const app = {
                     this.agregandoCSS(6)
                 }
                 if(response.data.Video_Recarga!=""){
+                    this.puntos_Video_Recarga="Visto."
                     iconos[6].style.cursor='default'
                     this.video_recarga="Visto"
                        this.agregandoCSS(7)
                 }
                 if(response.data.Prueba8!=""){
+                    this.puntos_Prueba8=response.data.Prueba8
                     iconos[7].style.cursor='default'
                     this.prueba8="Visto"
                        this.agregandoCSS(8)
                 }
                 if(response.data.Prueba9!=""){
+                    this.puntos_Prueba9=response.data.Prueba9
                     iconos[8].style.cursor='default'
                     this.prueba9="Visto"
                     this.btn=true

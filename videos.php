@@ -146,40 +146,40 @@ if($respuesta=="continuar"){
 			<div  class="contenido row d-flex mt-5" style="min-height: 80vh;">
                
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion'" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">{{puntos_IntroVisto}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion'" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1;">{{puntos_IntroVisto}}</label>
                     <label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Introducción</label>
                 <img v-on:click="introduccion"  class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="intro_rutaplay" alt=""><img class="marcovideo marcovideo animate__animated animate__zoomIn" v-bind:src="intro_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba1!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba1}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba1!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1;">Puntos: {{puntos_Prueba1}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Validación Póliza</label>
                 <img  v-on:click="validacion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="vali_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="vali_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba2!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba2}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba2!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba2}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Sistema Eléctrico</label>
                 <img  v-on:click="sistema" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="sis_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="sis_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba3!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba3}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba3!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba3}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Inspección Física</label>
                 <img  v-on:click="inspeccion" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="ins_rutaplay" alt="">
                 <img class="marcovideo animate__animated animate__zoomIn" v-bind:src="ins_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba4!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba4}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' &&  puntos_Prueba4!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba4}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Medidor de Voltaje y CCA</label>
                 <img  v-on:click="medidor" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="medi_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="medi_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba5!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba5}}, {{puntos_Prueba6}}, {{puntos_Prueba7}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba5!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba5}}, {{puntos_Prueba6}}, {{puntos_Prueba7}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s lh-1" >Nivel, Coloración y densidad <br>de Electrolito</label>
                 <img  v-on:click="niveles" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="nive_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="nive_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Video_Recarga!='' " class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">{{puntos_Video_Recarga}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Video_Recarga!='' " class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">{{puntos_Video_Recarga}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Proceso de Recarga</label>
                 <img  v-on:click="recarga" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="reca_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="reca_rutamarco" alt=""></div>
                 <div class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba8!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba8}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba8!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba8}}</label>
                     <label class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Prueba de Descarga</label>
                 <img v-on:click="prueba" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="pru_rutaplay" alt=""><img class="marcovideo animate__animated animate__zoomIn" v-bind:src="pru_rutamarco" alt=""></div>
                 <div  class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">
-                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba9!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 2px 2px black;">Puntos: {{puntos_Prueba9}}</label>
+                    <label v-if="video_o_capacitacion=='capacitacion' && puntos_Prueba9!=''" class="position-absolute  text-warning font-weight-bold fw-bold"  style="text-shadow: 1px 1px black;z-index:1">Puntos: {{puntos_Prueba9}}</label>
                     <label  class="video_texto animate__animated animate__bounceIn animate__delay-2s" >Diagnostico Interáctivo</label>
                 <img  v-on:click="diagnostico" class="icono_play animate__animated animate__fadeIn animate__delay-1s " v-bind:src="dia_rutaplay" alt=""><img  class="marcovideo animate__animated animate__zoomIn" v-bind:src="dia_rutamarco" alt=""></div>
                 <div v-if="btn==true && video_o_capacitacion=='capacitacion'" class="col-12 col-sm-6 col-md-4 col-xxl-3 text-center d-flex justify-content-center">

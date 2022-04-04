@@ -82,6 +82,9 @@ session_start();
  ?>
 <script type="text/javascript">	
 window.location.replace("constanciaPDF_View.php?nombre=<?php echo $nombre_usuario?>");
+setTimeout(function(){
+	window.location.replace("menu_cliente.php");
+},500)
 //window.location.href ="constanciaPDF_view.php";
 //alert("asdasd");
 //var w = window.open(pdf);

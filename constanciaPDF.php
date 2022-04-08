@@ -10,6 +10,7 @@ session_start();
 	$resultado=mysqli_query($conexion,$query);
 	while($datos=mysqli_fetch_array($resultado)){
 		$nombre_usuario=$datos['Nombre'];
+		$correo_usuario=$datos['Correo'];
 		// $nombre_usuario= mb_strtoupper($nombre_usuario,'utf-8');
 	}
 	//$nombre_usuario="Genaro Villanueva Pérez";
@@ -78,6 +79,46 @@ session_start();
 //include 'contanciaPDF_View.php';
 //header('Location: constanciaPDF_View.php?nombre='.$nombre_usuario);
 /*}*///fin SESSION
+
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once 'PHPMailVendor/vendor/autoload.php';
+
+$mail = new PHPMailer(true);
+
+try {
+    // Configure PHPMailer
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+
+    // Configure SMTP Server
+    $mail->Host = 'mx98.hostgator.mx';
+    $mail->Username = 'soporte@vvnorth.com';
+    $mail->Password = 'eBZ6_$H2Sl-z';
+
+    // Configure Email
+    $envia =  utf8_decode('Soporte Técnico');
+    $mail->setFrom('soporte@vvnorth.com', $envia);
+    $mail->addAddress('atencionaclientes@enerya.com');
+    $mail->AddCC($correo_usuario);
+    $mail->addAttachment('constancia/documento.pdf','documento.pdf');
+    $asunto = 'Constancia capacitación';
+    $mail->Subject = utf8_decode($asunto);
+    $mail->isHTML(true);
+    $Body = '<strong>Felicidades</strong> por realizár el curso de Capacitación, se adjunto constancia en PDF. en correo: '.$correo_usuario;
+    $mail->Body=utf8_decode($Body);
+    // send mail
+    $mail->Send();
+    echo 'ENVIADO A TU CORREO';
+} catch (Exception $e) {
+    echo 'NO PUDIMOS ENVIARLO A TU CORREO: ' . $mail->ErrorInfo;
+}
+
 
  ?>
 <script type="text/javascript">	

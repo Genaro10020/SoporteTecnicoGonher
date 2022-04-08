@@ -245,7 +245,7 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
                              <label><p id="x15" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta8" value="1" v-model="respuestaOcho"  :disabled="deshabilitar"> CCA por debajo de la especificación.</p></label><br>
                              <label> <p id="x16" class="respuestas  m-0 ms-2"><input type="radio" @click="resetmessage"  name="respuesta8" value="2" v-model="respuestaOcho" :disabled="deshabilitar"> Coloraciones en el electrolito.</p></label>
                         </div>
-                        <div class="encabezado9 "><p class="pregunta">9.- ¿Qué se debe se hacer cuándo el voltaje del acumulador es mayor a 10.5V y las densidades no presentan diferencia mayor a 50 puntos? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
+                        <div class="encabezado9 "><p class="pregunta lh-1" style="font-size: 0.8em" >9.- ¿Qué se debe se hacer cuándo el voltaje del acumulador es mayor a 10.5V y las densidades no presentan diferencia mayor a 50 pts.? &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<label class="text-info"></label></p></div>
                         <div class="divrespuesta9  text-start">
                             <label><p id="x17" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta9" value="1"  v-model="respuestaNueve" :disabled="deshabilitar"> Aplicar la garantía del acumulador</p></label><br>
                             <label> <p id="x18" class="respuestas  m-0 ms-2"><input type="radio"  @click="resetmessage" name="respuesta9" value="2" v-model="respuestaNueve" :disabled="deshabilitar"> Acondicionar mediante recarga.</p></label>

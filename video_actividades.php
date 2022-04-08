@@ -116,12 +116,14 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 
  
 			<div  class="row mt-xl-2 "><!--contenido-->
+                                  <div v-if="tipo_solicitud=='capacitacion'">  
                                     <div class="texto_indicaciones text-center animate__animated animate__zoomIn">
                                          Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad.
                                     </div>
                                     <div class=" d-flex justify-content-center mt-5">
                                         <div id="boton" @click="reproducir" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>
                                     </div>
+                                </div>
                                     <div class="d-flex justify-content-center ">
                                         <video id="verificar"  class="etiquetavideo" opreload="auto" controls>
                                                 <source v-if="video_solicitado=='introduccion'" id="video" src="videos/Introduccion.mp4" type="video/mp4">
@@ -168,6 +170,9 @@ const app = {
        this.tipo_solicitud = document.getElementById("valortipo").value;
        console.log(this.tipo_solicitud);
        console.log(this.video_solicitado)
+       if(this.tipo_solicitud=="capacitacion"){
+        document.getElementById("verificar").removeAttribute("controls");
+       }
        if(this.video_solicitado=="introduccion"){
             this.titulo="INTRODUCCIÓN";
        }else if(this.video_solicitado=="validacion"){

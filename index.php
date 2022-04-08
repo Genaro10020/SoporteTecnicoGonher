@@ -241,7 +241,7 @@ background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,7,36,1) 1%, rgba
                                                                         }
                                                                     }).then(function(responsedos){
                                                                         console.log(responsedos.data)
-
+                                                                        if(responsedos.data=="Cerrado"){ alert("Ya has finalizado la capacitación, la constancia está en tu correo.")}
                                                                         if(responsedos.data=="Si"){
                                                                             window.location.href = 'menu_cliente.php'
                                                                             document.getElementById("inputuser").value = ""

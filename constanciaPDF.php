@@ -113,18 +113,19 @@ try {
     $Body = '<strong>Felicidades</strong> por realizár el curso de Capacitación, se adjunto constancia en PDF. en correo: '.$correo_usuario;
     $mail->Body=utf8_decode($Body);
     // send mail
-    $mail->Send();
-    echo 'ENVIADO A TU CORREO';
+    if($mail->Send()){echo " CORREO ENVIADO CON EXITO. ";}else{echo 'NO SE ENVIO EL CORREO.';}
 } catch (Exception $e) {
     echo 'NO PUDIMOS ENVIARLO A TU CORREO: ' . $mail->ErrorInfo;
 }
-
+	
+$actualizar = "UPDATE Test SET  Cerrado='Si' WHERE Usuario = '$usuario'";
+if($conexion->query($actualizar)){echo " Datos Actualizados ";}
 
  ?>
 <script type="text/javascript">	
 window.location.replace("constanciaPDF_View.php?nombre=<?php echo $nombre_usuario?>");
 setTimeout(function(){
-	window.location.replace("menu_cliente.php");
+	window.location.replace("index.php");
 },500)
 //window.location.href ="constanciaPDF_view.php";
 //alert("asdasd");

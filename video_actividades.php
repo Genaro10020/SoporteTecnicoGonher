@@ -171,7 +171,7 @@ const app = {
        console.log(this.tipo_solicitud);
        console.log(this.video_solicitado)
        if(this.tipo_solicitud=="capacitacion"){
-        //document.getElementById("verificar").removeAttribute("controls");
+        document.getElementById("verificar").removeAttribute("controls");
        }
        if(this.video_solicitado=="introduccion"){
             this.titulo="INTRODUCCIÓN";

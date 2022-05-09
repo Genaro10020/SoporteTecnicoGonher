@@ -653,6 +653,7 @@ if($respuesta=="continuar"){
                                     <div class="row justify-content-center">
                                     <div id="boton" class="col-12 text-center miboton  animate__animated animate__pulse" onclick="ya_ordenado('<?php echo $actividad; ?>')" style="display:none;">Ya lo ordene.</div>
                                     </div>
+                                    <input id="cal" type="hidden" value="" class="form-control">
                                 </div>
 
                                 <div class="col-12 col-md-4 mt-5">
@@ -721,7 +722,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
             methods:{
                 generar_Fecha(){
             
-                        this.cantidad_actividad++
+                    this.cantidad_actividad++
                 
                     var date = new Date()
                     var new_date = new Date(date);
@@ -1376,8 +1377,6 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                 }                
                 var mountedApp = Vue.createApp(app).mount('#app');
         }else if (actividad == "diagnostico"){
-
-           
             const app = {
                 data(){
                     return{
@@ -1392,6 +1391,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                             this.nombre_actividad = actividad
                             this.titulo_actividad = 'Secuencia del Diagnóstico'
                             this.texto_indicaciones = 'Ordene la secuencia de diagnóstico.'
+                            
                 },
                 methods:{
     
@@ -1412,7 +1412,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
         ghostClass: 'fantasma',
         dragClass: 'arrastrar',
         onEnd: () =>{
-                console.log('soltado');
+                //console.log('soltado');
         },
         group: "lista-opciones",
         store: {
@@ -1422,35 +1422,47 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
             set: (sortable)=>{
                 const orden = sortable.toArray();
                 var respuesta = orden[0]+orden[1]+orden[2]+orden[3]+orden[4]+orden[5]+orden[6];
-                console.log(respuesta);
+                //console.log(respuesta);
                 var suma_puntos=0;
-                if(orden[0]==1){suma_puntos+=2;}
-                if(orden[1]==2){suma_puntos+=2;}
-                if(orden[2]==3){suma_puntos+=2;}
-                if(orden[3]==4){suma_puntos+=2;}
-                if(orden[4]==5){suma_puntos+=2;}
-                if(orden[5]==6){suma_puntos+=2;}
-                if(orden[6]==7){suma_puntos+=2;}
-                var calificacion = suma_puntos-4;
-                if(calificacion<0){calificacion=0; }
-                console.log(calificacion);
+                var calificacion_final=0;
+                if(orden[0]==1){suma_puntos+=1;}
+                if(orden[1]==2){suma_puntos+=1;}
+                if(orden[2]==3){suma_puntos+=1;}
+                if(orden[3]==4){suma_puntos+=1;}
+                if(orden[4]==5){suma_puntos+=1;}
+                if(orden[5]==6){suma_puntos+=1;}
+                if(orden[6]==7){suma_puntos+=1;}
+                var calificacion = suma_puntos;
+                if(calificacion==1){calificacion_final=2}
+                if(calificacion==2){calificacion_final=3}
+                if(calificacion==3){calificacion_final=4}
+                if(calificacion==4){calificacion_final=6}
+                if(calificacion==5){calificacion_final=8}
+                if(calificacion==6){calificacion_final=9}
+                if(calificacion==7){calificacion_final=10}
+    
+                if(calificacion_final<=0){calificacion_final=""; }
+                //console.log(calificacion_final);
                 //console.log(respuesta);
                 document.getElementById('boton').style.display="block";
-
-                        axios.post('guardar_actividades.php',{
-                                        actividad: actividad,
-                                        puntos: calificacion
-
-                                    }).then(response=>{
-                                        console.log(response.data);
-                                    })
+                document.getElementById('cal').value= calificacion_final;
+                
+                       
             }
 
         }
     });
 
     function ya_ordenado(){
-        window.location.href="videos.php?videos_capacitacion=capacitacion"
+        var calificacion_subir = document.getElementById('cal').value;
+                    axios.post('guardar_actividades.php',{
+                                        actividad: actividad,
+                                        puntos: calificacion_subir
+
+                                    }).then(response=>{
+                                        console.log(response.data);
+                                        window.location.href="videos.php?videos_capacitacion=capacitacion"
+                                    })
     }
 
 

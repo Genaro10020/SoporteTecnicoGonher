@@ -118,7 +118,7 @@ background: linear-gradient(0deg, rgba(23,0,94,1) 0%, rgba(10,16,102,1) 17%, rgb
 			<div  class="row mt-xl-2 "><!--contenido-->
                                   <div v-if="tipo_solicitud=='capacitacion'">  
                                     <div class="texto_indicaciones text-center animate__animated animate__zoomIn">
-                                         Verifica que tu audio de salida este correctamente conectado, el video iniciara automaticamente y después de ver el video podrás realizar la actividad.
+                                         Verifica que tu audio de salida este correctamente conectado, el video iniciará una vez presiones "Estoy Listo" y después de ver el video podrás realizar la actividad.
                                     </div>
                                     <div class=" d-flex justify-content-center mt-5">
                                         <div id="boton" @click="reproducir" class="text-center miboton  animate__animated animate__pulse animate__infinite	"> Estoy Listo..</div>

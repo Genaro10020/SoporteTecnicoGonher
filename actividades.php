@@ -1207,7 +1207,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                 this.btn_iniciar ='Iniciar'
                                 this.btn_verde ='Correcta'
                                 this.btn_rojo ='Incorrecta'
-                                this.indicaciones_pie='Ejemplo: La coloración de electrolito debe escristalino.'
+                                this.indicaciones_pie='Ejemplo: La coloración del electrolito debe ser cristalina.'
                                 
                             }
                             if(actividad=='densidad_electrolito'){
@@ -1257,7 +1257,7 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                                     setTimeout(()=>{
                                         this.iniciar=true
                                         this.cantidad_actividad=1
-                                        this.indicaciones_pie="Analice si el color del electrolito es cristalino."
+                                        this.indicaciones_pie=""
                                         },1000)
                                 }
                                 if(actividad=='prueba'){

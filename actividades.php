@@ -721,9 +721,9 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
             },
             methods:{
                 generar_Fecha(){
-            
+                    
+                   if(this.visible_flecha==true){
                     this.cantidad_actividad++
-                
                     var date = new Date()
                     var new_date = new Date(date);
                     // Obtenemos un numero aleatorio entre 1 y 60
@@ -766,6 +766,8 @@ if (actividad == "validacion"){//ACTIVIDAD VALIDACION
                     var etiquetas=document.getElementById("etiqueta")
                     etiquetas.className += " etiqueta_ver";
                     this.visible_flecha=false
+                }
+
                 },
                 bien_o_mal(respuesta){
                     const prefix = 'animate__'

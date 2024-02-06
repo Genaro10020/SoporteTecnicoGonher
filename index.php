@@ -27,9 +27,13 @@ $_SESSION['token'] = $token;*/
     <!--ANIMATE-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!--VUE 3-->
-    <script src="https://unpkg.com/vue@next"></script>
+    <!--<script src="https://unpkg.com/vue@next"></script>-->
+     <!--VUE 3-->
+     <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>
     <!--Axios--> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    
   
 </head>
         <style type="text/css">

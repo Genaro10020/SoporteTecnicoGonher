@@ -22,8 +22,8 @@ if ($_SESSION["usuario"] && $_SESSION["tipo"]=="Usuario"){
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"><!--OPCIONES--> 
     <!--ANIMATE-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!--VUE 3-->
-    <script src="https://unpkg.com/vue@next"></script>
+     <!--VUE 3-->
+     <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>
     <!--Axios--> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
